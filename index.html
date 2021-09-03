@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Favicon and title -->
+  <link rel="icon" href="path/to/fav.png">
+  <title>Starter template - Halfmoon</title>
+
+  <!-- Halfmoon CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/css/main.css">
+  <!--
+    Or,
+    Use the following (no variables, supports IE11):
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon.min.css" rel="stylesheet" />
+    Learn more: https://www.gethalfmoon.com/docs/customize/#notes-on-browser-compatibility
+  -->
+</head>
+
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
+  data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  <!-- Modals go here -->
+    <!-- JavaScript based modal -->
+    <div class="modal" id="modal-6" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button class="close" data-dismiss="modal" type="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title">Möchten Sie es löschen?</h5>
+          <p>
+            Wenn Sie es einmal löschen, können Sie es nicht mehr zurückbringen.
+          </p>
+          <div class="text-right mt-20">
+            <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+            <button class="btn mr-5" data-dismiss="modal" type="button">Nein</button>
+            <button class="btn btn-primary" data-dismiss="modal" type="button">Ja</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
+
+  <!-- Page wrapper start -->
+  <div class="page-wrapper with-navbar with-sidebar">
+
+    <!-- Sticky alerts (toasts), empty container -->
+    <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+    <div class="sticky-alerts"></div>
+
+    <!-- Navbar start -->
+        <nav class="navbar">
+          <!-- Navbar content (with toggle sidebar button) -->
+          <div class="navbar-content">
+            <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="sr-only">Toggle sidebar</span> <!-- sr-only = show only on screen readers -->
+            </button>
+          </div>
+          <!-- Navbar brand -->
+          <a href="#" class="navbar-brand">
+            <img src="https://www.gethalfmoon.com/static/halfmoon/img/hm-logo.svg" alt="...">
+          </a>
+          <!-- Navbar text -->
+          <span class="navbar-text text-monospace">Beta</span> <!-- text-monospace = font-family shifted to monospace -->
+          <!-- Navbar nav -->
+          <ul class="navbar-nav d-none d-md-flex">
+            <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
+            <li class="nav-item active">
+              <a href="#" class="nav-link">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Products</a>
+            </li>
+          </ul>
+          <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode()">Click me!</button>
+        </nav>
+    <!-- Navbar end -->
+
+    <!-- Sidebar start -->
+    <div class="sidebar">
+      <div class="sidebar-menu">
+        <!-- Sidebar links and titles -->
+        <h5 class="sidebar-title">Projekte</h5>
+        <div class="sidebar-divider"></div>
+        <a href="#" class="sidebar-link">+ Neue Projekt</a>
+        <a href="#" class="sidebar-link active">Alles</a>
+        <br />
+        <h5 class="sidebar-title">Due</h5>
+        <div class="sidebar-divider"></div>
+        <a href="#" class="sidebar-link">Heute</a>
+        <a href="#" class="sidebar-link">Morgen</a>
+        <a href="#" class="sidebar-link">Diese Woche</a>
+        <a href="#" class="sidebar-link">Diesen Monat</a>
+        <br />
+        <h5 class="sidebar-title">Color Tags</h5>
+        <div class="sidebar-divider"></div>
+        <a href="#" id="sidebar-gruen" class="sidebar-link sidebar-farbe">Grün</a>
+        <a href="#" id="sidebar-rot" class="sidebar-link sidebar-farbe">Rot</a>
+        <a href="#" id="sidebar-gelb" class="sidebar-link sidebar-farbe">Gelb</a>
+        <a href="#" id="sidebar-blau" class="sidebar-link sidebar-farbe">Blau</a>
+        <a href="#" id="sidebar-orange" class="sidebar-link sidebar-farbe">Orange</a>
+        <a href="#" id="sidebar-violett" class="sidebar-link sidebar-farbe">Violett</a>
+        <a href="#" id="sidebar-braun" class="sidebar-link sidebar-farbe">Braun</a>
+        <a href="#" id="sidebar-rosa" class="sidebar-link sidebar-farbe">Rosa</a>
+      </div>    
+    </div>
+    <!-- Sidebar end -->
+
+    <!-- Content wrapper start -->
+    <div class="content-wrapper">
+      <div id="content-header" class="d-flex justify-content-between align-items-center">
+        <h2 class="content-title d-inline m-0">All</h2>
+        <button class="btn btn-primary">+ Neue Aufgabe</button>
+      </div>
+      <div class="sidebar-divider"></div>
+      <!-- ToDo Item -->
+      <div class="card p-10 m-0 my-15">
+        <div class="card-inhalt d-flex justify-content-between align-items-center">
+          <div class="dinge-links d-flex align-items-center">
+            <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+            <span class="card-title">
+              Lorem ipsum dior sit but lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.
+            </span>
+          </div>
+          <div class="dinge-rechts">
+            <!-- <p>
+                      The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust his
+                      hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+                    </p> -->
+            <div class="ding-buttons">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0000ff"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                    <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                  </svg>
+                </a>
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0000"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- ToDo Item -->
+      <div class="card p-10 m-0 my-15">
+        <div class="card-inhalt d-flex flex-column mx-10">
+          <div class="dinge-kopf d-flex justify-content-between align-items-center">
+          <div class="dinge-kopf-links d-flex align-items-center">
+            <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+            <span class="card-title">
+              Lorem ipsum dior sit
+            </span>
+          </div>
+          <div class="dinge-kopf-rechts">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <div class="zeit-punkt">
+                <span class="zeit-punkt-datum ml-5">21.23.2021</span>
+                <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
+              </div>
+            </div>
+          </div>
+          <div class="dinge-koerper">
+            <p>
+              The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust his
+              hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+            </p>
+          </div>
+          <div class="dinge-fuss d-flex justify-content-between">
+            <div class="dinge-fuss-links m-5">
+              <span class="dinge-erstelltungs-datum text-muted font-size-12">12.10.2021 12:21</span>
+            </div>
+            <div class="dinge-fuss-mitte m-5">
+              <span class="badge badge-pill">#hello</span>
+              <span class="badge badge-pill">#study</span>
+              <span class="badge badge-pill">#mathematics</span>
+            </div>
+            <div class="dinge-fuss-rechts m-5">
+              <div class="ding-buttons">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0000ff"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                      <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                    </svg>
+                  </a>
+                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0000"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="3 6 5 6 21 6"></polyline>
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      <line x1="10" y1="11" x2="10" y2="17"></line>
+                      <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ToDo Item -->
+      <div class="card p-10 m-0 my-15">
+        <div class="card-inhalt d-flex justify-content-between align-items-center">
+          <div class="dinge-links d-flex align-items-center">
+            <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+            <span class="card-title">
+              Lorem ipsum dior sit
+            </span>
+          </div>
+          <div class="dinge-rechts">
+            <!-- <p>
+                      The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust his
+                      hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+                    </p> -->
+            <div class="ding-buttons">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0000ff"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                    <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                  </svg>
+                </a>
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0000"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- ToDo Item -->
+      <div class="card p-10 m-0 my-15">
+        <div class="card-inhalt d-flex justify-content-between align-items-center">
+          <div class="dinge-links d-flex align-items-center">
+            <button class="check-button btn btn-rounded disabled bg-success mr-lg-20 mr-sm-10"></button>
+            <span class="card-title">
+              Lorem ipsum dior sit
+            </span>
+          </div>
+          <div class="dinge-rechts">
+            <!-- <p>
+                      The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust his
+                      hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+                    </p> -->
+            <div class="ding-buttons">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0000ff"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                    <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                  </svg>
+                </a>
+                <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0000"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--
+        Add your page's main content here
+        Examples:
+        1. https://www.gethalfmoon.com/docs/content-and-cards/#building-a-page
+        2. https://www.gethalfmoon.com/docs/grid-system/#building-a-dashboard
+      -->
+    </div>
+    <!-- Content wrapper end -->
+  </div>
+  <!-- Page wrapper end -->
+
+  <!-- Halfmoon JS -->
+  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+</body>
+
+</html>
