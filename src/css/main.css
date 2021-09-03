@@ -7,6 +7,8 @@
   --purple: rgb(175, 82, 222);
   --red: rgb(255, 59, 48);
   --yellow: rgb(255, 204, 0);
+  --cyan: rgb(50, 173, 230);
+  --light-gray: #696969;
 }
 body {
   box-sizing: border-box;
@@ -25,9 +27,16 @@ button {
 
 @media (max-width: 768px) {
   .card-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
+  }
+
+  .dinge-kopf-rechts {
     margin-left: 10px;
+  }
+
+  .zeit-punkt span {
+    font-size: 12px;
   }
 }
 
@@ -75,4 +84,8 @@ button {
   border-radius: 4px 0 0 4px;
   margin-left: -15px;
   background-color: red;
+}
+
+.zeit-punkt span {
+  color: var(--light-gray);
 }
