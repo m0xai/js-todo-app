@@ -45,6 +45,72 @@
         </div>
       </div>
     </div>
+
+    <!-- Add ToDo Item Modal -->
+    <div class="modal" id="modal-todo" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <a href="#" class="close" role="button" aria-label="Close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <h5 class="modal-title">Neue Aufgabe</h5>
+
+<form class="w-400 mw-full">
+  <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+  <!-- Input -->
+  <div class="form-group">
+    <label for="todo-title-input" class="required">Aufgabe Titel</label>
+    <input type="text" class="form-control" id="todo-title-input" placeholder="Beschriebe deine Aufgabe kurz" required="required">
+  </div>
+
+  <!-- Waehle ein Ordner aus. -->
+  <div class="form-group">
+    <label for="form-waehl-ordner">Welche Orner sollte es angeheftet sein?</label>
+    <select class="form-control" id="form-waehl-ordner">
+      <option value="" disabled="disabled">Wähl ein Ordner</option>
+      <option value="red" selected>Andere</option>
+      <option value="blue">Study</option>
+      <option value="yellow">Work</option>
+    </select>
+  </div>
+
+  <!-- Multi-select -->
+  <div class="form-group">
+    <label for="form-tag-color"">Wähle ein Tag aus</label>
+    <select class="form-control" id="form-tag-color" multiple="multiple" size="5">
+      <option data-tag-color="keine" value="keine" selected>Keine</option>
+      <option data-tag-color="gruen" value="gruen">Grün</option>
+      <option data-tag-color="rot" value="rot">Rot</option>
+      <option data-tag-color="gelb" value="gelb">Gelb</option>
+      <option data-tag-color="blau" value="blau">Blau</option>
+      <option data-tag-color="orange" value="orange">Orange</option>
+      <option data-tag-color="violett" value="violett">Violett</option>
+      <option data-tag-color="braun" value="braun">Braun</option>
+      <option data-tag-color="rosa" value="rosa">Rosa</option>
+    </select>
+  </div>
+
+  <!-- Textarea -->
+  <div class="form-group">
+    <label for="description">Notizen</label>
+    <textarea class="form-control" id="description" placeholder="Hier könnnen Sie weiter Informationen über Ihre Aufgabe aufschreiben."></textarea>
+  </div>
+
+  <div class="custom-switch">
+    <input type="checkbox" id="end-datum-switch" value="">
+    <label for="end-datum-switch" class="text-muted">Enddatum</label>
+    <input type="datetime-local" id="Enddatum-picker" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00"
+  max="2018-06-14T00:00" disabled>  
+  </div>
+</form>
+          <div class="text-right mt-20">
+            <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+            <a href="#" class="btn mr-5" role="button" data-dismiss="modal">Abbrechen</a>
+            <a href="#" class="btn btn-primary" role="button">Fertig</a>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
 
   <!-- Page wrapper start -->
@@ -87,13 +153,13 @@
     <div class="sidebar">
       <div class="sidebar-menu">
         <!-- Sidebar links and titles -->
-        <h5 class="sidebar-title">Projekte</h5>
+        <h5 class="sidebar-title">Ordner</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-link">+ Neue Projekt</a>
-        <a href="#" class="sidebar-link active">Alles</a>
-        <a href="#" class="sidebar-link">#hello</a>
-        <a href="#" class="sidebar-link">#study</a>
-        <a href="#" class="sidebar-link">#mathematics</a>
+        <a href="#" class="sidebar-link">+ Neuer Ordner</a>
+        <a href="#" class="sidebar-link active">Alle</a>
+        <a href="#" class="sidebar-link">Work</a>
+        <a href="#" class="sidebar-link">Study</a>
+        <a href="#" class="sidebar-link">Andere</a>
         <br />
         <h5 class="sidebar-title">Due</h5>
         <div class="sidebar-divider"></div>
@@ -104,14 +170,15 @@
         <br />
         <h5 class="sidebar-title">Color Tags</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" id="sidebar-gruen" class="sidebar-link sidebar-farbe">Grün</a>
-        <a href="#" id="sidebar-rot" class="sidebar-link sidebar-farbe">Rot</a>
-        <a href="#" id="sidebar-gelb" class="sidebar-link sidebar-farbe">Gelb</a>
-        <a href="#" id="sidebar-blau" class="sidebar-link sidebar-farbe">Blau</a>
-        <a href="#" id="sidebar-orange" class="sidebar-link sidebar-farbe">Orange</a>
-        <a href="#" id="sidebar-violett" class="sidebar-link sidebar-farbe">Violett</a>
-        <a href="#" id="sidebar-braun" class="sidebar-link sidebar-farbe">Braun</a>
-        <a href="#" id="sidebar-rosa" class="sidebar-link sidebar-farbe">Rosa</a>
+        <a href="#" data-tag-color="gruen" class="sidebar-link sidebar-farbe">Grün</a>
+        <a href="#" data-tag-color="rot" class="sidebar-link sidebar-farbe">Rot</a>
+        <a href="#" data-tag-color="gelb" class="sidebar-link sidebar-farbe">Gelb</a>
+        <a href="#" data-tag-color="blau" class="sidebar-link sidebar-farbe">Blau</a>
+        <a href="#" data-tag-color="orange" class="sidebar-link sidebar-farbe">Orange</a>
+        <a href="#" data-tag-color="violett" class="sidebar-link sidebar-farbe">Violett</a>
+        <a href="#" data-tag-color="braun" class="sidebar-link sidebar-farbe">Braun</a>
+        <a href="#" data-tag-color="rosa" class="sidebar-link sidebar-farbe">Rosa</a>
+        <a href="#" class="sidebar-link sidebar-farbe">Keine</a>
       </div>    
     </div>
     <!-- Sidebar end -->
@@ -120,7 +187,7 @@
     <div class="content-wrapper">
       <div id="content-header" class="d-flex justify-content-between align-items-center">
         <h2 class="content-title d-inline m-0">All</h2>
-        <button class="btn btn-primary">+ Neue Aufgabe</button>
+        <button class="btn btn-primary" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
       </div>
       <div class="sidebar-divider"></div>
       <!-- ToDo Item -->

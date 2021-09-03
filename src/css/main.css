@@ -49,28 +49,28 @@ button {
   border-radius: 100%;
 }
 
-#sidebar-gruen::before {
+[data-tag-color='gruen']::before {
   background-color: var(--green);
 }
-#sidebar-rot::before {
+[data-tag-color='rot']::before {
   background-color: var(--red);
 }
-#sidebar-gelb::before {
+[data-tag-color='gelb']::before {
   background-color: var(--yellow);
 }
-#sidebar-blau::before {
+[data-tag-color='blau']::before {
   background-color: var(--blue);
 }
-#sidebar-orange::before {
+[data-tag-color='orange']::before {
   background-color: var(--orange);
 }
-#sidebar-violett::before {
+[data-tag-color='violett']::before {
   background-color: var(--purple);
 }
-#sidebar-braun::before {
+[data-tag-color='braun']::before {
   background-color: var(--brown);
 }
-#sidebar-rosa::before {
+[data-tag-color='rosa']::before {
   background-color: var(--pink);
 }
 
