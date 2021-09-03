@@ -26,8 +26,8 @@
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
   data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
   <!-- Modals go here -->
-    <!-- JavaScript based modal -->
-    <div class="modal" id="modal-6" tabindex="-1" role="dialog">
+    <!-- Confirmation Modal -->
+    <div class="modal" id="modal-confirm" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <button class="close" data-dismiss="modal" type="button" aria-label="Close">
@@ -37,10 +37,31 @@
           <p>
             Wenn Sie es einmal löschen, können Sie es nicht mehr zurückbringen.
           </p>
-          <div class="text-right mt-20">
+          <div class="d-flex justify-content-end mt-20">
             <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-            <button class="btn mr-5" data-dismiss="modal" type="button">Nein</button>
-            <button class="btn btn-primary" data-dismiss="modal" type="button">Ja</button>
+            <button class="btn mr-5" data-dismiss="modal" role="button">Nein</button>
+            <button class="btn btn-primary" data-dismiss="modal" role="button">Ja</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Ordner Modal -->
+    <div class="modal" id="modal-add-ordner" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <button class="close" data-dismiss="modal" type="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title">Fügen Sie neuen Ornder hinzu</h5>
+          <div class="form-group">
+            <label for="form-add-ornder-name">Ornder Name</label>
+            <input type="text" class="form-control" name="ordner-name" id="form-add-ordner-name" placeholder="Geben Sie die Namen des Ordners">
+          </div>
+          <div class="d-flex justify-content-end mt-20">
+            <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+            <button class="btn mr-5" data-dismiss="modal" type="button">Abbrechen</button>
+            <button class="btn btn-primary" data-dismiss="modal" type="button">Fertig</button>
           </div>
         </div>
       </div>
@@ -155,11 +176,11 @@
         <!-- Sidebar links and titles -->
         <h5 class="sidebar-title">Ordner</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-link">+ Neuer Ordner</a>
+        <a href="#" class="sidebar-link" onclick="halfmoon.toggleModal('modal-add-ordner')">+ Neuer Ordner</a>
         <a href="#" class="sidebar-link active">Alle</a>
-        <a href="#" class="sidebar-link">Work</a>
-        <a href="#" class="sidebar-link">Study</a>
-        <a href="#" class="sidebar-link">Andere</a>
+        <a href="#" class="sidebar-link">/ Work</a>
+        <a href="#" class="sidebar-link">/ Study</a>
+        <a href="#" class="sidebar-link">/ Andere</a>
         <br />
         <h5 class="sidebar-title">Due</h5>
         <div class="sidebar-divider"></div>
@@ -186,8 +207,12 @@
     <!-- Content wrapper start -->
     <div class="content-wrapper">
       <div id="content-header" class="d-flex justify-content-between align-items-center">
-        <h2 class="content-title d-inline m-0">All</h2>
-        <button class="btn btn-primary" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
+        <div id="content-header-left">
+          <h2 class="content-title d-inline m-0">Alle</h2>
+        </div>
+        <div id="content-header-right">
+          <button class="btn btn-primary" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
+        </div>
       </div>
       <div class="sidebar-divider"></div>
       <!-- ToDo Item -->
@@ -230,22 +255,20 @@
               <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">#hello</span>
-              <span class="badge badge-pill">#study</span>
-              <span class="badge badge-pill">#mathematics</span>
+              <span class="badge badge-pill">/Andere</span>
             </div>
             <div class="dinge-fuss-rechts m-5">
               <div class="ding-buttons">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
                       stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                       <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
                     </svg>
                   </a>
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
                       stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="3 6 5 6 21 6"></polyline>
                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -296,15 +319,13 @@
               <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">#hello</span>
-              <span class="badge badge-pill">#study</span>
-              <span class="badge badge-pill">#mathematics</span>
+              <span class="badge badge-pill">/Andere</span>
             </div>
             <div class="dinge-fuss-rechts m-5">
               <div class="ding-buttons">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0000ff"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#696969"
                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                       <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
@@ -363,22 +384,20 @@
               <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">#hello</span>
-              <span class="badge badge-pill">#study</span>
-              <span class="badge badge-pill">#mathematics</span>
+              <span class="badge badge-pill">/Andere</span>
             </div>
             <div class="dinge-fuss-rechts m-5">
               <div class="ding-buttons">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
                       stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                       <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
                     </svg>
                   </a>
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
                       stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="3 6 5 6 21 6"></polyline>
                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -430,22 +449,20 @@
               <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">#hello</span>
-              <span class="badge badge-pill">#study</span>
-              <span class="badge badge-pill">#mathematics</span>
+              <span class="badge badge-pill">/Andere</span>
             </div>
             <div class="dinge-fuss-rechts m-5">
               <div class="ding-buttons">
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
                       stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                       <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
                     </svg>
                   </a>
                   <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
                       stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="3 6 5 6 21 6"></polyline>
                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -458,6 +475,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="text-right loesche-ordner-wrapper">
+        <a href="#" class="text-danger font-size-14 text-right" onclick="halfmoon.toggleModal('modal-confirm')">Lösche diesen Ordner</a>
       </div>
 
       <!--
