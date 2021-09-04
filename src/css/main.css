@@ -1,14 +1,15 @@
 @import '/src/css/helpers.css';
 
 :root {
-  --blue: rgb(0, 122, 255);
-  --brown: rgb(162, 132, 94);
-  --green: rgb(52, 199, 89);
+  --transparent: transparent;
+  --blau: rgb(0, 122, 255);
+  --braun: rgb(162, 132, 94);
+  --gruen: rgb(52, 199, 89);
   --orange: rgb(255, 149, 0);
-  --pink: rgb(255, 45, 85);
-  --purple: rgb(175, 82, 222);
-  --red: rgb(255, 59, 48);
-  --yellow: rgb(255, 204, 0);
+  --rosa: rgb(255, 45, 85);
+  --violett: rgb(175, 82, 222);
+  --rot: rgb(255, 59, 48);
+  --gelb: rgb(255, 204, 0);
   --cyan: rgb(50, 173, 230);
   --light-gray: #696969;
 }
@@ -52,28 +53,28 @@ button {
 }
 
 [data-tag-color='gruen']::before {
-  background-color: var(--green);
+  background-color: var(--gruen);
 }
 [data-tag-color='rot']::before {
-  background-color: var(--red);
+  background-color: var(--rot);
 }
 [data-tag-color='gelb']::before {
-  background-color: var(--yellow);
+  background-color: var(--gelb);
 }
 [data-tag-color='blau']::before {
-  background-color: var(--blue);
+  background-color: var(--blau);
 }
 [data-tag-color='orange']::before {
   background-color: var(--orange);
 }
 [data-tag-color='violett']::before {
-  background-color: var(--purple);
+  background-color: var(--violett);
 }
 [data-tag-color='braun']::before {
-  background-color: var(--brown);
+  background-color: var(--braun);
 }
 [data-tag-color='rosa']::before {
-  background-color: var(--pink);
+  background-color: var(--rosa);
 }
 
 .card::before {
@@ -85,7 +86,7 @@ button {
   height: 100%;
   border-radius: 4px 0 0 4px;
   margin-left: -15px;
-  background-color: var(--red);
+  background-color: var(--transparent);
 }
 
 .zeit-punkt span {

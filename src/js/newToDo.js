@@ -31,7 +31,6 @@ function createToDo() {
     inputItems.notizen().value,
     inputItems.endDatum().value
   );
-  console.log(todo);
   return todo;
 }
 

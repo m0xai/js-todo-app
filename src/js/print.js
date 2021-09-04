@@ -6,7 +6,7 @@ function printToDos(toDos) {
   toDos.forEach((toDo) => {
     toDosWrapper.insertAdjacentHTML(
       'afterbegin',
-      `<div class="card p-10 m-0 my-15">
+      `<div class="card p-10 m-0 my-15" data-todo-id="${toDo.id}">
   <div class="card-inhalt d-flex flex-column mx-10">
     <div class="dinge-kopf d-flex align-items-center">
       <div class="dinge-kopf-links d-flex align-items-center">
@@ -67,11 +67,12 @@ function printToDos(toDos) {
   </div>
 </div>`
     );
+    // Set To Do item color to specified color at form
+    setItemFarbe(toDo.tag);
+    function setItemFarbe(tag) {
+      document.querySelector(`[data-todo-id="${toDo.id}"]`).style.setProperty('--transparent', `var(--${tag})`);
+    }
   });
-
-  // setItemTag(item.tag);
 }
-
-// function setItemTag ()
 
 export { printToDos };
