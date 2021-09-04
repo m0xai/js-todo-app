@@ -31,24 +31,25 @@ const datumEingabeSwitchLabel = document.getElementById('end-datum-switch-label'
 datumEingabeSwitchLabel.addEventListener('click', toggleDatumInput);
 
 function toggleDatumInput() {
-  const endDatumSwitch = document.getElementById('end-datum-switch');
-  if (endDatumSwitch.checked == true) {
-    endDatumSwitch.setAttribute('checked', 'true');
+  const endDatumSwitch = () => document.getElementById('end-datum-switch');
+  if (endDatumSwitch().checked == false) {
+    endDatumSwitch().setAttribute('checked', 'true');
   }
-  if (endDatumSwitch.checked == false) {
-    endDatumSwitch.removeAttribute('checked');
+  if (endDatumSwitch().checked == true) {
+    endDatumSwitch().removeAttribute('checked');
   }
-  console.log('Is checked: ', endDatumSwitch.checked);
-  console.log('Has checked Attribute: ', endDatumSwitch.hasAttribute('checked'));
+  // console.log('Is checked: ', endDatumSwitch.checked);
+  // console.log('Has checked Attribute: ', endDatumSwitch.hasAttribute('checked'));
   activateDatumInput(endDatumSwitch);
 }
 function activateDatumInput(switchInput) {
-  const datumEingabe = document.getElementById('todo-endDatum-input');
-  if (!switchInput.hasAttribute('checked')) {
-    datumEingabe.removeAttribute('disabled');
-  } else {
-    datumEingabe.setAttribute('disabled', 'disabled');
-    switchInput.removeAttribute('checked');
+  const datumEingabe = () => document.getElementById('todo-endDatum-input');
+  if (switchInput().checked === false) {
+    datumEingabe().removeAttribute('disabled');
+  }
+  // Das Logik und Frontend funktioniert umgekehrt aber funktioniert :)
+  if (switchInput().checked === true) {
+    datumEingabe().setAttribute('disabled', 'disabled');
   }
 }
 
