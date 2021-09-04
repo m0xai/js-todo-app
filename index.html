@@ -21,11 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon.min.css" rel="stylesheet" />
     Learn more: https://www.gethalfmoon.com/docs/customize/#notes-on-browser-compatibility
   -->
+  <script type="module" src="/src/js/main.js"></script>
 </head>
 
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
   data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  
   <!-- Modals go here -->
+
     <!-- Confirmation Modal -->
     <div class="modal" id="modal-confirm" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -61,7 +64,7 @@
           <div class="d-flex justify-content-end mt-20">
             <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
             <button class="btn mr-5" data-dismiss="modal" type="button">Abbrechen</button>
-            <button class="btn btn-primary" data-dismiss="modal" type="button">Fertig</button>
+            <button id="add-ornder-form-senden-btn" class="btn btn-primary" data-dismiss="modal" type="button">Fertig</button>
           </div>
         </div>
       </div>
@@ -76,62 +79,61 @@
           </a>
           <h5 class="modal-title">Neue Aufgabe</h5>
 
-<form class="w-400 mw-full">
-  <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
-  <!-- Input -->
-  <div class="form-group">
-    <label for="todo-title-input" class="required">Aufgabe Titel</label>
-    <input type="text" class="form-control" id="todo-title-input" placeholder="Beschriebe deine Aufgabe kurz" required="required">
-  </div>
+          <form class="w-400 mw-full">
+            <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+            <!-- Input -->
+            <div class="form-group">
+              <label for="todo-title-input" class="required">Aufgabe Titel</label>
+              <input type="text" class="form-control" id="todo-title-input" placeholder="Beschriebe deine Aufgabe kurz" required="required">
+            </div>
 
-  <!-- Waehle ein Ordner aus. -->
-  <div class="form-group">
-    <label for="form-waehl-ordner">Welche Orner sollte es angeheftet sein?</label>
-    <select class="form-control" id="form-waehl-ordner">
-      <option value="" disabled="disabled">Wähl ein Ordner</option>
-      <option value="red" selected>Andere</option>
-      <option value="blue">Study</option>
-      <option value="yellow">Work</option>
-    </select>
-  </div>
+            <!-- Waehle ein Ordner aus. -->
+            <div class="form-group">
+              <label for="todo-ordner-input">Welche Orner sollte es angeheftet sein?</label>
+              <select class="form-control" id="todo-ordner-input">
+                <option value="" disabled="disabled">Wähl ein Ordner</option>
+                <option value="andere" selected>Andere</option>
+                <option value="study">Study</option>
+                <option value="work">Work</option>
+              </select>
+            </div>
 
-  <!-- Multi-select -->
-  <div class="form-group">
-    <label for="form-tag-color"">Wähle ein Tag aus</label>
-    <select class="form-control" id="form-tag-color" multiple="multiple" size="5">
-      <option data-tag-color="keine" value="keine" selected>Keine</option>
-      <option data-tag-color="gruen" value="gruen">Grün</option>
-      <option data-tag-color="rot" value="rot">Rot</option>
-      <option data-tag-color="gelb" value="gelb">Gelb</option>
-      <option data-tag-color="blau" value="blau">Blau</option>
-      <option data-tag-color="orange" value="orange">Orange</option>
-      <option data-tag-color="violett" value="violett">Violett</option>
-      <option data-tag-color="braun" value="braun">Braun</option>
-      <option data-tag-color="rosa" value="rosa">Rosa</option>
-    </select>
-  </div>
+            <!-- Multi-select -->
+            <div class="form-group">
+              <label for="todo-tag-input"">Wähle ein Tag aus</label>
+              <select class="form-control" id="todo-tag-input" multiple="multiple" size="5">
+                <option data-tag-color="keine" value="keine" selected>Keine</option>
+                <option data-tag-color="gruen" value="gruen">Grün</option>
+                <option data-tag-color="rot" value="rot">Rot</option>
+                <option data-tag-color="gelb" value="gelb">Gelb</option>
+                <option data-tag-color="blau" value="blau">Blau</option>
+                <option data-tag-color="orange" value="orange">Orange</option>
+                <option data-tag-color="violett" value="violett">Violett</option>
+                <option data-tag-color="braun" value="braun">Braun</option>
+                <option data-tag-color="rosa" value="rosa">Rosa</option>
+              </select>
+            </div>
 
-  <!-- Textarea -->
-  <div class="form-group">
-    <label for="description">Notizen</label>
-    <textarea class="form-control" id="description" placeholder="Hier könnnen Sie weiter Informationen über Ihre Aufgabe aufschreiben."></textarea>
-  </div>
-
-  <div class="custom-switch">
-    <input type="checkbox" id="end-datum-switch" value="">
-    <label for="end-datum-switch" class="text-muted">Enddatum</label>
-    <input type="datetime-local" id="Enddatum-picker" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00"
-  max="2018-06-14T00:00" disabled>  
-  </div>
-</form>
-          <div class="text-right mt-20">
-            <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-            <a href="#" class="btn mr-5" role="button" data-dismiss="modal">Abbrechen</a>
-            <a href="#" class="btn btn-primary" role="button">Fertig</a>
+          <!-- Textarea -->
+          <div class="form-group">
+            <label for="todo-notizen-input">Notizen</label>
+            <textarea class="form-control" id="todo-notizen-input" placeholder="Hier könnnen Sie weiter Informationen über Ihre Aufgabe aufschreiben."></textarea>
           </div>
+
+          <div class="custom-switch">
+            <input type="checkbox" id="end-datum-switch">
+            <label for="end-datum-switch" id="end-datum-switch-label" class="text-muted">Enddatum</label>
+          </div>
+          <input type="date" id="todo-endDatum-input" name="todo-endDatum-input-name" max="2049-12-31" disabled>  
+        </form>
+        <div class="text-right mt-20">
+          <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
+          <a href="#" class="btn mr-5" role="button" data-dismiss="modal">Abbrechen</a>
+          <a href="#" id="submit-todo-button" class="btn btn-primary" type="button" role="button">Fertig</a>
         </div>
       </div>
     </div>
+  </div>
   <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
 
   <!-- Page wrapper start -->
@@ -178,9 +180,11 @@
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-link" onclick="halfmoon.toggleModal('modal-add-ordner')">+ Neuer Ordner</a>
         <a href="#" class="sidebar-link active">Alle</a>
-        <a href="#" class="sidebar-link">/ Work</a>
-        <a href="#" class="sidebar-link">/ Study</a>
-        <a href="#" class="sidebar-link">/ Andere</a>
+        <div id="custom-ordners">
+          <a href="#" class="sidebar-link">/ Work</a>
+          <a href="#" class="sidebar-link">/ Study</a>
+          <a href="#" class="sidebar-link">/ Andere</a>
+        </div>
         <br />
         <h5 class="sidebar-title">Due</h5>
         <div class="sidebar-divider"></div>
@@ -211,270 +215,274 @@
           <h2 class="content-title d-inline m-0">Alle</h2>
         </div>
         <div id="content-header-right">
-          <button class="btn btn-primary" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
+          <button class="btn btn-primary" id="neue-todo-button" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
         </div>
       </div>
       <div class="sidebar-divider"></div>
-      <!-- ToDo Item -->
-      <div class="card p-10 m-0 my-15">
-        <div class="card-inhalt d-flex flex-column mx-10">
-          <div class="dinge-kopf d-flex align-items-center">
-            <div class="dinge-kopf-links d-flex align-items-center">
-              <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
-            </div>
-            <div class="dinge-kopf-rechts d-flex flex-column">
-              <div class="dinge-kopf-rechts-oben">
-                <span class="card-title">
-                  Lorem ipsum dior sit
-                </span>
-              </div>
-              <div class="dinge-kopf-rechts-unten d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <div class="zeit-punkt">
-                  <span class="zeit-punkt-datum ml-5">21.23.2021</span>
-                  <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Toggle d-none onclick -->
-          <div class="dinge-koerper mt-10 d-none">
-            <p>
-              The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
-              his
-              hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
-            </p>
-          </div>
-          <!-- Change Class d-none to d-flex -->
-          <div class="dinge-fuss d-none justify-content-between" >
-            <div class="dinge-fuss-links m-5">
-              <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
-            </div>
-            <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">/Andere</span>
-            </div>
-            <div class="dinge-fuss-rechts m-5">
-              <div class="ding-buttons">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
-                      stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
-                      <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-                    </svg>
-                  </a>
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
-                      stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                      <line x1="10" y1="11" x2="10" y2="17"></line>
-                      <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+      <div id="todos-wrapper">
+        <!-- To Do Item -->
+<div class="card p-10 m-0 my-15">
+  <div class="card-inhalt d-flex flex-column mx-10">
+    <div class="dinge-kopf d-flex align-items-center">
+      <div class="dinge-kopf-links d-flex align-items-center">
+        <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+      </div>
+      <div class="dinge-kopf-rechts d-flex flex-column">
+        <div class="dinge-kopf-rechts-oben">
+          <span class="card-title">
+            Lorem ipsum dior sit
+          </span>
+        </div>
+        <div class="dinge-kopf-rechts-unten d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="zeit-punkt">
+            <span class="zeit-punkt-datum ml-5">21.23.2021</span>
+            <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
           </div>
         </div>
       </div>
-      <!-- ToDo Item -->
-      <div class="card p-10 m-0 my-15">
-        <div class="card-inhalt d-flex flex-column mx-10">
-          <div class="dinge-kopf d-flex align-items-center">
-          <div class="dinge-kopf-links d-flex align-items-center">
-            <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
-          </div>
-          <div class="dinge-kopf-rechts d-flex flex-column">
-            <div class="dinge-kopf-rechts-oben">
-              <span class="card-title">
-                Lorem ipsum dior sit
-              </span>
-            </div>
-            <div class="dinge-kopf-rechts-unten d-flex align-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#696969"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
+    </div>
+    <!-- Toggle d-none onclick -->
+    <div class="dinge-koerper mt-10 d-none">
+      <p>
+        The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
+        his
+        hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+      </p>
+    </div>
+    <!-- Change Class d-none to d-flex -->
+    <div class="dinge-fuss d-none justify-content-between">
+      <div class="dinge-fuss-links m-5">
+        <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
+      </div>
+      <div class="dinge-fuss-mitte m-5">
+        <span class="badge badge-pill">/Andere</span>
+      </div>
+      <div class="dinge-fuss-rechts m-5">
+        <div class="ding-buttons">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
+                stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
               </svg>
-              <div class="zeit-punkt">
-                <span class="zeit-punkt-datum ml-5">21.23.2021</span>
-                <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
-              </div>
-            </div>
-          </div>
-          </div>
-          <div class="dinge-koerper mt-10">
-            <p>
-              The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust his
-              hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
-            </p>
-          </div>
-          <div class="dinge-fuss d-flex justify-content-between">
-            <div class="dinge-fuss-links m-5">
-              <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
-            </div>
-            <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">/Andere</span>
-            </div>
-            <div class="dinge-fuss-rechts m-5">
-              <div class="ding-buttons">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#696969"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
-                      <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-                    </svg>
-                  </a>
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0000"
-                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                      <line x1="10" y1="11" x2="10" y2="17"></line>
-                      <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+            </a>
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
+                stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
-      <!-- ToDo Item -->
-      <div class="card p-10 m-0 my-15">
-        <div class="card-inhalt d-flex flex-column mx-10">
-          <div class="dinge-kopf d-flex align-items-center">
-            <div class="dinge-kopf-links d-flex align-items-center">
-              <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
-            </div>
-            <div class="dinge-kopf-rechts d-flex flex-column">
-              <div class="dinge-kopf-rechts-oben">
-                <span class="card-title">
-                  Lorem ipsum dior sit
-                </span>
-              </div>
-              <div class="dinge-kopf-rechts-unten d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <div class="zeit-punkt">
-                  <span class="zeit-punkt-datum ml-5">21.23.2021</span>
-                  <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dinge-koerper mt-10 d-none">
-            <p>
-              The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
-              his
-              hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
-            </p>
-          </div>
-          <div class="dinge-fuss d-none justify-content-between">
-            <div class="dinge-fuss-links m-5">
-              <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
-            </div>
-            <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">/Andere</span>
-            </div>
-            <div class="dinge-fuss-rechts m-5">
-              <div class="ding-buttons">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
-                      stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
-                      <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-                    </svg>
-                  </a>
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
-                      stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                      <line x1="10" y1="11" x2="10" y2="17"></line>
-                      <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+    </div>
+  </div>
+</div>
+<!-- To Do Item -->
+<div class="card p-10 m-0 my-15">
+  <div class="card-inhalt d-flex flex-column mx-10">
+    <div class="dinge-kopf d-flex align-items-center">
+      <div class="dinge-kopf-links d-flex align-items-center">
+        <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+      </div>
+      <div class="dinge-kopf-rechts d-flex flex-column">
+        <div class="dinge-kopf-rechts-oben">
+          <span class="card-title">
+            Lorem ipsum dior sit
+          </span>
+        </div>
+        <div class="dinge-kopf-rechts-unten d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="zeit-punkt">
+            <span class="zeit-punkt-datum ml-5">21.23.2021</span>
+            <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
           </div>
         </div>
       </div>
-      <!-- ToDo Item -->
-      <div class="card p-10 m-0 my-15">
-        <div class="card-inhalt d-flex flex-column mx-10">
-          <div class="dinge-kopf d-flex align-items-center">
-            <div class="dinge-kopf-links d-flex align-items-center">
-              <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
-            </div>
-            <div class="dinge-kopf-rechts d-flex flex-column">
-              <div class="dinge-kopf-rechts-oben">
-                <span class="card-title">
-                  Lorem ipsum dior sit
-                </span>
-              </div>
-              <div class="dinge-kopf-rechts-unten d-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <div class="zeit-punkt">
-                  <span class="zeit-punkt-datum ml-5">21.23.2021</span>
-                  <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="dinge-koerper mt-10 d-none">
-            <p>
-              The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
-              his
-              hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
-            </p>
-          </div>
-          <div class="dinge-fuss d-none justify-content-between">
-            <div class="dinge-fuss-links m-5">
-              <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
-            </div>
-            <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">/Andere</span>
-            </div>
-            <div class="dinge-fuss-rechts m-5">
-              <div class="ding-buttons">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
-                      stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
-                      <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
-                    </svg>
-                  </a>
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
-                      stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="3 6 5 6 21 6"></polyline>
-                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                      <line x1="10" y1="11" x2="10" y2="17"></line>
-                      <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="dinge-koerper mt-10">
+      <p>
+        The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
+        his
+        hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+      </p>
+    </div>
+    <div class="dinge-fuss d-flex justify-content-between">
+      <div class="dinge-fuss-links m-5">
+        <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
+      </div>
+      <div class="dinge-fuss-mitte m-5">
+        <span class="badge badge-pill">/Andere</span>
+      </div>
+      <div class="dinge-fuss-rechts m-5">
+        <div class="ding-buttons">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+              </svg>
+            </a>
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- To Do Item -->
+<div class="card p-10 m-0 my-15">
+  <div class="card-inhalt d-flex flex-column mx-10">
+    <div class="dinge-kopf d-flex align-items-center">
+      <div class="dinge-kopf-links d-flex align-items-center">
+        <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+      </div>
+      <div class="dinge-kopf-rechts d-flex flex-column">
+        <div class="dinge-kopf-rechts-oben">
+          <span class="card-title">
+            Lorem ipsum dior sit
+          </span>
+        </div>
+        <div class="dinge-kopf-rechts-unten d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="zeit-punkt">
+            <span class="zeit-punkt-datum ml-5">21.23.2021</span>
+            <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dinge-koerper mt-10 d-none">
+      <p>
+        The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
+        his
+        hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+      </p>
+    </div>
+    <div class="dinge-fuss d-none justify-content-between">
+      <div class="dinge-fuss-links m-5">
+        <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
+      </div>
+      <div class="dinge-fuss-mitte m-5">
+        <span class="badge badge-pill">/Andere</span>
+      </div>
+      <div class="dinge-fuss-rechts m-5">
+        <div class="ding-buttons">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
+                stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+              </svg>
+            </a>
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
+                stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- To Do Item -->
+<div class="card p-10 m-0 my-15">
+  <div class="card-inhalt d-flex flex-column mx-10">
+    <div class="dinge-kopf d-flex align-items-center">
+      <div class="dinge-kopf-links d-flex align-items-center">
+        <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+      </div>
+      <div class="dinge-kopf-rechts d-flex flex-column">
+        <div class="dinge-kopf-rechts-oben">
+          <span class="card-title">
+            Lorem ipsum dior sit
+          </span>
+        </div>
+        <div class="dinge-kopf-rechts-unten d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="zeit-punkt">
+            <span class="zeit-punkt-datum ml-5">21.23.2021</span>
+            <span class="zeit-punkt-uhrzeit ml-5">21:23</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dinge-koerper mt-10 d-none">
+      <p>
+        The weather forecast didn't say that, but the steel plate in his hip did. He had learned over the years to trust
+        his
+        hip over the weatherman. Lorem ipsum dior sit, so he better get outside and prepare...
+      </p>
+    </div>
+    <div class="dinge-fuss d-none justify-content-between">
+      <div class="dinge-fuss-links m-5">
+        <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
+      </div>
+      <div class="dinge-fuss-mitte m-5">
+        <span class="badge badge-pill">/Andere</span>
+      </div>
+      <div class="dinge-fuss-rechts m-5">
+        <div class="ding-buttons">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969"
+                stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+              </svg>
+            </a>
+            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"
+                stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Ende ToDo Items -->
       </div>
       <div class="text-right loesche-ordner-wrapper">
         <a href="#" class="text-danger font-size-14 text-right" onclick="halfmoon.toggleModal('modal-confirm')">Lösche diesen Ordner</a>

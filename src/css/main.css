@@ -1,3 +1,5 @@
+@import '/src/css/helpers.css';
+
 :root {
   --blue: rgb(0, 122, 255);
   --brown: rgb(162, 132, 94);
@@ -83,7 +85,7 @@ button {
   height: 100%;
   border-radius: 4px 0 0 4px;
   margin-left: -15px;
-  background-color: red;
+  background-color: var(--red);
 }
 
 .zeit-punkt span {
