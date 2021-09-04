@@ -1,3 +1,8 @@
+// Init ToDo Array
+let toDoArray = [];
+
+const toDosWrapper = document.getElementById('todos-wrapper');
+
 const neueToDoButton = document.getElementById('neue-todo-button');
 
 // Get every input value from new ToDo Modal
@@ -64,4 +69,4 @@ function resetInputs() {
   inputItems.endDatum().disabled = 'disabled';
 }
 
-export { inputItems };
+export { inputItems, toDoArray, toDosWrapper };
