@@ -32,15 +32,23 @@ datumEingabeSwitchLabel.addEventListener('click', toggleDatumInput);
 
 function toggleDatumInput() {
   const endDatumSwitch = document.getElementById('end-datum-switch');
-  !endDatumSwitch.hasAttribute('checked') ? endDatumSwitch.setAttribute('checked', 'true') : endDatumSwitch.removeAttribute('checked');
+  if (endDatumSwitch.checked == true) {
+    endDatumSwitch.setAttribute('checked', 'true');
+  }
+  if (endDatumSwitch.checked == false) {
+    endDatumSwitch.removeAttribute('checked');
+  }
+  console.log('Is checked: ', endDatumSwitch.checked);
+  console.log('Has checked Attribute: ', endDatumSwitch.hasAttribute('checked'));
   activateDatumInput(endDatumSwitch);
 }
 function activateDatumInput(switchInput) {
   const datumEingabe = document.getElementById('todo-endDatum-input');
-  if (switchInput.hasAttribute('checked') == true) {
+  if (!switchInput.hasAttribute('checked')) {
     datumEingabe.removeAttribute('disabled');
   } else {
     datumEingabe.setAttribute('disabled', 'disabled');
+    switchInput.removeAttribute('checked');
   }
 }
 
