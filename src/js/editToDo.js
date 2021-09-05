@@ -1,4 +1,4 @@
-import { inputItems, submitToDoButton, findToDoItem, toDoArray } from './helpers.js';
+import { inputItems, submitToDoButton, findToDoItem, toDoArray, toggleDatumInput } from './helpers.js';
 import { sendToDo } from './newToDo.js';
 
 function setEditButtons() {
@@ -8,7 +8,7 @@ function setEditButtons() {
       event.stopImmediatePropagation();
       const thisToDo = findToDoItem(button.getAttribute('data-todo-edit-btn'));
       setNeueFertigButtonListener();
-
+      toggleDatumInput();
       getCurrentInputs(thisToDo);
       setNeueInputs();
     });
@@ -22,7 +22,6 @@ function setNeueFertigButtonListener() {
 }
 
 // button.getAttribute('data-todo-edit-btn') gives the id of the current element
-
 function getCurrentInputs(thisToDo) {
   console.log('Get id vie class function:', toDoArray[0].theToDoId());
   // TODO: Edit here to reveal current values
@@ -30,6 +29,7 @@ function getCurrentInputs(thisToDo) {
   inputItems.ordner().value = thisToDo.ordner;
   inputItems.tag().value = thisToDo.tag;
   inputItems.notizen().value = thisToDo.notizen;
+  inputItems.endDatum().checked = thisToDo.endDatum;
   inputItems.endDatumSwitch().checked = thisToDo.endDatumSwitch;
 }
 

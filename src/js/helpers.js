@@ -35,23 +35,25 @@ const inputItems = {
 // Activate - Deactivate Datum Eingabe via Switch
 const datumEingabeSwitchLabel = document.getElementById('end-datum-switch-label');
 datumEingabeSwitchLabel.addEventListener('click', toggleDatumInput);
-function toggleDatumInput() {
-  const endDatumSwitch = () => document.getElementById('end-datum-switch');
-  if (endDatumSwitch().checked == false) {
-    endDatumSwitch().setAttribute('checked', 'true');
+
+function toggleDatumInput(e) {
+  console.log(inputItems.endDatumSwitch());
+  if (inputItems.endDatumSwitch().checked == false) {
+    inputItems.endDatumSwitch().setAttribute('checked', 'true');
   }
-  if (endDatumSwitch().checked == true) {
-    endDatumSwitch().removeAttribute('checked');
+  if (inputItems.endDatumSwitch().checked == true) {
+    inputItems.endDatumSwitch().removeAttribute('checked');
   }
-  activateDatumInput(endDatumSwitch);
+  activateDatumInput(inputItems.endDatumSwitch);
 }
+
 function activateDatumInput(switchInput) {
   const datumEingabe = () => document.getElementById('todo-endDatum-input');
-  if (switchInput().checked === false) {
+  if (switchInput().checked == false) {
     datumEingabe().removeAttribute('disabled');
   }
   // Das Logik und Frontend funktioniert umgekehrt aber funktioniert :)
-  if (switchInput().checked === true) {
+  if (switchInput().checked == true) {
     datumEingabe().setAttribute('disabled', 'disabled');
   }
 }
@@ -138,6 +140,7 @@ export {
   thisToDoEl,
   thisToDoId,
   toggleItemDetails,
+  toggleDatumInput,
   deleteToDo,
   submitToDoButton,
 };
