@@ -13,6 +13,10 @@ class ToDo {
     this.tag = tag;
     this.notizen = notizen;
     this.endDatum = endDatum;
+    this.isCompleted = false;
+  }
+  thisToDoId() {
+    return this.id;
   }
 }
 
@@ -31,6 +35,7 @@ function createToDo() {
     inputItems.notizen().value,
     inputItems.endDatum().value
   );
+  console.log(`This is the id of this To Do: ${todo.thisToDoId()}`);
   return todo;
 }
 

@@ -1,8 +1,9 @@
+import { printToDos } from './print.js';
+
 // Init ToDo Array
 let toDoArray = [];
 
 const toDosWrapper = document.getElementById('todos-wrapper');
-
 const neueToDoButton = document.getElementById('neue-todo-button');
 
 // Get every input value from new ToDo Modal
@@ -71,16 +72,16 @@ function resetInputs() {
 
 // Set To Do item color to specified color at form
 function setItemFarbe(tag, id) {
-  thisToDo(id).style.setProperty('--transparent', `var(--${tag})`);
+  thisToDoEl(id).style.setProperty('--transparent', `var(--${tag})`);
 }
 
 // Get this To-Do item
-function thisToDo(id) {
+function thisToDoEl(id) {
   return document.querySelector(`[data-todo-id="${id}"]`);
 }
 
 function toggleItemDetails(id) {
-  thisToDo(id).addEventListener('click', () => {
+  thisToDoEl(id).addEventListener('click', () => {
     document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
     const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
     if (itemFuss.classList.contains('d-none')) {
@@ -93,4 +94,25 @@ function toggleItemDetails(id) {
   });
 }
 
-export { inputItems, toDoArray, toDosWrapper, setItemFarbe, thisToDo, toggleItemDetails };
+function deleteToDo(el, id) {
+  document.querySelector(`[data-todo-del-btn="${id}"]`).addEventListener('click', () => {
+    // Prevent click event, inherited from parent element
+    event.stopImmediatePropagation();
+
+    deleteToDoFromFront(el);
+    deleteToDoFromArr(id);
+  });
+
+  // printToDos(thisToDoId());
+}
+
+function deleteToDoFromFront(el) {
+  const parent = el.parentNode;
+  parent.removeChild(el);
+}
+
+function deleteToDoFromArr(id) {
+  toDoArray.splice(toDoArray.indexOf(toDoArray.find((element) => element.id == id)), 1);
+}
+
+export { inputItems, toDoArray, toDosWrapper, setItemFarbe, thisToDoEl, toggleItemDetails, deleteToDo };

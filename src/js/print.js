@@ -1,4 +1,4 @@
-import { toDosWrapper, setItemFarbe, thisToDo, toggleItemDetails } from './helpers.js';
+import { toDosWrapper, setItemFarbe, thisToDoEl, toggleItemDetails, deleteToDo } from './helpers.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
@@ -46,13 +46,13 @@ function printToDos(toDos) {
       <div class="dinge-fuss-rechts m-5">
         <div class="ding-buttons">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+            <a href="#" class="btn" data-todo-edit-btn="${toDo.id}">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#696969" stroke="#0000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                 <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
               </svg>
             </a>
-            <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-6')">
+            <a href="#" class="btn" data-todo-del-btn="${toDo.id}">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="3 6 5 6 21 6"></polyline>
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -69,8 +69,9 @@ function printToDos(toDos) {
     );
     // Invoke functions for each to-do item.
     setItemFarbe(toDo.tag, toDo.id);
-    thisToDo(toDo.id);
+    thisToDoEl(toDo.id);
     toggleItemDetails(toDo.id);
+    deleteToDo(thisToDoEl(toDo.id), toDo.id);
   });
   // End od forEach for to-dos
 }
