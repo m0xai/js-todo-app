@@ -1,4 +1,4 @@
-import { toDosWrapper } from './helpers.js';
+import { toDosWrapper, setItemFarbe, thisToDo, toggleItemDetails } from './helpers.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
@@ -30,13 +30,13 @@ function printToDos(toDos) {
       </div>
     </div>
     <!-- Toggle d-none onclick -->
-    <div class="dinge-koerper mt-10 d-none">
+    <div class="dinge-koerper mt-10 d-none" data-koerper-id="${toDo.id}">
       <p>
         ${toDo.notizen}
       </p>
     </div>
     <!-- Change Class d-none to d-flex -->
-    <div class="dinge-fuss d-none justify-content-between">
+    <div class="dinge-fuss d-none justify-content-between" data-fuss-id="${toDo.id}">
       <div class="dinge-fuss-links m-5">
         <span class="dinge-erstelltungs-datum text-muted font-size-12">Erstellt: 12.10.2021 12:21</span>
       </div>
@@ -67,19 +67,12 @@ function printToDos(toDos) {
   </div>
 </div>`
     );
+    // Invoke functions for each to-do item.
     setItemFarbe(toDo.tag, toDo.id);
-    thisToDoId(toDo.id);
+    thisToDo(toDo.id);
+    toggleItemDetails(toDo.id);
   });
   // End od forEach for to-dos
-}
-
-// Set To Do item color to specified color at form
-function setItemFarbe(tag, id) {
-  thisToDoId(id).style.setProperty('--transparent', `var(--${tag})`);
-}
-
-function thisToDoId(id) {
-  return document.querySelector(`[data-todo-id="${id}"]`);
 }
 
 export { printToDos };

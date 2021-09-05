@@ -69,4 +69,28 @@ function resetInputs() {
   inputItems.endDatum().disabled = 'disabled';
 }
 
-export { inputItems, toDoArray, toDosWrapper };
+// Set To Do item color to specified color at form
+function setItemFarbe(tag, id) {
+  thisToDo(id).style.setProperty('--transparent', `var(--${tag})`);
+}
+
+// Get this To-Do item
+function thisToDo(id) {
+  return document.querySelector(`[data-todo-id="${id}"]`);
+}
+
+function toggleItemDetails(id) {
+  thisToDo(id).addEventListener('click', () => {
+    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
+    const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
+    if (itemFuss.classList.contains('d-none')) {
+      itemFuss.classList.remove('d-none');
+      itemFuss.classList.add('d-flex');
+    } else {
+      itemFuss.classList.remove('d-flex');
+      itemFuss.classList.add('d-none');
+    }
+  });
+}
+
+export { inputItems, toDoArray, toDosWrapper, setItemFarbe, thisToDo, toggleItemDetails };
