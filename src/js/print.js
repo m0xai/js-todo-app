@@ -67,12 +67,19 @@ function printToDos(toDos) {
   </div>
 </div>`
     );
-    // Set To Do item color to specified color at form
-    setItemFarbe(toDo.tag);
-    function setItemFarbe(tag) {
-      document.querySelector(`[data-todo-id="${toDo.id}"]`).style.setProperty('--transparent', `var(--${tag})`);
-    }
+    setItemFarbe(toDo.tag, toDo.id);
+    thisToDoId(toDo.id);
   });
+  // End od forEach for to-dos
+}
+
+// Set To Do item color to specified color at form
+function setItemFarbe(tag, id) {
+  thisToDoId(id).style.setProperty('--transparent', `var(--${tag})`);
+}
+
+function thisToDoId(id) {
+  return document.querySelector(`[data-todo-id="${id}"]`);
 }
 
 export { printToDos };
