@@ -31,6 +31,8 @@ function getCurrentInputs(thisToDo) {
   inputItems.notizen().value = thisToDo.notizen;
   inputItems.endDatum().checked = thisToDo.endDatum;
   inputItems.endDatumSwitch().checked = thisToDo.endDatumSwitch;
+  inputItems.endDatum().disabled = thisToDo.endDatumDisabled;
+  console.log('is disabled?', thisToDo.endDatumDisabled);
 }
 
 function setNeueInputs() {
