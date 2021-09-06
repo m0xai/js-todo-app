@@ -1,4 +1,4 @@
-import { inputItems, toDoArray, submitToDoButton } from './helpers.js';
+import { inputItems, toDoArray } from './helpers.js';
 import { printToDos } from './print.js';
 import { setEditButtons } from './editToDo.js';
 
@@ -44,7 +44,7 @@ function createToDo() {
 
 function addToDoArray(toDo) {
   toDoArray.push(toDo());
-  console.log(toDoArray);
+  console.log('New Item Added in Array:', toDoArray);
 }
 
 export { ToDo, createToDo, sendToDo };

@@ -68,7 +68,7 @@ function printToDos(toDos) {
       </div>`
     );
     // Invoke functions for each to-do item.
-    setItemFarbe(toDo.tag, toDo.id);
+    setItemFarbe(toDo.tag, thisToDoEl(toDo.theToDoId()));
     thisToDoEl(toDo.id);
     thisToDoId(toDo.id);
     toggleItemDetails(toDo.id);

@@ -27,7 +27,7 @@ let getCurrentInputs = function (thisToDo) {
   inputItems.ordner().value = thisToDo.ordner;
   inputItems.tag().value = thisToDo.tag;
   inputItems.notizen().value = thisToDo.notizen;
-  inputItems.endDatum().checked = thisToDo.endDatum;
+  inputItems.endDatum().value = thisToDo.endDatum;
   inputItems.endDatumSwitch().checked = thisToDo.endDatumSwitch;
   inputItems.endDatum().disabled = thisToDo.endDatumDisabled;
 
@@ -38,7 +38,7 @@ let getCurrentInputs = function (thisToDo) {
 };
 
 function setNeueInputs(e) {
-  const thisToDo = findToDoItem(e.target.getAttribute('data-todo-id'));
+  const thisToDo = findToDoItem(e.target.getAttribute('data-edit-fertig-btn-todo-id'));
   // Get item ID, which attached from getCurrentInputs
   //TODO: Push changed items to toDoArray like newToDo
   thisToDo.title = inputItems.title().value;
@@ -49,6 +49,7 @@ function setNeueInputs(e) {
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
 
+  // resetOldTagColor(thisToDo.tag, thisToDoEl(thisToDo.theToDoId()));
   printToDos(toDoArray);
   setEditButtons();
   console.log('Sneaking around', thisToDo);
@@ -58,11 +59,11 @@ function setNeueInputs(e) {
 
 function attachCurrentId(id, itemId) {
   const fertigBtn = document.getElementById(itemId);
-  fertigBtn.setAttribute('data-todo-id', id);
+  fertigBtn.setAttribute('data-edit-fertig-btn-todo-id', id);
 }
 function detachCurrentId(itemId) {
   const fertigBtn = document.getElementById(itemId);
-  fertigBtn.removeAttribute('data-todo-id');
+  fertigBtn.removeAttribute('data-edit-fertig-btn-todo-id');
 }
 
-export { setEditButtons };
+export { setEditButtons, setNeueInputs };

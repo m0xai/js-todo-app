@@ -1,5 +1,5 @@
 import { sendToDo } from './newToDo.js';
-
+import { setNeueInputs } from './editToDo.js';
 // Init ToDo Array
 let toDoArray = [];
 
@@ -62,6 +62,7 @@ function activateDatumInput(switchInput) {
 // Reset inputs and attach on Submit button a Sender event listener on click
 neueToDoButton.addEventListener('click', () => {
   resetInputs();
+  submitToDoButton.removeEventListener('click', setNeueInputs);
   submitToDoButton.addEventListener('click', sendToDo);
 });
 
@@ -71,13 +72,14 @@ function resetInputs() {
   inputItems.ordner().value = 'andere';
   inputItems.tag().value = 'keine';
   inputItems.notizen().value = '';
+  inputItems.endDatum().value = '';
   inputItems.endDatumSwitch().checked = null;
   inputItems.endDatum().disabled = 'disabled';
 }
 
 // Set To Do item color to specified color at form
-function setItemFarbe(tag, id) {
-  thisToDoEl(id).style.setProperty('--transparent', `var(--${tag})`);
+function setItemFarbe(tag, el) {
+  el.style.setProperty('--transparent', `var(--${tag})`);
 }
 
 // Get this To-Do item
@@ -132,6 +134,25 @@ function deleteToDoFromArr(id) {
   toDoArray.splice(toDoArray.indexOf(toDoArray.find((element) => element.id == id)), 1);
 }
 
+function resetOldSettings(id) {
+  console.log('Resetting old settings', id);
+  thisToDoEl(id).removeEventListener('click', () => {
+    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
+    const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
+    if (itemFuss.classList.contains('d-none')) {
+      itemFuss.classList.remove('d-none');
+      itemFuss.classList.add('d-flex');
+    } else {
+      itemFuss.classList.remove('d-flex');
+      itemFuss.classList.add('d-none');
+    }
+  });
+}
+
+function resetOldTagColor(tag, el) {
+  el.style.setProperty(`--${tag}`, `--transparent`);
+}
+
 export {
   inputItems,
   toDoArray,
@@ -144,4 +165,6 @@ export {
   toggleDatumInput,
   deleteToDo,
   submitToDoButton,
+  resetOldTagColor,
+  resetOldSettings,
 };
