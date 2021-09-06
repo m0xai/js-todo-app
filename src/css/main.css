@@ -1,4 +1,5 @@
-@import '/src/css/helpers.css';
+@import 'halfmoon/css/halfmoon-variables.min.css';
+@import './helpers.css';
 
 :root {
   --transparent: transparent;

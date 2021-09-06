@@ -1,4 +1,5 @@
 import { sendToDo } from './newToDo.js';
+
 // Init ToDo Array
 let toDoArray = [];
 

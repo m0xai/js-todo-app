@@ -1,0 +1,36 @@
+{
+  "name": "js-todo-app",
+  "version": "1.0.0",
+  "description": "- Using Array.find method to get item via data attributes. - How to change CSS pseudo elements with JS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --mode=development",
+    "serve": "webpack serve --open --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m0xai/js-todo-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m0xai/js-todo-app/issues"
+  },
+  "homepage": "https://github.com/m0xai/js-todo-app#readme",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "halfmoon": "^1.1.1",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.2",
+    "postcss": "^8.3.6",
+    "postcss-loader": "^6.1.1",
+    "purgecss": "^4.0.3",
+    "sass": "^1.39.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
+  }
+}

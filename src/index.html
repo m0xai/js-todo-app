@@ -12,23 +12,14 @@
   <link rel="icon" href="path/to/fav.png">
   <title>Starter template - Halfmoon</title>
 
-  <!-- Halfmoon CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/src/css/main.css">
-  <!--
-    Or,
-    Use the following (no variables, supports IE11):
-    <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon.min.css" rel="stylesheet" />
-    Learn more: https://www.gethalfmoon.com/docs/customize/#notes-on-browser-compatibility
-  -->
-  <script type="module" src="/src/js/main.js"></script>
+  <!-- <link rel="stylesheet" href="/src/css/main.css">
+  <script type="module" src="/src/js/main.js"></script> -->
 </head>
 
 <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
   data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
   
   <!-- Modals go here -->
-
     <!-- Confirmation Modal -->
     <div class="modal" id="modal-confirm" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -216,7 +207,8 @@
           <h2 class="content-title d-inline m-0">Alle</h2>
         </div>
         <div id="content-header-right">
-          <button class="btn btn-primary" id="neue-todo-button" onclick="halfmoon.toggleModal('modal-todo')">+ Neue Aufgabe</button>
+          <button class="btn btn-primary" id="neue-todo-button" onclick="halfmoon.toggleModal('modal-todo');
+">+ Neue Aufgabe</button>
         </div>
       </div>
       <div class="sidebar-divider"></div>
@@ -238,19 +230,14 @@
       <div class="text-right loesche-ordner-wrapper">
         <a href="#" class="text-danger font-size-14 text-right" onclick="halfmoon.toggleModal('modal-confirm')">Lösche diesen Ordner</a>
       </div>
-
-      <!--
-        Add your page's main content here
-        Examples:
-        1. https://www.gethalfmoon.com/docs/content-and-cards/#building-a-page
-        2. https://www.gethalfmoon.com/docs/grid-system/#building-a-dashboard
-      -->
+      <!-- End of main content -->
     </div>
     <!-- Content wrapper end -->
   </div>
   <!-- Page wrapper end -->
 
   <!-- Halfmoon JS -->
+  <!-- It's for production. <script src="../src/js/halfmoon.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
 </body>
 
