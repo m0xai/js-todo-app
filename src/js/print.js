@@ -1,4 +1,5 @@
-import { toDosWrapper, setItemFarbe, thisToDoEl, thisToDoId, toggleItemDetails, deleteToDo } from './helpers.js';
+import { toDosWrapper, thisToDoEl, thisToDoId, deleteToDo } from './mainHelpers.js';
+import { setItemFarbe, toggleItemDetails } from './add/helper.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
@@ -10,7 +11,7 @@ function printToDos(toDos) {
         <div class="card-inhalt d-flex flex-column mx-10">
           <div class="dinge-kopf d-flex align-items-center">
             <div class="dinge-kopf-links d-flex align-items-center">
-              <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10"></button>
+              <button class="check-button btn btn-rounded mr-lg-20 mr-sm-10" data-todo-check-btn-id="${toDo.id}"></button>
             </div>
             <div class="dinge-kopf-rechts d-flex flex-column">
               <div class="dinge-kopf-rechts-oben">

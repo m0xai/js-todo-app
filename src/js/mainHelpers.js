@@ -1,5 +1,3 @@
-import { sendToDo } from './newToDo.js';
-import { setNeueInputs } from './editToDo.js';
 // Init ToDo Array
 let toDoArray = [];
 
@@ -59,29 +57,6 @@ function activateDatumInput(switchInput) {
   }
 }
 
-// Reset inputs and attach on Submit button a Sender event listener on click
-neueToDoButton.addEventListener('click', () => {
-  resetInputs();
-  submitToDoButton.removeEventListener('click', setNeueInputs);
-  submitToDoButton.addEventListener('click', sendToDo);
-});
-
-// Reset inputs on clicking neue Aufgabe button
-function resetInputs() {
-  inputItems.title().value = '';
-  inputItems.ordner().value = 'andere';
-  inputItems.tag().value = 'keine';
-  inputItems.notizen().value = '';
-  inputItems.endDatum().value = '';
-  inputItems.endDatumSwitch().checked = null;
-  inputItems.endDatum().disabled = 'disabled';
-}
-
-// Set To Do item color to specified color at form
-function setItemFarbe(tag, el) {
-  el.style.setProperty('--transparent', `var(--${tag})`);
-}
-
 // Get this To-Do item
 function thisToDoEl(id) {
   return document.querySelector(`[data-todo-id="${id}"]`);
@@ -96,20 +71,6 @@ function findToDoItem(id) {
   return toDoArray.find((item) => item.id == id);
 }
 
-function toggleItemDetails(id) {
-  thisToDoEl(id).addEventListener('click', () => {
-    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
-    const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
-    if (itemFuss.classList.contains('d-none')) {
-      itemFuss.classList.remove('d-none');
-      itemFuss.classList.add('d-flex');
-    } else {
-      itemFuss.classList.remove('d-flex');
-      itemFuss.classList.add('d-none');
-    }
-  });
-}
-
 // Delete To Do item driver
 function deleteToDo(el, id) {
   document.querySelector(`[data-todo-del-btn="${id}"]`).addEventListener('click', () => {
@@ -119,8 +80,6 @@ function deleteToDo(el, id) {
     deleteToDoFromFront(el);
     deleteToDoFromArr(id);
   });
-
-  // printToDos(thisToDoId());
 }
 
 // Remove item from parent node
@@ -134,37 +93,15 @@ function deleteToDoFromArr(id) {
   toDoArray.splice(toDoArray.indexOf(toDoArray.find((element) => element.id == id)), 1);
 }
 
-function resetOldSettings(id) {
-  console.log('Resetting old settings', id);
-  thisToDoEl(id).removeEventListener('click', () => {
-    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
-    const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
-    if (itemFuss.classList.contains('d-none')) {
-      itemFuss.classList.remove('d-none');
-      itemFuss.classList.add('d-flex');
-    } else {
-      itemFuss.classList.remove('d-flex');
-      itemFuss.classList.add('d-none');
-    }
-  });
-}
-
-function resetOldTagColor(tag, el) {
-  el.style.setProperty(`--${tag}`, `--transparent`);
-}
-
 export {
   inputItems,
+  neueToDoButton,
   toDoArray,
   toDosWrapper,
   findToDoItem,
-  setItemFarbe,
   thisToDoEl,
   thisToDoId,
-  toggleItemDetails,
   toggleDatumInput,
   deleteToDo,
   submitToDoButton,
-  resetOldTagColor,
-  resetOldSettings,
 };

@@ -1,25 +1,6 @@
-import { inputItems, submitToDoButton, findToDoItem, toDoArray, toggleDatumInput } from './helpers.js';
-import { sendToDo } from './newToDo.js';
-import { printToDos } from './print.js';
-
-function setEditButtons() {
-  const editButtons = document.querySelectorAll('[data-todo-edit-btn]');
-  editButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      event.stopImmediatePropagation();
-      const thisToDo = findToDoItem(button.getAttribute('data-todo-edit-btn'));
-      setNeueFertigButtonListener();
-      toggleDatumInput();
-      getCurrentInputs(thisToDo);
-    });
-  });
-}
-
-function setNeueFertigButtonListener() {
-  // Remove To-Do creator and attach To-Do editor function
-  submitToDoButton.removeEventListener('click', sendToDo);
-  submitToDoButton.addEventListener('click', setNeueInputs);
-}
+import { inputItems, findToDoItem, toDoArray } from '../mainHelpers.js';
+import { setEditButtons, attachCurrentId, detachCurrentId } from './helper.js';
+import { printToDos } from '../print.js';
 
 // button.getAttribute('data-todo-edit-btn') gives the id of the current element
 let getCurrentInputs = function (thisToDo) {
@@ -49,7 +30,6 @@ function setNeueInputs(e) {
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
 
-  // resetOldTagColor(thisToDo.tag, thisToDoEl(thisToDo.theToDoId()));
   printToDos(toDoArray);
   setEditButtons();
   console.log('Sneaking around', thisToDo);
@@ -57,13 +37,4 @@ function setNeueInputs(e) {
   detachCurrentId('submit-todo-button');
 }
 
-function attachCurrentId(id, itemId) {
-  const fertigBtn = document.getElementById(itemId);
-  fertigBtn.setAttribute('data-edit-fertig-btn-todo-id', id);
-}
-function detachCurrentId(itemId) {
-  const fertigBtn = document.getElementById(itemId);
-  fertigBtn.removeAttribute('data-edit-fertig-btn-todo-id');
-}
-
-export { setEditButtons, setNeueInputs };
+export { setNeueInputs, getCurrentInputs };
