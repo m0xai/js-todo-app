@@ -1,4 +1,8 @@
-import { findToDoItem, thisToDoEl } from '../mainHelpers.js';
+import { setLS } from '../mainHelpers.js';
+import { findToDoItem, thisToDoEl, toDoArray } from '../mainHelpers.js';
+import { printToDos } from '../print.js';
+
+//TODO: Frontend her seferinde bir tane itemin goruntusunu degistiriyor. bunun nedeni her defasidna listenin yenilenmesi ve sadece dokunulanin stil ozelliklerinin kalici olmasi. Print fonksiyonunun her tiklamda calismasi dogru ancak forEach.isCompleted fonksiyonu calistirilmali print.js de
 
 function setCheckButtons() {
   const checkButtons = document.querySelectorAll('.check-button');
@@ -7,23 +11,31 @@ function setCheckButtons() {
       event.stopImmediatePropagation();
       const todo = findToDoItem(button.getAttribute('data-todo-check-btn-id'));
       toggleCompleted(todo);
-      setOpacity(todo.id);
-      setClassesOfCheckButtons(button);
+      completedUpdateFront(todo);
     })
   );
 }
 
+function completedUpdateFront(todo) {
+  setItemOpacity(todo.id);
+  setClassesOfCheckButtons(todo);
+}
+
 function toggleCompleted(todo) {
   todo.isCompleted ? (todo.isCompleted = false) : (todo.isCompleted = true);
+  setLS();
+  printToDos(toDoArray);
 }
 
-function setClassesOfCheckButtons(button) {
-  button.classList.toggle('bg-success');
+function setClassesOfCheckButtons(todo) {
+  const el = thisToDoEl(todo.id);
+  const button = el.querySelector(`[data-todo-check-btn-id="${todo.id}"]`);
+  button.classList.add('bg-success');
 }
 
-function setOpacity(id) {
+function setItemOpacity(id) {
   const el = thisToDoEl(id);
   el.classList.toggle('half-opacity');
 }
 
-export { setCheckButtons };
+export { setCheckButtons, completedUpdateFront };
