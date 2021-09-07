@@ -1,5 +1,6 @@
 import { toDosWrapper, thisToDoEl, thisToDoId, deleteToDo } from './mainHelpers.js';
 import { setItemFarbe, toggleItemDetails } from './add/helper.js';
+import { setCheckButtons } from './filter/completed.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
@@ -74,6 +75,7 @@ function printToDos(toDos) {
     thisToDoId(toDo.id);
     toggleItemDetails(toDo.id);
     deleteToDo(thisToDoEl(toDo.id), toDo.id);
+    setCheckButtons();
   });
   // End od forEach for to-dos
 }
