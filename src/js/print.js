@@ -1,5 +1,6 @@
-import { toDosWrapper, thisToDoEl, thisToDoId, deleteToDo } from './mainHelpers.js';
+import { toDosWrapper, thisToDoEl, thisToDoId, deleteToDo, getLS } from './mainHelpers.js';
 import { setItemFarbe, toggleItemDetails } from './add/helper.js';
+import { setEditButtons } from './edit/helper.js';
 import { setCheckButtons } from './filter/completed.js';
 
 function printToDos(toDos) {
@@ -70,7 +71,7 @@ function printToDos(toDos) {
       </div>`
     );
     // Invoke functions for each to-do item.
-    setItemFarbe(toDo.tag, thisToDoEl(toDo.theToDoId()));
+    setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
     thisToDoEl(toDo.id);
     thisToDoId(toDo.id);
     toggleItemDetails(toDo.id);
@@ -78,6 +79,7 @@ function printToDos(toDos) {
     setCheckButtons();
   });
   // End od forEach for to-dos
+  setEditButtons();
 }
 
 export { printToDos };

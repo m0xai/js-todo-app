@@ -1,9 +1,10 @@
-import { inputItems, findToDoItem, toDoArray } from '../mainHelpers.js';
+import { inputItems, findToDoItem, toDoArray, setLS, getLS } from '../mainHelpers.js';
 import { setEditButtons, attachCurrentId, detachCurrentId } from './helper.js';
 import { printToDos } from '../print.js';
 
 // button.getAttribute('data-todo-edit-btn') gives the id of the current element
 let getCurrentInputs = function (thisToDo) {
+  console.log('This todo lautet', thisToDo);
   inputItems.title().value = thisToDo.title;
   inputItems.ordner().value = thisToDo.ordner;
   inputItems.tag().value = thisToDo.tag;
@@ -12,10 +13,8 @@ let getCurrentInputs = function (thisToDo) {
   inputItems.endDatumSwitch().checked = thisToDo.endDatumSwitch;
   inputItems.endDatum().disabled = thisToDo.endDatumDisabled;
 
-  console.log('is disabled?', thisToDo.endDatumDisabled);
-
   // Attach Fertig button to this data-id
-  attachCurrentId(thisToDo.theToDoId(), 'submit-todo-button');
+  attachCurrentId(thisToDo.id, 'submit-todo-button');
 };
 
 function setNeueInputs(e) {
@@ -29,11 +28,8 @@ function setNeueInputs(e) {
   thisToDo.endDatum = inputItems.endDatum().value;
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
-
+  setLS();
   printToDos(toDoArray);
-  setEditButtons();
-  console.log('Sneaking around', thisToDo);
-  console.log('newToDo array', toDoArray);
   detachCurrentId('submit-todo-button');
 }
 

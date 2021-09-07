@@ -8,18 +8,20 @@ function setNeueFertigButtonListener() {
   submitToDoButton.addEventListener('click', setNeueInputs);
 }
 
-const setEditButtons = function () {
+function setEditButtons() {
   const editButtons = document.querySelectorAll('[data-todo-edit-btn]');
+  console.log('Editing buttons');
   editButtons.forEach((button) => {
     button.addEventListener('click', () => {
       event.stopImmediatePropagation();
       const thisToDo = findToDoItem(button.getAttribute('data-todo-edit-btn'));
+      console.log('Setting edit buttons...');
       setNeueFertigButtonListener();
       toggleDatumInput();
       getCurrentInputs(thisToDo);
     });
   });
-};
+}
 
 function attachCurrentId(id, itemId) {
   const fertigBtn = document.getElementById(itemId);

@@ -1,5 +1,5 @@
 // Init ToDo Array
-let toDoArray = [];
+let toDoArray = JSON.parse(localStorage.getItem('todos')) || [];
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -93,6 +93,15 @@ function deleteToDoFromArr(id) {
   toDoArray.splice(toDoArray.indexOf(toDoArray.find((element) => element.id == id)), 1);
 }
 
+function setLS() {
+  localStorage.setItem('todos', JSON.stringify(toDoArray));
+}
+
+function getLS() {
+  console.log('Getting from LS...');
+  return JSON.parse(localStorage.getItem('todos'));
+}
+
 export {
   inputItems,
   neueToDoButton,
@@ -104,4 +113,6 @@ export {
   toggleDatumInput,
   deleteToDo,
   submitToDoButton,
+  setLS,
+  getLS,
 };
