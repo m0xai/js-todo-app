@@ -83,7 +83,7 @@ function deleteToDo(el, id) {
 
       deleteToDoFromFront(el);
       deleteToDoFromArr(id);
-      setLS();
+      setLS('todos', toDoArray);
     });
 }
 
@@ -101,13 +101,13 @@ function deleteToDoFromArr(id) {
   );
 }
 
-function setLS() {
-  localStorage.setItem('todos', JSON.stringify(toDoArray));
+function setLS(alias, array) {
+  localStorage.setItem(alias, JSON.stringify(array));
 }
 
-function getLS() {
+function getLS(alias) {
   console.log('Getting from LS...');
-  return JSON.parse(localStorage.getItem('todos'));
+  return JSON.parse(localStorage.getItem(alias));
 }
 
 export {

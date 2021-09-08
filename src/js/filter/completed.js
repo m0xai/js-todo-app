@@ -24,7 +24,7 @@ function completedUpdateFront(todo) {
 
 function toggleCompleted(todo) {
   todo.isCompleted ? (todo.isCompleted = false) : (todo.isCompleted = true);
-  setLS();
+  setLS('todos', toDoArray);
 }
 
 function setClassesOfCheckButtons(todo) {

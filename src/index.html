@@ -82,10 +82,7 @@
             <div class="form-group">
               <label for="todo-ordner-input">Welche Orner sollte es angeheftet sein?</label>
               <select class="form-control" id="todo-ordner-input">
-                <option value="" disabled="disabled">Wähl ein Ordner</option>
-                <option value="andere" selected>Andere</option>
-                <option value="study">Study</option>
-                <option value="work">Work</option>
+                <option value="" disabled="disabled" placeholder="Wähl ein Ordner">Wähl ein Ordner</option>
               </select>
             </div>
 
@@ -171,11 +168,11 @@
         <h5 class="sidebar-title">Ordner</h5>
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-link" onclick="halfmoon.toggleModal('modal-add-ordner')">+ Neuer Ordner</a>
-        <a href="/" class="sidebar-link active">Alle</a>
+        <a href="#" id="sidebar-alle" class="sidebar-link active">Alle</a>
         <div id="custom-ordners">
-          <a href="#" class="sidebar-link">/ Work</a>
-          <a href="#" class="sidebar-link">/ Study</a>
-          <a href="#" class="sidebar-link">/ Andere</a>
+          <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="work">/ Work</a>
+          <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="study">/ Study</a>
+          <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="study">/ Andere</a>
         </div>
         <br />
         <h5 class="sidebar-title">Due</h5>

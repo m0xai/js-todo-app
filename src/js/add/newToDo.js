@@ -1,4 +1,4 @@
-import { inputItems, toDoArray, setLS, getLS } from '../mainHelpers.js';
+import { inputItems, toDoArray, setLS } from '../mainHelpers.js';
 import { printToDos } from '../print/print.js';
 
 // The prototrype class to create ToDo item
@@ -32,7 +32,7 @@ class ToDo {
 function sendToDo() {
   createToDo();
   addToDoArray(createToDo);
-  setLS();
+  setLS('todos', toDoArray);
   printToDos(toDoArray);
 }
 
