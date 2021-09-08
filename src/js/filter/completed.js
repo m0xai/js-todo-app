@@ -1,6 +1,6 @@
 import { setLS } from '../mainHelpers.js';
 import { findToDoItem, thisToDoEl, toDoArray } from '../mainHelpers.js';
-import { printToDos } from '../print.js';
+import { printToDos } from '../print/print.js';
 
 //TODO: Frontend her seferinde bir tane itemin goruntusunu degistiriyor. bunun nedeni her defasidna listenin yenilenmesi ve sadece dokunulanin stil ozelliklerinin kalici olmasi. Print fonksiyonunun her tiklamda calismasi dogru ancak forEach.isCompleted fonksiyonu calistirilmali print.js de
 

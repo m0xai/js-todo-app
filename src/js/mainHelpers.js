@@ -32,7 +32,9 @@ const inputItems = {
 })();
 
 // Activate - Deactivate Datum Eingabe via Switch
-const datumEingabeSwitchLabel = document.getElementById('end-datum-switch-label');
+const datumEingabeSwitchLabel = document.getElementById(
+  'end-datum-switch-label'
+);
 datumEingabeSwitchLabel.addEventListener('click', toggleDatumInput);
 
 function toggleDatumInput(e) {
@@ -73,14 +75,16 @@ function findToDoItem(id) {
 
 // Delete To Do item driver
 function deleteToDo(el, id) {
-  document.querySelector(`[data-todo-del-btn="${id}"]`).addEventListener('click', () => {
-    // Prevent click event, inherited from parent element
-    event.stopImmediatePropagation();
+  document
+    .querySelector(`[data-todo-del-btn="${id}"]`)
+    .addEventListener('click', () => {
+      // Prevent click event, inherited from parent element
+      event.stopImmediatePropagation();
 
-    deleteToDoFromFront(el);
-    deleteToDoFromArr(id);
-    setLS();
-  });
+      deleteToDoFromFront(el);
+      deleteToDoFromArr(id);
+      setLS();
+    });
 }
 
 // Remove item from parent node
@@ -91,7 +95,10 @@ function deleteToDoFromFront(el) {
 
 // Remove item from array
 function deleteToDoFromArr(id) {
-  toDoArray.splice(toDoArray.indexOf(toDoArray.find((element) => element.id == id)), 1);
+  toDoArray.splice(
+    toDoArray.indexOf(toDoArray.find((element) => element.id == id)),
+    1
+  );
 }
 
 function setLS() {

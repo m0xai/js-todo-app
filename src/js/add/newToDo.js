@@ -1,10 +1,18 @@
 import { inputItems, toDoArray, setLS, getLS } from '../mainHelpers.js';
-import { printToDos } from '../print.js';
-import { setEditButtons } from '../edit/helper.js';
+import { printToDos } from '../print/print.js';
 
 // The prototrype class to create ToDo item
 class ToDo {
-  constructor(id, title, ordner, tag, notizen, endDatum, endDatumSwitch, endDatumDisabled) {
+  constructor(
+    id,
+    title,
+    ordner,
+    tag,
+    notizen,
+    endDatum,
+    endDatumSwitch,
+    endDatumDisabled
+  ) {
     this.id = id;
     this.title = title;
     this.ordner = ordner;

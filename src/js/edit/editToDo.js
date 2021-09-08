@@ -1,6 +1,12 @@
-import { inputItems, findToDoItem, toDoArray, setLS, getLS } from '../mainHelpers.js';
+import {
+  inputItems,
+  findToDoItem,
+  toDoArray,
+  setLS,
+  getLS,
+} from '../mainHelpers.js';
 import { setEditButtons, attachCurrentId, detachCurrentId } from './helper.js';
-import { printToDos } from '../print.js';
+import { printToDos } from '../print/print.js';
 
 // button.getAttribute('data-todo-edit-btn') gives the id of the current element
 let getCurrentInputs = function (thisToDo) {
@@ -18,7 +24,9 @@ let getCurrentInputs = function (thisToDo) {
 };
 
 function setNeueInputs(e) {
-  const thisToDo = findToDoItem(e.target.getAttribute('data-edit-fertig-btn-todo-id'));
+  const thisToDo = findToDoItem(
+    e.target.getAttribute('data-edit-fertig-btn-todo-id')
+  );
   // Get item ID, which attached from getCurrentInputs
   //TODO: Push changed items to toDoArray like newToDo
   thisToDo.title = inputItems.title().value;

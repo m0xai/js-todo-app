@@ -1,21 +1,46 @@
-import {
-  toDosWrapper,
-  thisToDoEl,
-  thisToDoId,
-  deleteToDo,
-  getLS,
-} from './mainHelpers.js';
-import { setItemFarbe, toggleItemDetails } from './add/helper.js';
-import { setEditButtons } from './edit/helper.js';
-import { setCheckButtons, completedUpdateFront } from './filter/completed.js';
+import { toDosWrapper } from '../mainHelpers';
 
-function printToDos(toDos) {
-  // Reset ToDos Wrapper to add only new items every time.
-  toDosWrapper.innerHTML = '';
-  toDos.forEach((toDo) => {
-    toDosWrapper.insertAdjacentHTML(
-      'afterbegin',
-      `<div class="card p-10 m-0 my-15" data-todo-id="${toDo.id}">
+// function createItemWrappers(mainWrapper) {
+//   const unCompletedWrapper = document.createElement('div');
+//   const completedWrapper = document.createElement('div');
+//   unCompletedWrapper.setAttribute('class', 'uncompleted-list');
+//   completedWrapper.setAttribute('class', 'completed-list');
+//   toDosWrapper.appendChild(unCompletedWrapper);
+//   toDosWrapper.appendChild(completedWrapper);
+
+//   return {
+//     unCompletedWrapper,
+//     completedWrapper,
+//   };
+// }
+
+function clearMainWrapper() {
+  return (toDosWrapper.innerHTML = `
+  <div id="uncompleted-wrapper">
+  </div>
+  <div id="completed-wrapper">
+    <h3 id="completed-title" class="font-size-16 mt-20">Erledigte Aufgaben</h3>
+  </div>
+  `);
+}
+
+const unCompletedWrapper = () => document.getElementById('uncompleted-wrapper');
+const completedTitle = () => document.getElementById('completed-title');
+
+function printNotCompletedToDos(todo) {
+  if (!todo.isCompleted) {
+    unCompletedWrapper().insertAdjacentHTML('afterbegin', printItems(todo));
+  }
+}
+
+function printCompletedToDos(todo) {
+  if (todo.isCompleted) {
+    completedTitle().insertAdjacentHTML('afterend', printItems(todo));
+  }
+}
+
+function printItems(toDo) {
+  return `<div class="card p-10 m-0 my-15" data-todo-id="${toDo.id}">
         <div class="card-inhalt d-flex flex-column mx-10">
           <div class="dinge-kopf d-flex align-items-center">
             <div class="dinge-kopf-links d-flex align-items-center">
@@ -74,22 +99,12 @@ function printToDos(toDos) {
             </div>
           </div>
         </div>
-      </div>`
-    );
-    // Invoke functions for each to-do item.
-    setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
-    thisToDoEl(toDo.id);
-    thisToDoId(toDo.id);
-    toggleItemDetails(toDo.id);
-    deleteToDo(thisToDoEl(toDo.id), toDo.id);
-    setCheckButtons();
-
-    if (toDo.isCompleted) {
-      completedUpdateFront(toDo);
-    }
-  });
-  // End od forEach for to-dos
-  setEditButtons();
+      </div>`;
 }
 
-export { printToDos };
+export {
+  clearMainWrapper,
+  printItems,
+  printCompletedToDos,
+  printNotCompletedToDos,
+};
