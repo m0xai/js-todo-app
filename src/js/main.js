@@ -9,3 +9,5 @@ printToDos(toDoArray);
 
 //TODO: Reformat date due date and Erstellungsdatum with words via date-fns
 //TODO: Remove date, after wditing to none
+
+//! printToDos() sollte immer am Ende eines functionens kommen, so kann es richtig aktualisieren.

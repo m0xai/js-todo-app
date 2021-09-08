@@ -12,6 +12,7 @@ function setCheckButtons() {
       const todo = findToDoItem(button.getAttribute('data-todo-check-btn-id'));
       toggleCompleted(todo);
       completedUpdateFront(todo);
+      printToDos(toDoArray);
     })
   );
 }
@@ -24,13 +25,12 @@ function completedUpdateFront(todo) {
 function toggleCompleted(todo) {
   todo.isCompleted ? (todo.isCompleted = false) : (todo.isCompleted = true);
   setLS();
-  printToDos(toDoArray);
 }
 
 function setClassesOfCheckButtons(todo) {
   const el = thisToDoEl(todo.id);
   const button = el.querySelector(`[data-todo-check-btn-id="${todo.id}"]`);
-  button.classList.add('bg-success');
+  button.classList.toggle('bg-success');
 }
 
 function setItemOpacity(id) {
