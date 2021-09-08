@@ -15,7 +15,7 @@ import {
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
-  console.log('Running...');
+  console.log('PrintToDos Running...');
   clearMainWrapper();
   // Create Completed and Uncompleted items containers.
   toDos.forEach((toDo) => {

@@ -3,6 +3,7 @@ import ordners from './ordner.js';
 import { ToDo } from './add/newToDo.js';
 import { printToDos } from './print/print.js';
 import { setEditButtons } from './edit/helper.js';
+import { filterNachFarbe } from './filter/color.js';
 import '../css/main.css';
 
 printToDos(toDoArray);
