@@ -1,16 +1,38 @@
 const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+};
 
 module.exports = {
-  entry: './src/js/main.js',
+  entry: {
+    app: './src/js/app.js',
+    home: './src/js/home.js',
+  },
   devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ToDoJS',
-      template: './src/index.html',
+      title: 'Dashboard | Zu Tun',
+      template: './src/templates/app.html',
+      filename: 'app.html',
+      chunks: ['app'],
     }),
-    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Zu Tun | Startseite',
+      template: './src/templates/home.html',
+      filename: 'index.html',
+      chunks: ['home'],
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+    }),
   ],
   devServer: {
     hot: true,
@@ -19,7 +41,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -28,8 +50,9 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, 'dist'),
+    chunkFilename: '[id].[chunkhash].js',
     clean: true,
   },
 };

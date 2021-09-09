@@ -23,13 +23,37 @@ const analytics = getAnalytics(app);
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const user = auth.currentUser;
 
 const signInBtn = document.getElementById('sign-in-button');
-const signOutBtn = document.getElementById('sign-out-button');
+const signOutBtn = document.getElementById('navbar-user-abmelden');
 
 signInBtn.addEventListener('click', () => {
   handleSignIn();
 });
+
+signOutBtn.addEventListener('click', () => {
+  handleSignOut();
+});
+
+// Where the user state changes.
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    changeFrontOnLogin(user);
+  } else {
+    changeFrontOnLogout(user);
+    console.log('No one is here!');
+  }
+});
+
+function changeFrontOnLogin(user) {
+  const userNameSpan = document.getElementById('navbar-user-name');
+  userNameSpan.textContent = user.displayName;
+  console.log(user.displayName, 'is logged in.');
+}
+function changeFrontOnLogout(user) {
+  console.log('User is logged out.');
+}
 
 function handleSignIn() {
   signInWithRedirect(auth, provider)
@@ -44,10 +68,6 @@ function handleSignIn() {
       console.log('Error message: ', errorMessage);
     });
 }
-
-signOutBtn.addEventListener('click', () => {
-  handleSignOut();
-});
 
 function handleSignOut() {
   signOut(auth)
