@@ -7,8 +7,8 @@ sidebarColors.forEach((ordner) =>
 );
 
 function filterNachOrdner(e) {
-  const ordner = e.target.getAttribute('data-sidebar-ordner');
-  console.log(ordner, 'Ordner is just clicked');
+  const target = () => e.target;
+  const ordner = target().getAttribute('data-sidebar-ordner');
   function sameOrdnerItems() {
     return toDoArray.filter(
       (item) => item.ordner.toLowerCase() == ordner.toLowerCase()

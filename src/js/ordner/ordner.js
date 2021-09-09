@@ -1,4 +1,4 @@
-import { setLS } from '../mainHelpers.js';
+import { setLS, setActiveLink } from '../mainHelpers.js';
 import { setInputOrdners } from './helper.js';
 
 let ordners = JSON.parse(localStorage.getItem('ordners')) || [];
@@ -23,6 +23,7 @@ function getOrdner() {
   createOrdner(getOrdnerInput().value);
   printFront();
   clearForm(getOrdnerInput());
+  setInputOrdners();
 }
 
 function createOrdner(input) {

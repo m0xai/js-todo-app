@@ -110,6 +110,25 @@ function getLS(alias) {
   return JSON.parse(localStorage.getItem(alias));
 }
 
+function attachEventSidebarLinks() {
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  sidebarLinks().forEach((link) =>
+    link.addEventListener('click', setActiveLink)
+  );
+  return { sidebarLinks };
+}
+
+function setActiveLink(e) {
+  console.log('Sidebar Links:', attachEventSidebarLinks());
+  attachEventSidebarLinks().forEach((link) => {
+    if (link == e.target) {
+      e.target.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
 export {
   inputItems,
   neueToDoButton,
@@ -121,6 +140,7 @@ export {
   toggleDatumInput,
   deleteToDo,
   submitToDoButton,
+  setActiveLink,
   setLS,
   getLS,
 };
