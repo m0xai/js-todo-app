@@ -2,6 +2,7 @@ import '../css/main.css';
 import smJumboImageSrc from '../img/internet-6523289_640.jpg';
 import lgJumboImageSrc from '../img/landscape-5426755_1280.jpg';
 
+import '../css/home.css';
 const hello = 'Hello World';
 
 console.log(hello);

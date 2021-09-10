@@ -1,0 +1,56 @@
+@import './helpers.css';
+
+body {
+  background-color: #fffdfa;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#jumbo-section {
+  height: 600px;
+}
+.jumbo-title {
+  font-size: 6rem;
+  text-align: center;
+  text-shadow: 0.05rem 0.05rem 0.1rem black;
+  margin: -10px !important;
+}
+
+.jumbo-title:last-child {
+  color: var(--gelb);
+}
+
+#jumbo-subhead {
+  font-size: 2rem;
+}
+
+#loslegen-button {
+  padding: 3rem 4rem;
+  font-weight: bold;
+}
+
+/* For mobile visitors */
+@media (max-width: 768px) {
+  #jumbo-section {
+    height: 400px;
+  }
+  .jumbo-title {
+    font-size: 3rem;
+    margin: -5px !important;
+  }
+
+  #jumbo-subhead {
+    font-size: 1.6rem;
+    margin: 3rem 0 !important;
+  }
+
+  #loslegen-button {
+    padding: 1.5rem 2rem;
+    font-weight: normal;
+  }
+}
