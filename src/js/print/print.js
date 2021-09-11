@@ -1,9 +1,4 @@
-import {
-  toDosWrapper,
-  thisToDoEl,
-  thisToDoId,
-  deleteToDo,
-} from '../mainHelpers.js';
+import { thisToDoEl, thisToDoId, deleteToDo } from '../mainHelpers.js';
 import { setItemFarbe, toggleItemDetails } from '../add/helper.js';
 import { setEditButtons } from '../edit/helper.js';
 import { setCheckButtons, completedUpdateFront } from '../filter/completed.js';
@@ -15,14 +10,24 @@ import {
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
-  console.log('PrintToDos Running...');
+  console.log('PrintToDos Running...', toDos);
   clearMainWrapper();
   // Create Completed and Uncompleted items containers.
-  toDos.forEach((toDo) => {
+  // toDos.forEach((toDo) => {
+  //   printNotCompletedToDos(toDo);
+  //   printCompletedToDos(toDo);
+
+  //   // Invoke functions for each to-do item to set visual appearance.
+  //   setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
+  //   thisToDoEl(toDo.id);
+  //   thisToDoId(toDo.id);
+  //   toggleItemDetails(toDo.id);
+  //   deleteToDo(thisToDoEl(toDo.id), toDo.id);
+  //   setCheckButtons();
+
+  for (let toDo in toDos) {
     printNotCompletedToDos(toDo);
     printCompletedToDos(toDo);
-
-    // Invoke functions for each to-do item to set visual appearance.
     setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
     thisToDoEl(toDo.id);
     thisToDoId(toDo.id);
@@ -33,7 +38,13 @@ function printToDos(toDos) {
     if (toDo.isCompleted) {
       completedUpdateFront(toDo);
     }
-  });
+  }
+
+  // if (toDo.isCompleted) {
+  //   completedUpdateFront(toDo);
+  // }
+  // }
+  // );
   // End od forEach for to-dos
   setEditButtons();
 }

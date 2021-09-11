@@ -1,5 +1,5 @@
-import './auth/auth.js';
 import './db/db.js';
+import './auth/auth.js';
 import { toDoArray } from './mainHelpers.js';
 import ordners from './ordner/ordner.js';
 import { ToDo } from './add/newToDo.js';

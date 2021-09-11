@@ -52,7 +52,7 @@ function createToDo() {
 }
 
 function addToDoArray(toDo) {
-  toDoArray.push(toDo());
+  toDoArray[toDo().id] = [toDo()];
   console.log('New Item Added in Array:', toDoArray);
 }
 

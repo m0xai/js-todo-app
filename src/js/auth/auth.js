@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { getDB } from '../db/db.js';
 import { useRouter } from './helper.js';
 
 const firebaseConfig = {
@@ -33,15 +34,12 @@ onAuthStateChanged(auth, (user) => {
     console.log(user.uid, 'in now in!');
     currentUserId = user.uid;
     changeFrontOnLogin(user);
+    getDB(user.uid);
   } else {
     useRouter(false);
     console.log('No one is here!');
   }
 });
-
-setTimeout(() => {
-  console.log('Current User Id:', currentUserId);
-}, 3000);
 
 // Sign in event
 function handleSignIn() {
@@ -81,4 +79,4 @@ function changeFrontOnLogin(user) {
   }
 }
 
-export { handleSignIn };
+export { handleSignIn, currentUserId };
