@@ -1,12 +1,12 @@
-import { toDoArray, getLS } from './mainHelpers.js';
+import './auth/auth.js';
+import './db/db.js';
+import { toDoArray } from './mainHelpers.js';
 import ordners from './ordner/ordner.js';
 import { ToDo } from './add/newToDo.js';
 import { printToDos } from './print/print.js';
 import { setEditButtons } from './edit/helper.js';
 import { filterNachFarbe } from './filter/color.js';
 import { filterNachOrdner } from './filter/ordner.js';
-import './auth/auth.js';
-import './db/db.js';
 import '../css/main.css';
 
 printToDos(toDoArray);

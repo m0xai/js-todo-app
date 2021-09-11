@@ -1,22 +1,31 @@
 import { getDatabase, ref, set, onValue } from 'firebase/database';
-import { getUserId } from '../auth/helper.js';
+import toDoArray from '../mainHelpers.js';
 
 const db = getDatabase();
 
-function writeUserData(name, alter, userId) {
+function setDB(todos) {
   console.log('Getting Database...', ref(db, 'users'));
-  set(ref(db, 'users'), {
-    usering: name,
-    alter: alter,
-    uid: userId,
+  todos.forEach((element) => {
+    set(ref(db, 'users/' + element.id), {
+      id: element.id,
+      title: element.title,
+      ordner: element.ordner,
+      tag: element.tag,
+      notizen: element.notizen,
+      endDatum: element.endDatum,
+      endDatumSwitch: element.endDatumSwitch,
+      endDatumDisabled: element.endDatumDisabled,
+    });
   });
 }
 
-const starCountRef = ref(db, 'users');
-onValue(starCountRef, (snapshot) => {
+const dbRef = ref(db, 'users');
+onValue(dbRef, (snapshot) => {
   const data = snapshot.val();
   console.log('Reading Data...', data);
+  toDoArray = data;
 });
-setTimeout(() => {
-  writeUserData('krem', 22, getUserId());
-}, 3000);
+
+console.log(db);
+
+export { setDB };

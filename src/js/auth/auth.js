@@ -23,21 +23,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-let userId;
+
+let currentUserId = '';
 
 // Where the user state changes.
 onAuthStateChanged(auth, (user) => {
   if (user) {
     useRouter(true);
     console.log(user.uid, 'in now in!');
+    currentUserId = user.uid;
     changeFrontOnLogin(user);
-    userId = user.uid;
   } else {
     useRouter(false);
     console.log('No one is here!');
   }
 });
-console.log('User id is.... ', userId);
+
+setTimeout(() => {
+  console.log('Current User Id:', currentUserId);
+}, 3000);
 
 // Sign in event
 function handleSignIn() {
@@ -71,7 +75,6 @@ function changeFrontOnLogin(user) {
   if (window.location.pathname == '/app.html') {
     console.log('Location:', document.location);
     const userNameNav = document.getElementById('navbar-user-name');
-    userNameNav.dataset.uid = user.uid;
     userNameNav.innerText = user.displayName;
     const abmeldenBtn = document.getElementById('navbar-user-abmelden');
     abmeldenBtn.addEventListener('click', handleSignOut);

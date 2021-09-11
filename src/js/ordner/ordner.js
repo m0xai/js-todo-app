@@ -1,4 +1,4 @@
-import { setLS, setActiveLink } from '../mainHelpers.js';
+// import { setLS } from '../mainHelpers.js';
 import { setInputOrdners } from './helper.js';
 
 let ordners = JSON.parse(localStorage.getItem('ordners')) || [];
@@ -30,7 +30,7 @@ function createOrdner(input) {
   const newOrdner = new ordnerClass(input, Date.now());
   ordners.push(newOrdner);
   console.log('New ordner obj', newOrdner);
-  setLS('ordners', ordners);
+  // setLS('ordners', ordners);
   console.log(ordners);
   return newOrdner;
 }

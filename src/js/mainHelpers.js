@@ -1,5 +1,5 @@
 // Init ToDo Array
-let toDoArray = JSON.parse(localStorage.getItem('todos')) || [];
+let toDoArray = [];
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -83,7 +83,7 @@ function deleteToDo(el, id) {
 
       deleteToDoFromFront(el);
       deleteToDoFromArr(id);
-      setLS('todos', toDoArray);
+      // setLS('todos', toDoArray);
     });
 }
 
@@ -99,15 +99,6 @@ function deleteToDoFromArr(id) {
     toDoArray.indexOf(toDoArray.find((element) => element.id == id)),
     1
   );
-}
-
-function setLS(alias, array) {
-  localStorage.setItem(alias, JSON.stringify(array));
-}
-
-function getLS(alias) {
-  console.log('Getting from LS...');
-  return JSON.parse(localStorage.getItem(alias));
 }
 
 function attachEventSidebarLinks() {
@@ -141,6 +132,4 @@ export {
   deleteToDo,
   submitToDoButton,
   setActiveLink,
-  setLS,
-  getLS,
 };

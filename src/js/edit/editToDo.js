@@ -1,4 +1,4 @@
-import { inputItems, findToDoItem, toDoArray, setLS } from '../mainHelpers.js';
+import { inputItems, findToDoItem, toDoArray } from '../mainHelpers.js';
 import { attachCurrentId, detachCurrentId } from './helper.js';
 import { printToDos } from '../print/print.js';
 
@@ -30,7 +30,7 @@ function setNeueInputs(e) {
   thisToDo.endDatum = inputItems.endDatum().value;
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
-  setLS('todos', toDoArray);
+  // setLS('todos', toDoArray);
   printToDos(toDoArray);
   detachCurrentId('submit-todo-button');
 }
