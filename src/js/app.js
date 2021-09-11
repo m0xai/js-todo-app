@@ -5,8 +5,8 @@ import { printToDos } from './print/print.js';
 import { setEditButtons } from './edit/helper.js';
 import { filterNachFarbe } from './filter/color.js';
 import { filterNachOrdner } from './filter/ordner.js';
-
-import { signInBtn, signOutBtn } from './misc/auth.js';
+import './auth/auth.js';
+import './db/db.js';
 import '../css/main.css';
 
 printToDos(toDoArray);

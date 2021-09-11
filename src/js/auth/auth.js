@@ -1,11 +1,12 @@
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
   signInWithRedirect,
   signOut,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from 'firebase/auth';
+import { useRouter } from './helper.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBWp41s9PnNHuexO5Y3T3K6BJXnSevLCw8',
@@ -15,51 +16,34 @@ const firebaseConfig = {
   messagingSenderId: '940841077166',
   appId: '1:940841077166:web:ca672cd3939ac29a6f603f',
   measurementId: 'G-WXB452VH5K',
+  databaseURL: 'https://zu-tun-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-const user = auth.currentUser;
-
-const signInBtn = document.getElementById('sign-in-button');
-const signOutBtn = document.getElementById('navbar-user-abmelden');
-
-signInBtn.addEventListener('click', () => {
-  handleSignIn();
-});
-
-signOutBtn.addEventListener('click', () => {
-  handleSignOut();
-});
+let userId;
 
 // Where the user state changes.
-auth.onAuthStateChanged((user) => {
+onAuthStateChanged(auth, (user) => {
   if (user) {
+    useRouter(true);
+    console.log(user.uid, 'in now in!');
     changeFrontOnLogin(user);
+    userId = user.uid;
   } else {
-    changeFrontOnLogout(user);
+    useRouter(false);
     console.log('No one is here!');
   }
 });
+console.log('User id is.... ', userId);
 
-function changeFrontOnLogin(user) {
-  const userNameSpan = document.getElementById('navbar-user-name');
-  userNameSpan.textContent = user.displayName;
-  console.log(user.displayName, 'is logged in.');
-}
-function changeFrontOnLogout(user) {
-  console.log('User is logged out.');
-}
-
+// Sign in event
 function handleSignIn() {
   signInWithRedirect(auth, provider)
     .then((result) => {
       const user = result.user;
-      console.log('User: ', user);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -69,14 +53,29 @@ function handleSignIn() {
     });
 }
 
+// Sign out event
 function handleSignOut() {
   signOut(auth)
     .then(() => {
-      console.log('Sign-out successful.');
+      useRouter(false);
+      console.log('Sign-out successful. Bye 👋🏻');
     })
     .catch((error) => {
-      // An error happened.
+      console.log(error);
     });
 }
 
-export { signInBtn, signOutBtn };
+function changeFrontOnLogin(user) {
+  console.log('User on changeFrontOnLogin:', user.displayName);
+
+  if (window.location.pathname == '/app.html') {
+    console.log('Location:', document.location);
+    const userNameNav = document.getElementById('navbar-user-name');
+    userNameNav.dataset.uid = user.uid;
+    userNameNav.innerText = user.displayName;
+    const abmeldenBtn = document.getElementById('navbar-user-abmelden');
+    abmeldenBtn.addEventListener('click', handleSignOut);
+  }
+}
+
+export { handleSignIn };

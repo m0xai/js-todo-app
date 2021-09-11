@@ -1,11 +1,9 @@
 import '../css/main.css';
-import smJumboImageSrc from '../img/internet-6523289_640.jpg';
 import lgJumboImageSrc from '../img/landscape-5426755_1280.jpg';
+import { handleSignIn } from './auth/auth.js';
 
 import '../css/home.css';
 const hello = 'Hello World';
-
-console.log(hello);
 
 const jumboImageWrapper = document.getElementById('jumbo-image-wrapper');
 
@@ -16,4 +14,10 @@ jumboImage.loading = 'lazy';
 jumboImage.classList.add('img-fluid');
 jumboImageWrapper.appendChild(jumboImage);
 
+const loslegenBtn = document.getElementById('loslegen-button');
+loslegenBtn.addEventListener('click', () => {
+  handleSignIn();
+});
+
+console.log(hello);
 export { hello };
