@@ -1,3 +1,4 @@
+//! DB yukarida olmali hep.
 import { getDB } from './db/db.js';
 import { currentUserId } from './auth/auth.js';
 import { toDoArray } from './db/db.js';
