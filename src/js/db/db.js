@@ -1,8 +1,9 @@
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 import { currentUserId } from '../auth/auth.js';
-import toDoArray from '../mainHelpers.js';
 
 const db = getDatabase();
+
+let toDoArray = [];
 
 function setDB(todos) {
   todos.forEach((todo) =>

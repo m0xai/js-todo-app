@@ -1,6 +1,6 @@
-import { inputItems, toDoArray } from '../mainHelpers.js';
+import { inputItems } from '../mainHelpers.js';
 import { printToDos } from '../print/print.js';
-import { setDB } from '../db/db.js';
+import { setDB, toDoArray } from '../db/db.js';
 
 // The prototrype class to create ToDo item
 class ToDo {

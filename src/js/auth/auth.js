@@ -36,6 +36,7 @@ onAuthStateChanged(auth, (user) => {
     changeFrontOnLogin(user);
     getDB(user.uid);
   } else {
+    handleSignIn();
     useRouter(false);
     console.log('No one is here!');
   }

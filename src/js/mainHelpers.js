@@ -1,5 +1,5 @@
 // Init ToDo Array
-let toDoArray = [];
+import { toDoArray } from './db/db.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');

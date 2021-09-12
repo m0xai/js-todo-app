@@ -1,4 +1,4 @@
-import { toDoArray } from '../mainHelpers.js';
+import { toDoArray } from '../db/db.js';
 import { printToDos } from '../print/print.js';
 
 const sidebarColors = document.querySelectorAll('.sidebar-ordner');

@@ -9,12 +9,6 @@ import { filterNachFarbe } from './filter/color.js';
 import { filterNachOrdner } from './filter/ordner.js';
 import '../css/main.css';
 
-setTimeout(() => {
-  getDB(currentUserId);
-  console.log('Going to print', toDoArray);
-  printToDos(toDoArray);
-}, 5000);
-
 //TODO: Reformat date due date and Erstellungsdatum with words via date-fns
 //TODO: Remove date, after wditing to none
 

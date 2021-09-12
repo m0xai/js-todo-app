@@ -16,7 +16,7 @@ jumboImageWrapper.appendChild(jumboImage);
 
 const loslegenBtn = document.getElementById('loslegen-button');
 loslegenBtn.addEventListener('click', () => {
-  handleSignIn();
+  window.location.href = '/app.html';
 });
 
 console.log(hello);
