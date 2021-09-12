@@ -13,7 +13,7 @@ function filterNachFarbe(e) {
   const sameColorItems = () => {
     let colorItem;
     for (let todo in toDoArray) {
-      if (todo.tag == color) {
+      if (todo[tag] == color) {
         colorItem = color;
       }
     }

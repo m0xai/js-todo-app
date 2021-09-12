@@ -20,12 +20,12 @@ const firebaseConfig = {
   databaseURL: 'https://zu-tun-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
+let currentUserId;
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
-
-let currentUserId = '';
 
 // Where the user state changes.
 onAuthStateChanged(auth, (user) => {

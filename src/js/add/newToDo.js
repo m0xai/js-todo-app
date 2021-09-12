@@ -31,8 +31,9 @@ class ToDo {
 
 // Create new ToDo item via its class
 function sendToDo() {
+  console.log('To Do Array, just before new todo sending', toDoArray);
   createToDo();
-  addToDoArray(createToDo);
+  pushToArray(createToDo);
   setDB(toDoArray);
   printToDos(toDoArray);
 }
@@ -51,9 +52,8 @@ function createToDo() {
   return todo;
 }
 
-function addToDoArray(toDo) {
-  toDoArray[toDo().id] = [toDo()];
-  console.log('New Item Added in Array:', toDoArray);
+function pushToArray(creator) {
+  toDoArray.push(creator());
 }
 
 export { ToDo, createToDo, sendToDo };

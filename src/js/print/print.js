@@ -25,27 +25,21 @@ function printToDos(toDos) {
   //   deleteToDo(thisToDoEl(toDo.id), toDo.id);
   //   setCheckButtons();
 
-  for (let toDo in toDos) {
+  toDos.forEach((toDo) => {
+    console.log('Todo title in print.js', toDo[title]);
     printNotCompletedToDos(toDo);
     printCompletedToDos(toDo);
-    setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
-    thisToDoEl(toDo.id);
-    thisToDoId(toDo.id);
-    toggleItemDetails(toDo.id);
-    deleteToDo(thisToDoEl(toDo.id), toDo.id);
+    setItemFarbe(toDo[tag], thisToDoEl(toDo[id]));
+    thisToDoEl(toDo[id]);
+    thisToDoId(toDo[id]);
+    toggleItemDetails(toDo[id]);
+    deleteToDo(thisToDoEl(toDo[id]), toDo[id]);
     setCheckButtons();
 
-    if (toDo.isCompleted) {
+    if (toDo[isCompleted]) {
       completedUpdateFront(toDo);
     }
-  }
-
-  // if (toDo.isCompleted) {
-  //   completedUpdateFront(toDo);
-  // }
-  // }
-  // );
-  // End od forEach for to-dos
+  });
   setEditButtons();
 }
 
