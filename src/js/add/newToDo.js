@@ -12,7 +12,8 @@ class ToDo {
     notizen,
     endDatum,
     endDatumSwitch,
-    endDatumDisabled
+    endDatumDisabled,
+    isCompleted
   ) {
     this.id = id;
     this.title = title;
@@ -22,7 +23,7 @@ class ToDo {
     this.endDatum = endDatum;
     this.endDatumSwitch = endDatumSwitch;
     this.endDatumDisabled = endDatumDisabled;
-    this.isCompleted = false;
+    this.isCompleted = isCompleted;
   }
   theToDoId() {
     return this.id;
@@ -47,7 +48,8 @@ function createToDo() {
     inputItems.notizen().value,
     inputItems.endDatum().value,
     inputItems.endDatumSwitch().checked,
-    inputItems.endDatum().disabled
+    inputItems.endDatum().disabled,
+    false
   );
   return todo;
 }

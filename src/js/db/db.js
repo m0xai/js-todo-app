@@ -17,6 +17,7 @@ function setDB(todos) {
       endDatum: todo.endDatum,
       endDatumSwitch: todo.endDatumSwitch,
       endDatumDisabled: todo.endDatumDisabled,
+      isCompleted: todo.isCompleted,
     })
   );
   getDB(currentUserId);

@@ -1,5 +1,5 @@
 // Init ToDo Array
-import { toDoArray } from './db/db.js';
+import { setDB, toDoArray } from './db/db.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -95,10 +95,12 @@ function deleteToDoFromFront(el) {
 
 // Remove item from array
 function deleteToDoFromArr(id) {
-  toDoArray.splice(
-    toDoArray.indexOf(toDoArray.find((element) => element.id == id)),
-    1
+  let delItem = toDoArray.indexOf(
+    toDoArray.find((element) => element.id == id)
   );
+  console.log('To delete', delItem);
+  toDoArray.splice(delItem, 1);
+  setDB(toDoArray);
 }
 
 function attachEventSidebarLinks() {
