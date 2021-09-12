@@ -83,7 +83,6 @@ function deleteToDo(el, id) {
 
       deleteToDoFromFront(el);
       deleteToDoFromArr(id);
-      // setLS('todos', toDoArray);
     });
 }
 

@@ -18,5 +18,7 @@ loslegenBtn.addEventListener('click', () => {
   window.location.href = '/app.html';
 });
 
+// To prevent importing all codes and functionalitys don't call handleLogIn function. Instead just rediret to dashboard. You can redirect if user == false, After clicking log out, just redirect home, where no functions live.
+
 console.log(hello);
 export { hello };
