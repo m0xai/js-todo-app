@@ -14,7 +14,6 @@ function printToDos(toDos) {
   clearMainWrapper();
 
   toDos.forEach((toDo) => {
-    console.log('Todo title in print.js', toDo.title);
     printNotCompletedToDos(toDo);
     printCompletedToDos(toDo);
     setItemFarbe(toDo.tag, thisToDoEl(toDo.id));

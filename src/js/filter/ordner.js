@@ -10,9 +10,10 @@ function filterNachOrdner(e) {
   const target = () => e.target;
   const ordner = target().getAttribute('data-sidebar-ordner');
   function sameOrdnerItems() {
-    return toDoArray.filter(
+    let items = toDoArray.filter(
       (item) => item.ordner.toLowerCase() == ordner.toLowerCase()
     );
+    return items;
   }
   console.log('Listing', sameOrdnerItems(), 'ordnered item');
   printToDos(sameOrdnerItems());

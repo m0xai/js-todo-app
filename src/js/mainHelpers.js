@@ -89,6 +89,7 @@ function deleteToDo(el, id) {
 // Remove item from parent node
 function deleteToDoFromFront(el) {
   const parent = el.parentNode;
+  console.log('this el gonne be dle', el);
   parent.removeChild(el);
 }
 
