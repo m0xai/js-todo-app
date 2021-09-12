@@ -1,4 +1,9 @@
-import { inputItems, thisToDoEl, neueToDoButton, submitToDoButton } from '../mainHelpers.js';
+import {
+  inputItems,
+  thisToDoEl,
+  neueToDoButton,
+  submitToDoButton,
+} from '../mainHelpers.js';
 import { setNeueInputs } from '../edit/editToDo.js';
 import { sendToDo } from './newToDo.js';
 
@@ -13,11 +18,14 @@ function resetInputs() {
   inputItems.endDatum().disabled = 'disabled';
 }
 // Reset inputs and attach on Submit button a Sender event listener on click
-neueToDoButton.addEventListener('click', () => {
-  resetInputs();
-  submitToDoButton.removeEventListener('click', setNeueInputs);
-  submitToDoButton.addEventListener('click', sendToDo);
-});
+
+if (window.location.pathname == '/app.html') {
+  neueToDoButton.addEventListener('click', () => {
+    resetInputs();
+    submitToDoButton.removeEventListener('click', setNeueInputs);
+    submitToDoButton.addEventListener('click', sendToDo);
+  });
+}
 
 // Set To Do item color to specified color at form
 function setItemFarbe(tag, el) {
@@ -26,7 +34,9 @@ function setItemFarbe(tag, el) {
 
 function toggleItemDetails(id) {
   thisToDoEl(id).addEventListener('click', () => {
-    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
+    document
+      .querySelector(`[data-koerper-id="${id}"]`)
+      .classList.toggle('d-none');
     const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
     if (itemFuss.classList.contains('d-none')) {
       itemFuss.classList.remove('d-none');

@@ -1,6 +1,7 @@
-import { inputItems, findToDoItem, toDoArray } from '../mainHelpers.js';
+import { inputItems, findToDoItem } from '../mainHelpers.js';
 import { attachCurrentId, detachCurrentId } from './helper.js';
 import { printToDos } from '../print/print.js';
+import toDoArray from '../db/db.js';
 
 // button.getAttribute('data-todo-edit-btn') gives the id of the current element
 let getCurrentInputs = function (thisToDo) {
@@ -31,7 +32,6 @@ function setNeueInputs(e) {
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
   // setLS('todos', toDoArray);
-  printToDos(toDoArray);
   detachCurrentId('submit-todo-button');
 }
 

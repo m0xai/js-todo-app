@@ -1,8 +1,8 @@
 import '../css/main.css';
+import '../css/home.css';
 import lgJumboImageSrc from '../img/landscape-5426755_1280.jpg';
 import { handleSignIn } from './auth/auth.js';
 
-import '../css/home.css';
 const hello = 'Hello World';
 
 const jumboImageWrapper = document.getElementById('jumbo-image-wrapper');
@@ -20,4 +20,3 @@ loslegenBtn.addEventListener('click', () => {
 });
 
 console.log(hello);
-export { hello };

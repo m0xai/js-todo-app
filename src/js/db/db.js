@@ -1,8 +1,10 @@
 import { getDatabase, ref, set, onValue } from 'firebase/database';
 import { currentUserId } from '../auth/auth.js';
-import toDoArray from '../mainHelpers.js';
+import { printToDos } from '../print/print.js';
 
 const db = getDatabase();
+
+let toDoArray = [];
 
 function setDB(todos) {
   todos.forEach((todo) =>
@@ -17,6 +19,7 @@ function setDB(todos) {
       endDatumDisabled: todo.endDatumDisabled,
     })
   );
+  getDB(currentUserId);
 }
 
 // User ID gelmeden veri cekmeye calisinca butun veri tabanini cekiyor/ User id geldikten sonra bu fonksiyonun calismasini sagla
@@ -26,6 +29,7 @@ function getDB(uid) {
     const data = snapshot.val();
     toDoArray = Object.values(data);
     console.log('toDoArray in getDB', toDoArray);
+    printToDos(toDoArray);
   });
 }
 

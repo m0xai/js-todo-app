@@ -1,6 +1,6 @@
-import { inputItems, toDoArray } from '../mainHelpers.js';
+import { inputItems } from '../mainHelpers.js';
 import { printToDos } from '../print/print.js';
-import { setDB } from '../db/db.js';
+import { setDB, toDoArray } from '../db/db.js';
 
 // The prototrype class to create ToDo item
 class ToDo {
@@ -12,7 +12,8 @@ class ToDo {
     notizen,
     endDatum,
     endDatumSwitch,
-    endDatumDisabled
+    endDatumDisabled,
+    isCompleted
   ) {
     this.id = id;
     this.title = title;
@@ -22,7 +23,7 @@ class ToDo {
     this.endDatum = endDatum;
     this.endDatumSwitch = endDatumSwitch;
     this.endDatumDisabled = endDatumDisabled;
-    this.isCompleted = false;
+    this.isCompleted = isCompleted;
   }
   theToDoId() {
     return this.id;
@@ -34,8 +35,6 @@ function sendToDo() {
   console.log('To Do Array, just before new todo sending', toDoArray);
   createToDo();
   pushToArray(createToDo);
-  setDB(toDoArray);
-  printToDos(toDoArray);
 }
 
 function createToDo() {
@@ -47,13 +46,15 @@ function createToDo() {
     inputItems.notizen().value,
     inputItems.endDatum().value,
     inputItems.endDatumSwitch().checked,
-    inputItems.endDatum().disabled
+    inputItems.endDatum().disabled,
+    false
   );
   return todo;
 }
 
 function pushToArray(creator) {
   toDoArray.push(creator());
+  setDB(toDoArray);
 }
 
 export { ToDo, createToDo, sendToDo };

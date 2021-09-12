@@ -1,5 +1,5 @@
 // Init ToDo Array
-let toDoArray = [];
+import { setDB, toDoArray } from './db/db.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -74,16 +74,15 @@ function findToDoItem(id) {
 }
 
 // Delete To Do item driver
-function deleteToDo(el, id) {
+function deleteToDo(id) {
   document
     .querySelector(`[data-todo-del-btn="${id}"]`)
     .addEventListener('click', () => {
       // Prevent click event, inherited from parent element
       event.stopImmediatePropagation();
 
-      deleteToDoFromFront(el);
+      deleteToDoFromFront(id);
       deleteToDoFromArr(id);
-      // setLS('todos', toDoArray);
     });
 }
 
@@ -95,10 +94,8 @@ function deleteToDoFromFront(el) {
 
 // Remove item from array
 function deleteToDoFromArr(id) {
-  toDoArray.splice(
-    toDoArray.indexOf(toDoArray.find((element) => element.id == id)),
-    1
-  );
+  toDoArray.splice(indexOf(toDoArray.forEach((item) => item.id == id)), 1);
+  setDB(toDoArray);
 }
 
 function attachEventSidebarLinks() {
@@ -123,7 +120,6 @@ function setActiveLink(e) {
 export {
   inputItems,
   neueToDoButton,
-  toDoArray,
   toDosWrapper,
   findToDoItem,
   thisToDoEl,

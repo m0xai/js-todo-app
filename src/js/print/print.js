@@ -12,31 +12,19 @@ function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
   console.log('PrintToDos Running...', toDos);
   clearMainWrapper();
-  // Create Completed and Uncompleted items containers.
-  // toDos.forEach((toDo) => {
-  //   printNotCompletedToDos(toDo);
-  //   printCompletedToDos(toDo);
-
-  //   // Invoke functions for each to-do item to set visual appearance.
-  //   setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
-  //   thisToDoEl(toDo.id);
-  //   thisToDoId(toDo.id);
-  //   toggleItemDetails(toDo.id);
-  //   deleteToDo(thisToDoEl(toDo.id), toDo.id);
-  //   setCheckButtons();
 
   toDos.forEach((toDo) => {
-    console.log('Todo title in print.js', toDo[title]);
+    console.log('Todo title in print.js', toDo.title);
     printNotCompletedToDos(toDo);
     printCompletedToDos(toDo);
-    setItemFarbe(toDo[tag], thisToDoEl(toDo[id]));
-    thisToDoEl(toDo[id]);
-    thisToDoId(toDo[id]);
-    toggleItemDetails(toDo[id]);
-    deleteToDo(thisToDoEl(toDo[id]), toDo[id]);
+    setItemFarbe(toDo.tag, thisToDoEl(toDo.id));
+    thisToDoEl(toDo.id);
+    thisToDoId(toDo.id);
+    toggleItemDetails(toDo.id);
+    deleteToDo(thisToDoEl(toDo.id), toDo.id);
     setCheckButtons();
 
-    if (toDo[isCompleted]) {
+    if (toDo.isCompleted) {
       completedUpdateFront(toDo);
     }
   });

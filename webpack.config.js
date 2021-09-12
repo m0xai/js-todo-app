@@ -9,11 +9,11 @@ const PATHS = {
 };
 
 module.exports = {
+  mode: 'production',
   entry: {
     app: './src/js/app.js',
     home: './src/js/home.js',
   },
-  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Dashboard | Zu Tun',
@@ -34,9 +34,6 @@ module.exports = {
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
   ],
-  devServer: {
-    hot: true,
-  },
   module: {
     rules: [
       {
@@ -54,5 +51,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     chunkFilename: '[id].[chunkhash].js',
     clean: true,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 };
