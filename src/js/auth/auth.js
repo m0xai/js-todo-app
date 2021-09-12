@@ -37,7 +37,6 @@ onAuthStateChanged(auth, (user) => {
     getDB(user.uid);
   } else {
     handleSignIn();
-    useRouter(false);
     console.log('No one is here!');
   }
 });

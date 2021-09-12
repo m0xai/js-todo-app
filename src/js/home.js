@@ -1,6 +1,5 @@
 import '../css/main.css';
 import lgJumboImageSrc from '../img/landscape-5426755_1280.jpg';
-import { handleSignIn } from './auth/auth.js';
 
 import '../css/home.css';
 const hello = 'Hello World';
