@@ -1,6 +1,5 @@
 // import { setLS } from '../mainHelpers.js';
 import { findToDoItem, thisToDoEl } from '../mainHelpers.js';
-import { printToDos } from '../print/print.js';
 import { toDoArray } from '../mainHelpers.js';
 import { setDB } from '../db/db.js';
 
@@ -26,7 +25,6 @@ function completedUpdateFront(todo) {
 
 function toggleCompleted(todo) {
   todo.isCompleted ? (todo.isCompleted = false) : (todo.isCompleted = true);
-  // setLS('todos', toDoArray);
 }
 
 function setClassesOfCheckButtons(todo) {

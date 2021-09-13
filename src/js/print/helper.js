@@ -1,17 +1,20 @@
 import { toDosWrapper } from '../mainHelpers.js';
 
-function clearMainWrapper() {
+function clearMainWrapper(toDos) {
   return (toDosWrapper.innerHTML = `
   <div id="uncompleted-wrapper">
   </div>
-  <div id="completed-wrapper">
-    <h3 id="completed-title" class="font-size-16 mt-20">Erledigte Aufgaben</h3>
+  <div id="completed-wrapper" class="d-flex align-items-center">
+  <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Erledigte Aufgaben</h3>
+  <span class="badge badge-success ml-10">${countToDos(toDos).erledigteToDos}/${
+    countToDos(toDos).totalToDos
+  }</span>
   </div>
   `);
 }
 
 const unCompletedWrapper = () => document.getElementById('uncompleted-wrapper');
-const completedTitle = () => document.getElementById('completed-title');
+const completedWrapper = () => document.getElementById('completed-wrapper');
 
 function printNotCompletedToDos(todo) {
   if (!todo.isCompleted) {
@@ -21,7 +24,7 @@ function printNotCompletedToDos(todo) {
 
 function printCompletedToDos(todo) {
   if (todo.isCompleted) {
-    completedTitle().insertAdjacentHTML('afterend', printItems(todo));
+    completedWrapper().insertAdjacentHTML('afterend', printItems(todo));
   }
 }
 
@@ -88,7 +91,26 @@ function printItems(toDo) {
       </div>`;
 }
 
+function countToDos(todos) {
+  let erledigteToDos = 0;
+  let totalToDos = todos.length;
+  todos.forEach((todo) => {
+    todo.isCompleted ? erledigteToDos++ : false;
+  });
+  updateNavStatus(erledigteToDos, totalToDos);
+  return {
+    totalToDos,
+    erledigteToDos,
+  };
+}
+
+function updateNavStatus(done, total) {
+  const menubarStatusSpan = document.getElementById('menubar-status-span');
+  menubarStatusSpan.textContent = done + '/' + total;
+}
+
 export {
+  countToDos,
   clearMainWrapper,
   printItems,
   printCompletedToDos,

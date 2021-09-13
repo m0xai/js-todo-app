@@ -65,3 +65,7 @@
 .zeit-punkt span {
   color: var(--light-gray);
 }
+
+#completed-wrapper {
+  margin-bottom: -20px;
+}

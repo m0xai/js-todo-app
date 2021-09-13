@@ -6,12 +6,14 @@ import {
   clearMainWrapper,
   printNotCompletedToDos,
   printCompletedToDos,
+  countToDos,
 } from './helper.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
-  console.log('PrintToDos Running...', toDos);
-  clearMainWrapper();
+  console.log(countToDos(toDos).erledigteToDos, ' Erledigt...');
+  console.log(countToDos(toDos).totalToDos, ' Erledigt...');
+  clearMainWrapper(toDos);
 
   toDos.forEach((toDo) => {
     printNotCompletedToDos(toDo);

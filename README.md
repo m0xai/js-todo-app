@@ -13,6 +13,10 @@
 - Checkbox item.checked gives reverse value.
 
 ## TODO
-
+- Refactor delete todo functon.
+- add ordner array
+- add delete ordner funtion
+- Make time data work
+- 
 - Add sticky alerts
 - Add Numbers of erledigte aufgaben in menu dropdown.
