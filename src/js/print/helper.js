@@ -1,4 +1,5 @@
 import { toDosWrapper } from '../mainHelpers.js';
+import { toDoArray } from '../db/db.js';
 
 function clearMainWrapper(toDos) {
   return (toDosWrapper.innerHTML = `
@@ -16,14 +17,10 @@ function clearMainWrapper(toDos) {
 const unCompletedWrapper = () => document.getElementById('uncompleted-wrapper');
 const completedWrapper = () => document.getElementById('completed-wrapper');
 
-function printNotCompletedToDos(todo) {
+function seperateItemsForStatus(todo) {
   if (!todo.isCompleted) {
     unCompletedWrapper().insertAdjacentHTML('afterbegin', printItems(todo));
-  }
-}
-
-function printCompletedToDos(todo) {
-  if (todo.isCompleted) {
+  } else {
     completedWrapper().insertAdjacentHTML('afterend', printItems(todo));
   }
 }
@@ -97,11 +94,17 @@ function countToDos(todos) {
   todos.forEach((todo) => {
     todo.isCompleted ? erledigteToDos++ : false;
   });
-  updateNavStatus(erledigteToDos, totalToDos);
+  countTotalToDos();
   return {
     totalToDos,
     erledigteToDos,
   };
+}
+
+function countTotalToDos() {
+  let total = toDoArray.length;
+  let done = toDoArray.filter((item) => item.isCompleted == true).length;
+  updateNavStatus(done, total);
 }
 
 function updateNavStatus(done, total) {
@@ -109,10 +112,4 @@ function updateNavStatus(done, total) {
   menubarStatusSpan.textContent = done + '/' + total;
 }
 
-export {
-  countToDos,
-  clearMainWrapper,
-  printItems,
-  printCompletedToDos,
-  printNotCompletedToDos,
-};
+export { countToDos, clearMainWrapper, printItems, seperateItemsForStatus };

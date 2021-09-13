@@ -1,5 +1,5 @@
-import { findToDoItem, thisToDoEl } from '../mainHelpers.js';
-import { setDB, toDoArray } from '../db/db.js';
+import { setDB } from '../db/db.js';
+import { findToDoItem, thisToDoEl, toDoArray } from '../mainHelpers.js';
 
 //TODO: Frontend her seferinde bir tane itemin goruntusunu degistiriyor. bunun nedeni her defasidna listenin yenilenmesi ve sadece dokunulanin stil ozelliklerinin kalici olmasi. Print fonksiyonunun her tiklamda calismasi dogru ancak forEach.isCompleted fonksiyonu calistirilmali print.js de
 
@@ -9,7 +9,7 @@ function setCheckButtons() {
     button.addEventListener('click', () => {
       event.stopImmediatePropagation();
       const todo = findToDoItem(button.getAttribute('data-todo-check-btn-id'));
-      console.log('Button Id: ', todo);
+      console.log('Button Id: ', todo.id);
       toggleCompleted(todo);
       completedUpdateFront(todo);
       setDB(toDoArray, false);
