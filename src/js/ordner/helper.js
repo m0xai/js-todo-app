@@ -1,6 +1,5 @@
-import { ordners } from './ordner.js';
-
-function setInputOrdners() {
+function setInputOrdners(ordners) {
+  console.log('Ordners in setInputOrdners: ', ordners);
   const ordnersInput = document.getElementById('todo-ordner-input');
   ordners.forEach((ordner) => {
     ordnersInput.insertAdjacentHTML(

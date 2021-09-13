@@ -12,7 +12,7 @@ import {
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.
   console.log(countToDos(toDos).erledigteToDos, ' Erledigt...');
-  console.log(countToDos(toDos).totalToDos, ' Erledigt...');
+  console.log(countToDos(toDos).totalToDos, ' Total.');
   clearMainWrapper(toDos);
 
   toDos.forEach((toDo) => {

@@ -1,9 +1,6 @@
-// import { setLS } from '../mainHelpers.js';
 import { setInputOrdners } from './helper.js';
-
-let ordners = JSON.parse(localStorage.getItem('ordners')) || [];
-
-setInputOrdners();
+import { ordners, setDB } from '../db/db.js';
+import { addClickEventToOrdners } from '../filter/ordner.js';
 
 const addOrdnerFormSendenButton = document.getElementById(
   'add-ornder-form-senden-btn'
@@ -21,21 +18,21 @@ function getOrdner() {
   let getOrdnerInput = () => document.getElementById('form-add-ordner-name');
   console.log('New Ordner:', getOrdnerInput().value);
   createOrdner(getOrdnerInput().value);
-  printFront();
+  printFront(ordners);
   clearForm(getOrdnerInput());
-  setInputOrdners();
+  setInputOrdners(ordners);
 }
 
 function createOrdner(input) {
   const newOrdner = new ordnerClass(input, Date.now());
   ordners.push(newOrdner);
   console.log('New ordner obj', newOrdner);
-  // setLS('ordners', ordners);
-  console.log(ordners);
+  setDB(false, ordners);
+  console.log('ordners from DB', ordners);
   return newOrdner;
 }
 
-function printFront() {
+function printFront(ordners) {
   const customOrdners = document.getElementById('custom-ordners');
   customOrdners.innerHTML = '';
   ordners.forEach((ordner) => {
@@ -46,11 +43,16 @@ function printFront() {
       }</a>`
     );
   });
+  addClickEventToOrdners();
 }
-printFront();
-
 function clearForm(param) {
   param.value = '';
 }
 
-export { ordners };
+function setOrdners(ordners) {
+  printFront(ordners);
+  setInputOrdners(ordners);
+  addClickEventToOrdners();
+}
+
+export { printFront, setOrdners };

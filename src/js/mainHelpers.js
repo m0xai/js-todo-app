@@ -100,7 +100,7 @@ function deleteToDoFromArr(id) {
   );
   console.log('To delete', delItem);
   toDoArray.splice(delItem, 1);
-  setDB(toDoArray);
+  setDB(toDoArray, false);
 }
 
 function attachEventSidebarLinks() {
