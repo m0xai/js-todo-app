@@ -125,7 +125,6 @@ function setActiveLink(e) {
 export {
   inputItems,
   neueToDoButton,
-  toDoArray,
   toDosWrapper,
   findToDoItem,
   thisToDoEl,

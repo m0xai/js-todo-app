@@ -8,6 +8,12 @@ import { printToDos } from './print/print.js';
 import { setEditButtons } from './edit/helper.js';
 import { filterNachFarbe } from './filter/color.js';
 import { filterNachOrdner } from './filter/ordner.js';
+import {
+  todosOfDay,
+  todosOfMonth,
+  todosOfThisWeek,
+  todosOfTomorrow,
+} from './filter/date.js';
 import '../css/main.css';
 
 //TODO: Reformat date due date and Erstellungsdatum with words via date-fns
