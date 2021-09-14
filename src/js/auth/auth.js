@@ -7,7 +7,6 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { getDB } from '../db/db.js';
-import { setInputOrdners } from '../ordner/helper.js';
 
 import { useRouter } from './helper.js';
 
@@ -36,8 +35,8 @@ onAuthStateChanged(auth, (user) => {
     console.log(user.uid, 'in now in!');
     currentUserId = user.uid;
     changeFrontOnLogin(user);
-    getDB(user.uid, 'toDoArray');
-    getDB(user.uid, 'ordners');
+    getDB(user.uid, 'toDoArray', true);
+    getDB(user.uid, 'ordners', true);
   } else {
     handleSignIn();
     console.log('No one is here!');
@@ -74,6 +73,10 @@ function changeFrontOnLogin(user) {
   console.log('User on changeFrontOnLogin:', user.displayName);
 
   if (window.location.pathname == '/app.html') {
+    const sidebarAlle = document.getElementById('sidebar-alle');
+    sidebarAlle.addEventListener('click', () => {
+      getDB(user.uid, 'toDoArray');
+    });
     console.log('Location:', document.location);
     const userNameNav = document.getElementById('navbar-user-name');
     userNameNav.innerText = user.displayName;

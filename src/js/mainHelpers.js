@@ -73,7 +73,7 @@ function findToDoItem(id) {
   return toDoArray.find((item) => item.id == id);
 }
 
-// Delete To Do item driver
+// Delete To Do item HOF
 function deleteToDo(el, id) {
   document
     .querySelector(`[data-todo-del-btn="${id}"]`)
@@ -88,19 +88,18 @@ function deleteToDo(el, id) {
 
 // Remove item from parent node
 function deleteToDoFromFront(el) {
-  const parent = el.parentNode;
   console.log('this el gonne be dle', el);
-  parent.removeChild(el);
+  el.parentNode.removeChild(el);
 }
 
 // Remove item from array
 function deleteToDoFromArr(id) {
-  let delItem = toDoArray.indexOf(
+  let delItemIndex = toDoArray.indexOf(
     toDoArray.find((element) => element.id == id)
   );
-  console.log('To delete', delItem);
-  toDoArray.splice(delItem, 1);
-  setDB(toDoArray, false);
+  console.log('To delete', delItemIndex);
+  toDoArray.splice(delItemIndex, 1);
+  setDB(toDoArray, false, true);
 }
 
 function attachEventSidebarLinks() {

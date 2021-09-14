@@ -31,7 +31,7 @@ function setNeueInputs(e) {
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
   // setLS('todos', toDoArray);
-  setDB(toDoArray, false);
+  setDB(toDoArray, false, true);
   detachCurrentId('submit-todo-button');
 }
 

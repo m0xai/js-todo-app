@@ -7,11 +7,13 @@ function clearMainWrapper(toDos) {
   return (toDosWrapper.innerHTML = `
   <div id="uncompleted-wrapper">
   </div>
-  <div id="completed-wrapper" class="d-flex align-items-center">
-  <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Erledigte Aufgaben</h3>
-  <span class="badge badge-success ml-10">${countToDos(toDos).erledigteToDos}/${
-    countToDos(toDos).totalToDos
-  }</span>
+  <div id="completed-wrapper">
+    <div id="completed-title-wrapper" class="d-flex align-items-center"> 
+      <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Erledigte Aufgaben</h3>
+      <span class="badge badge-success ml-10">${
+        countToDos(toDos).erledigteToDos
+      }/${countToDos(toDos).totalToDos}</span>
+    </div>
   </div>
   `);
 }
@@ -22,8 +24,9 @@ const completedWrapper = () => document.getElementById('completed-wrapper');
 function seperateItemsForStatus(todo) {
   if (!todo.isCompleted) {
     unCompletedWrapper().insertAdjacentHTML('afterbegin', printItems(todo));
-  } else {
-    completedWrapper().insertAdjacentHTML('afterend', printItems(todo));
+  }
+  if (todo.isCompleted) {
+    completedWrapper().insertAdjacentHTML('beforeend', printItems(todo));
   }
 }
 
@@ -123,4 +126,11 @@ function updateNavStatus(done, total) {
   menubarStatusSpan.textContent = done + '/' + total;
 }
 
-export { countToDos, clearMainWrapper, printItems, seperateItemsForStatus };
+export {
+  countToDos,
+  clearMainWrapper,
+  printItems,
+  seperateItemsForStatus,
+  completedWrapper,
+  unCompletedWrapper,
+};

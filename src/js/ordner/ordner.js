@@ -1,6 +1,7 @@
 import { setInputOrdners } from './helper.js';
 import { ordners, setDB } from '../db/db.js';
 import { addClickEventToOrdners } from '../filter/ordner.js';
+import folderIcon from '../../img/folder.svg';
 
 const addOrdnerFormSendenButton = document.getElementById(
   'add-ornder-form-senden-btn'
@@ -27,7 +28,7 @@ function createOrdner(input) {
   const newOrdner = new ordnerClass(input, Date.now());
   ordners.push(newOrdner);
   console.log('New ordner obj', newOrdner);
-  setDB(false, ordners);
+  setDB(false, ordners, true);
   console.log('ordners from DB', ordners);
   return newOrdner;
 }
@@ -38,7 +39,7 @@ function printFront(ordners) {
   ordners.forEach((ordner) => {
     customOrdners.insertAdjacentHTML(
       'beforeend',
-      `<a href="#" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner">${
+      `<img src="${folderIcon}" alt="Ordner Icon"><a href="#" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner">${
         ordner.name
       }</a>`
     );

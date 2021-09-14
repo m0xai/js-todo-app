@@ -35,7 +35,7 @@ function sendToDo() {
   console.log('To Do Array, just before new todo sending', toDoArray);
   createToDo();
   pushToArray(createToDo);
-  setDB(toDoArray, false);
+  setDB(toDoArray, false, true);
   printToDos(toDoArray);
 }
 

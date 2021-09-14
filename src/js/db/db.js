@@ -8,7 +8,7 @@ const db = getDatabase();
 let toDoArray = [];
 let ordners = [];
 
-function setDB(todos, ordners) {
+function setDB(todos, ordners, isPrint) {
   if (todos) {
     todos.forEach((todo) =>
       set(ref(db, 'users/' + currentUserId + '/toDos/' + todo.id), {
@@ -23,7 +23,7 @@ function setDB(todos, ordners) {
         isCompleted: todo.isCompleted,
       })
     );
-    getDB(currentUserId, 'toDoArray');
+    isPrint ? getDB(currentUserId, 'toDoArray') : console.log('Not getting DB');
   }
   if (ordners) {
     ordners.forEach((ordner) =>
