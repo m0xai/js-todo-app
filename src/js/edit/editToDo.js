@@ -34,5 +34,4 @@ function setNeueInputs(e) {
   setDB(toDoArray, false, true);
   detachCurrentId('submit-todo-button');
 }
-
 export { setNeueInputs, getCurrentInputs };

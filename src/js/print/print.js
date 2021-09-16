@@ -20,13 +20,14 @@ function printToDos(toDos) {
     thisToDoEl(toDo.id);
     thisToDoId(toDo.id);
     toggleItemDetails(toDo.id);
-    deleteToDo(thisToDoEl(toDo.id), toDo.id);
+    // deleteToDo(thisToDoEl(toDo.id), toDo.id);
     setCheckButtons();
 
     if (toDo.isCompleted) {
       completedUpdateFront(toDo);
     }
   });
+  deleteToDo();
   setEditButtons();
 }
 

@@ -1,5 +1,5 @@
 // Init ToDo Array
-import { setDB, toDoArray } from './db/db.js';
+import { setDB, toDoArray, removeItem } from './db/db.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -37,7 +37,7 @@ const datumEingabeSwitchLabel = document.getElementById(
 );
 datumEingabeSwitchLabel.addEventListener('click', toggleDatumInput);
 
-function toggleDatumInput(e) {
+function toggleDatumInput() {
   console.log(inputItems.endDatumSwitch());
   if (inputItems.endDatumSwitch().checked == false) {
     inputItems.endDatumSwitch().setAttribute('checked', 'true');
@@ -58,12 +58,10 @@ function activateDatumInput(switchInput) {
     datumEingabe().setAttribute('disabled', 'disabled');
   }
 }
-
 // Get this To-Do item
 function thisToDoEl(id) {
   return document.querySelector(`[data-todo-id="${id}"]`);
 }
-
 // Get this To-Do Id on create
 function thisToDoId(id) {
   return id;
@@ -74,34 +72,32 @@ function findToDoItem(id) {
 }
 
 // Delete To Do item HOF
-function deleteToDo(el, id) {
-  document
-    .querySelector(`[data-todo-del-btn="${id}"]`)
-    .addEventListener('click', () => {
-      // Prevent click event, inherited from parent element
-      event.stopImmediatePropagation();
+function deleteToDo() {
+  const delButtons = document.querySelectorAll(`[data-todo-del-btn]`);
 
-      deleteToDoFromFront(el);
-      deleteToDoFromArr(id);
-    });
+  delButtons.forEach((button) =>
+    button.addEventListener('click', delItemPermanent)
+  );
+  function delItemPermanent(e) {
+    // Prevent click event, inherited from parent element
+    e.stopImmediatePropagation();
+    deleteToDoFromFront(e);
+    deleteToDoFromArr(e);
+  }
 }
 
 // Remove item from parent node
-function deleteToDoFromFront(el) {
+function deleteToDoFromFront(e) {
+  const el = e.target;
   console.log('this el gonne be dle', el);
   el.parentNode.removeChild(el);
 }
 
 // Remove item from array
-function deleteToDoFromArr(id) {
-  let delItemIndex = toDoArray.indexOf(
-    toDoArray.find((element) => element.id == id)
-  );
-  console.log('To delete', delItemIndex);
-  toDoArray.splice(delItemIndex, 1);
-  setDB(toDoArray, false, true);
+function deleteToDoFromArr(e) {
+  const id = e.target.getAttribute('data-todo-del-btn');
+  removeItem('toDoArray', id);
 }
-
 function attachEventSidebarLinks() {
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
   sidebarLinks().forEach((link) =>
@@ -126,7 +122,7 @@ export {
   neueToDoButton,
   toDosWrapper,
   findToDoItem,
-  thisToDoEl,
+  thisToDoEl,e
   thisToDoId,
   toggleDatumInput,
   deleteToDo,

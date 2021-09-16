@@ -58,4 +58,10 @@ function getDB(uid, array) {
   }
 }
 
-export { setDB, getDB, toDoArray, ordners };
+function removeItem(array, itemId) {
+  if (array == 'toDoArray') {
+    set(ref(db, 'users/' + currentUserId + '/toDos/' + itemId), null);
+  }
+}
+
+export { setDB, getDB, toDoArray, ordners, removeItem };

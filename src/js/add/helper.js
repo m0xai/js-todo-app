@@ -1,4 +1,9 @@
-import { inputItems, thisToDoEl, neueToDoButton, submitToDoButton } from '../mainHelpers.js';
+import {
+  inputItems,
+  thisToDoEl,
+  neueToDoButton,
+  submitToDoButton,
+} from '../mainHelpers.js';
 import { setNeueInputs } from '../edit/editToDo.js';
 import { sendToDo } from './newToDo.js';
 
@@ -26,7 +31,9 @@ function setItemFarbe(tag, el) {
 
 function toggleItemDetails(id) {
   thisToDoEl(id).addEventListener('click', () => {
-    document.querySelector(`[data-koerper-id="${id}"]`).classList.toggle('d-none');
+    document
+      .querySelector(`[data-koerper-id="${id}"]`)
+      .classList.toggle('d-none');
     const itemFuss = document.querySelector(`[data-fuss-id="${id}"]`);
     if (itemFuss.classList.contains('d-none')) {
       itemFuss.classList.remove('d-none');
