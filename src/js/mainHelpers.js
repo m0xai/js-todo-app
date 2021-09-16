@@ -87,8 +87,15 @@ function deleteToDo() {
 
 function delItemPermanent(id) {
   // Prevent click event, inherited from parent element
+  attachIdToButton(id);
   deleteToDoFromFront(id);
   deleteToDoFromArr(id);
+}
+
+function attachIdToButton(id) {
+  const fertigButton = document.getElementById('confirm-button-fertig');
+  fertigButton.setAttribute('data-confirm-fertig', id);
+  console.log('Fertig button id:', id);
 }
 // Delete item from Frontend:
 function deleteToDoFromFront(id) {

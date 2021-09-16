@@ -41,7 +41,7 @@ function getDB(uid, array) {
   if (array == 'toDoArray') {
     const dbRef = ref(db, 'users/' + uid + '/toDos/');
     onValue(dbRef, (snapshot) => {
-      const data = snapshot.val();
+      const data = snapshot.val() || [];
       toDoArray = Object.values(data);
       console.log('toDoArray in getDB', array);
       printToDos(toDoArray);
@@ -50,7 +50,7 @@ function getDB(uid, array) {
   if (array == 'ordners') {
     const dbRef = ref(db, 'users/' + uid + '/ordners/');
     onValue(dbRef, (snapshot) => {
-      const data = snapshot.val();
+      const data = snapshot.val() || [];
       ordners = Object.values(data);
       console.log('Ordners in getDB', ordners);
       setOrdners(ordners);

@@ -33,8 +33,9 @@
         </p>
         <div class="d-flex justify-content-end mt-20">
           <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-          <button class="btn mr-5" data-dismiss="modal" role="button">Nein</button>
-          <button class="btn btn-primary" data-dismiss="modal" role="button">Ja</button>
+          <button class="btn mr-5" data-dismiss="modal" role="button">Abbrechnen</button>
+          <button class="btn btn-primary" id="confirm-button-fertig" data-dismiss="modal"
+            roll="button">Fertig</button>
         </div>
       </div>
     </div>
@@ -92,7 +93,7 @@
           <!-- Multi-select -->
           <div class="form-group">
             <label for="todo-tag-input">Wähle ein Tag aus</label>
-              <select class=" form-control" id="todo-tag-input" multiple="multiple" size="5">
+            <select class=" form-control" id="todo-tag-input" multiple="multiple" size="5">
               <option data-tag-color="keine" value="keine" selected>Keine</option>
               <option data-tag-color="gruen" value="gruen">Grün</option>
               <option data-tag-color="rot" value="rot">Rot</option>
@@ -102,7 +103,7 @@
               <option data-tag-color="violett" value="violett">Violett</option>
               <option data-tag-color="braun" value="braun">Braun</option>
               <option data-tag-color="rosa" value="rosa">Rosa</option>
-              </select>
+            </select>
           </div>
 
           <!-- Textarea -->
@@ -134,7 +135,7 @@
 
   <!-- Page wrapper start -->
   <div class="page-wrapper with-navbar with-sidebar">
- Sticky alerts (toasts), empty container -->
+    Sticky alerts (toasts), empty container -->
     <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
     <div class="sticky-alerts"></div>
 
@@ -188,7 +189,7 @@
       </ul>
     </nav>
     <!-- Navbar end -->
-                  </a>
+    </a>
 
     <!-- Sidebar start -->
     <div class="sidebar">
