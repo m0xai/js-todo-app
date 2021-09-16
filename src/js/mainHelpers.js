@@ -54,14 +54,17 @@ function activateDatumInput(switchInput) {
     datumEingabe().removeAttribute('disabled');
   }
   // Das Logik und Frontend funktioniert umgekehrt aber funktioniert :)
+
   if (switchInput().checked == true) {
     datumEingabe().setAttribute('disabled', 'disabled');
   }
 }
+
 // Get this To-Do item
 function thisToDoEl(id) {
   return document.querySelector(`[data-todo-id="${id}"]`);
 }
+
 // Get this To-Do Id on create
 function thisToDoId(id) {
   return id;
@@ -86,26 +89,23 @@ function deleteToDo() {
 }
 
 function delItemPermanent(id) {
-  // Prevent click event, inherited from parent element
   attachIdToButton(id);
-  deleteToDoFromFront(id);
-  deleteToDoFromArr(id);
 }
 
 function attachIdToButton(id) {
   const fertigButton = document.getElementById('confirm-button-fertig');
   fertigButton.setAttribute('data-confirm-fertig', id);
   console.log('Fertig button id:', id);
-}
-// Delete item from Frontend:
-function deleteToDoFromFront(id) {
-  console.log('this el gonne be dle', id);
+  fertigButton.addEventListener('click', () => {
+    deleteToDoFromArr(id);
+  });
 }
 
 // Remove item from array
 function deleteToDoFromArr(id) {
   removeItem('toDoArray', id);
 }
+
 function attachEventSidebarLinks() {
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
   sidebarLinks().forEach((link) =>
