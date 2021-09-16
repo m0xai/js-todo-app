@@ -1,7 +1,7 @@
 import { setInputOrdners } from './helper.js';
 import { ordners, setDB } from '../db/db.js';
 import { addClickEventToOrdners } from '../filter/ordner.js';
-import folderIcon from '../../img/folder.svg';
+import folderIcon from '../../img/icons/folder.svg'
 
 const addOrdnerFormSendenButton = document.getElementById(
   'add-ornder-form-senden-btn'

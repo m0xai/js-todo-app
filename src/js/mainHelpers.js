@@ -1,5 +1,5 @@
 // Init ToDo Array
-import { setDB, toDoArray, removeItem } from './db/db.js';
+import { toDoArray, removeItem } from './db/db.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -75,27 +75,28 @@ function findToDoItem(id) {
 function deleteToDo() {
   const delButtons = document.querySelectorAll(`[data-todo-del-btn]`);
 
-  delButtons.forEach((button) =>
-    button.addEventListener('click', delItemPermanent)
-  );
-  function delItemPermanent(e) {
-    // Prevent click event, inherited from parent element
-    e.stopImmediatePropagation();
-    deleteToDoFromFront(e);
-    deleteToDoFromArr(e);
-  }
+  delButtons.forEach((button) => {
+    const id = button.getAttribute('data-todo-del-btn');
+    console.log('Getting id from button', id);
+    button.addEventListener('click', function () {
+      console.log('Called before click?');
+      delItemPermanent(id);
+    });
+  });
 }
 
-// Remove item from parent node
-function deleteToDoFromFront(e) {
-  const el = e.target;
-  console.log('this el gonne be dle', el);
-  el.parentNode.removeChild(el);
+function delItemPermanent(id) {
+  // Prevent click event, inherited from parent element
+  deleteToDoFromFront(id);
+  deleteToDoFromArr(id);
+}
+// Delete item from Frontend:
+function deleteToDoFromFront(id) {
+  console.log('this el gonne be dle', id);
 }
 
 // Remove item from array
-function deleteToDoFromArr(e) {
-  const id = e.target.getAttribute('data-todo-del-btn');
+function deleteToDoFromArr(id) {
   removeItem('toDoArray', id);
 }
 function attachEventSidebarLinks() {
@@ -122,7 +123,7 @@ export {
   neueToDoButton,
   toDosWrapper,
   findToDoItem,
-  thisToDoEl,e
+  thisToDoEl,
   thisToDoId,
   toggleDatumInput,
   deleteToDo,
