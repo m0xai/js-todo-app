@@ -1,4 +1,4 @@
-import { thisToDoEl, thisToDoId, deleteToDo } from '../mainHelpers.js';
+import { thisToDoEl, thisToDoId } from '../mainHelpers.js';
 import { setItemFarbe, toggleItemDetails } from '../add/helper.js';
 import { setEditButtons } from '../edit/helper.js';
 import { setCheckButtons, completedUpdateFront } from '../filter/completed.js';
@@ -7,6 +7,7 @@ import {
   seperateItemsForStatus,
   countToDos,
 } from './helper.js';
+import { deleteToDo } from '../delete.js';
 
 function printToDos(toDos) {
   // Reset ToDos Wrapper to add only new items every time.

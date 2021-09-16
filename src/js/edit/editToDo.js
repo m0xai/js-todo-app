@@ -1,4 +1,4 @@
-import { inputItems, findToDoItem } from '../mainHelpers.js';
+import { inputItems, findToDoItem, toastSuccessAlert } from '../mainHelpers.js';
 import { attachCurrentId, detachCurrentId } from './helper.js';
 import { setDB, toDoArray } from '../db/db.js';
 
@@ -30,8 +30,8 @@ function setNeueInputs(e) {
   thisToDo.endDatum = inputItems.endDatum().value;
   thisToDo.endDatumSwitch = inputItems.endDatumSwitch().checked;
   thisToDo.endDatumDisabled = inputItems.endDatum().disabled;
-  // setLS('todos', toDoArray);
   setDB(toDoArray, false, true);
+  toastSuccessAlert('Aufgabe', 'hinzugefügt');
   detachCurrentId('submit-todo-button');
 }
 export { setNeueInputs, getCurrentInputs };

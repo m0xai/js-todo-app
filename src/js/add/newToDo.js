@@ -1,4 +1,4 @@
-import { inputItems } from '../mainHelpers.js';
+import { inputItems, toastSuccessAlert } from '../mainHelpers.js';
 import { printToDos } from '../print/print.js';
 import { setDB, toDoArray } from '../db/db.js';
 
@@ -35,6 +35,7 @@ function sendToDo() {
   console.log('To Do Array, just before new todo sending', toDoArray);
   createToDo();
   pushToArray(createToDo);
+  toastSuccessAlert('Aufgabe', 'hinzugefügt');
   setDB(toDoArray, false, true);
   printToDos(toDoArray);
 }

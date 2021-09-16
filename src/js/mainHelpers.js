@@ -1,5 +1,6 @@
 // Init ToDo Array
 import { toDoArray, removeItem } from './db/db.js';
+import halfmoon from 'halfmoon';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -74,36 +75,14 @@ function findToDoItem(id) {
   return toDoArray.find((item) => item.id == id);
 }
 
-// Delete To Do item HOF
-function deleteToDo() {
-  const delButtons = document.querySelectorAll(`[data-todo-del-btn]`);
-
-  delButtons.forEach((button) => {
-    const id = button.getAttribute('data-todo-del-btn');
-    console.log('Getting id from button', id);
-    button.addEventListener('click', function () {
-      console.log('Called before click?');
-      delItemPermanent(id);
-    });
+function toastSuccessAlert(itemType, proccess) {
+  console.log('Toast fired!');
+  halfmoon.initStickyAlert({
+    content: `Ihre ${itemType} wurde erfolgreich ${proccess}.`,
+    title: 'Erfolgreich!',
+    alertType: 'alert-success',
+    fillType: 'filled',
   });
-}
-
-function delItemPermanent(id) {
-  attachIdToButton(id);
-}
-
-function attachIdToButton(id) {
-  const fertigButton = document.getElementById('confirm-button-fertig');
-  fertigButton.setAttribute('data-confirm-fertig', id);
-  console.log('Fertig button id:', id);
-  fertigButton.addEventListener('click', () => {
-    deleteToDoFromArr(id);
-  });
-}
-
-// Remove item from array
-function deleteToDoFromArr(id) {
-  removeItem('toDoArray', id);
 }
 
 function attachEventSidebarLinks() {
@@ -133,7 +112,7 @@ export {
   thisToDoEl,
   thisToDoId,
   toggleDatumInput,
-  deleteToDo,
   submitToDoButton,
   setActiveLink,
+  toastSuccessAlert,
 };
