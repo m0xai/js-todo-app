@@ -115,6 +115,13 @@ function countTotalToDos() {
   let total = toDoArray.length;
   let done = toDoArray.filter((item) => item.isCompleted == true).length;
   updateNavStatus(done, total);
+  const itemsEl = document.getElementById('content-header');
+  if (done == 0) {
+    itemsEl.textContent = 'Workingggg!!!!!';
+  }
+  return {
+    total,
+  };
 }
 
 function updateNavStatus(done, total) {
