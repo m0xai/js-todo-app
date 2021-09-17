@@ -24,5 +24,6 @@ function filterNachOrdner(e) {
   };
   console.log('Listing', sameOrdnerItems(), 'ordnered item');
   printToDos(sameOrdnerItems());
+  showRemoveOrdnerBtn();
 }
 export { filterNachOrdner, addClickEventToOrdners };

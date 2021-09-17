@@ -1,7 +1,7 @@
 import { setInputOrdners } from './helper.js';
 import { ordners, setDB } from '../db/db.js';
 import { addClickEventToOrdners } from '../filter/ordner.js';
-import folderIcon from '../../img/icons/folder.svg'
+import folderIcon from '../../img/icons/folder.svg';
 
 const addOrdnerFormSendenButton = document.getElementById(
   'add-ornder-form-senden-btn'
@@ -39,9 +39,9 @@ function printFront(ordners) {
   ordners.forEach((ordner) => {
     customOrdners.insertAdjacentHTML(
       'beforeend',
-      `<img src="${folderIcon}" alt="Ordner Icon"><a href="#" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner">${
-        ordner.name
-      }</a>`
+      `<a href="#" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner d-flex">
+    <img src="${folderIcon}" style="margin-right:10px" alt="Ordner Icon"> 
+      ${ordner.name}</a>`
     );
   });
   addClickEventToOrdners();

@@ -1,6 +1,7 @@
 // Init ToDo Array
-import { toDoArray, removeItem } from './db/db.js';
+import { toDoArray } from './db/db.js';
 import halfmoon from 'halfmoon';
+import darkModeIcon from './imgImporter.js';
 
 const toDosWrapper = document.getElementById('todos-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -25,6 +26,7 @@ const inputItems = {
   if (dd < 10) {
     dd = '0' + dd;
   }
+
   if (mm < 10) {
     mm = '0' + mm;
   }
@@ -75,6 +77,7 @@ function findToDoItem(id) {
   return toDoArray.find((item) => item.id == id);
 }
 
+// Show success alert after an action
 function toastSuccessAlert(itemType, proccess) {
   console.log('Toast fired!');
   halfmoon.initStickyAlert({

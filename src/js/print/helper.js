@@ -2,8 +2,8 @@ import { toDosWrapper } from '../mainHelpers.js';
 import { toDoArray } from '../db/db.js';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
-import deleteIcon from '../../img/icons/delete.svg' 
-import editIcon from  '../../img/icons/edit.svg' 
+import { delIcon } from '../imgImporter.js';
+import { editIcon } from '../imgImporter.js';
 
 function clearMainWrapper(toDos) {
   return (toDosWrapper.innerHTML = `
@@ -85,8 +85,10 @@ function printItems(toDo) {
                   }">
                   <img src="${editIcon}" alt="Bearbeitungs Icon"> 
                   </a>
-                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-confirm')" data-todo-del-btn="${toDo.id}">
-                  <img src="${deleteIcon}" alt="Loeschen Icon"> 
+                  <a href="#" class="btn" onclick="halfmoon.toggleModal('modal-confirm')" data-todo-del-btn="${
+                    toDo.id
+                  }">
+                  <img src="${delIcon}" alt="Loeschen Icon"> 
                   </a>
                 </div>
               </div>

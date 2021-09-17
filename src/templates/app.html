@@ -132,7 +132,6 @@
   </div>
   <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
 
-
   <!-- Page wrapper start -->
   <div class="page-wrapper with-navbar with-sidebar">
     Sticky alerts (toasts), empty container -->
@@ -143,30 +142,24 @@
     <nav class="navbar">
       <!-- Navbar content (with toggle sidebar button) -->
       <div class="navbar-content">
-        <button class="btn btn-action" type="button" onclick="halfmoon.toggleSidebar()">
-          <i class="fa fa-bars" aria-hidden="true"></i>
+        <button class="btn btn-action d-flex align-items-center justify-content-center"
+          id="sidebar-toggle-btn" type="button" onclick="halfmoon.toggleSidebar()">
           <span class="sr-only">Toggle sidebar</span> <!-- sr-only = show only on screen readers -->
         </button>
       </div>
       <!-- Navbar brand -->
-      <a href="#" class="navbar-brand">
-        <img src="https://www.gethalfmoon.com/static/halfmoon/img/hm-logo.svg" alt="...">
+      <a href="#" id="navbar-logo"
+        class="navbar-brand d-flex  align-items-center justify-content-between">
+        <h1 class="font-size-16 m-0 text-uppercase font-weight-bold">ZU-TUN</h1>
       </a>
-      <!-- Navbar text -->
-      <span class="navbar-text text-monospace">Beta</span>
-      <!-- text-monospace = font-family shifted to monospace -->
-      <!-- Navbar nav -->
-      <button class="btn btn-action d-flex justify-content-center align-items-center" type="button"
-        onclick="halfmoon.toggleDarkMode()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-          fill="none" stroke="rgb(255, 204, 0)" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
-      <button class="btn btn-primary" type="button" id="sign-in-button">Sign In</button>
       <!-- Navbar left -->
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item d-flex align-items-center">
+          <button id="toggle-dark-mode"
+            class="btn btn-action d-flex justify-content-center align-items-center" type="button"
+            onclick="halfmoon.toggleDarkMode()">
+          </button>
+        </li>
         <li class="nav-item dropdown with-arrow">
           <a class="nav-link" data-toggle="dropdown" data-nav-user-name="username"
             id="nav-link-dropdown-toggle">
@@ -189,7 +182,6 @@
       </ul>
     </nav>
     <!-- Navbar end -->
-    </a>
 
     <!-- Sidebar start -->
     <div class="sidebar">
@@ -206,7 +198,7 @@
           <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="study">/ Andere</a>
         </div>
         <br />
-        <h5 class="sidebar-title">Due</h5>
+        <h5 class="sidebar-title">Frist</h5>
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-link" data-sidebar-due="heute">Heute</a>
         <a href="#" class="sidebar-link" data-sidebar-due="morgen">Morgen</a>

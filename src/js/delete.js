@@ -1,5 +1,5 @@
-import { showToast } from './mainHelpers';
-import { removeItem } from './db/db';
+import { removeItem } from './db/db.js';
+import { toastSuccessAlert } from './mainHelpers.js';
 
 // Delete To Do item HOF
 function deleteToDo() {
@@ -25,7 +25,7 @@ function attachIdToButton(id) {
   console.log('Fertig button id:', id);
   fertigButton.addEventListener('click', () => {
     deleteToDoFromArr(id);
-    showToast('Aufgabe', 'gelöscht');
+    toastSuccessAlert('Aufgabe', 'gelöscht');
   });
 }
 
