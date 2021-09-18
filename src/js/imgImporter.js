@@ -1,8 +1,9 @@
 import darkModeIcon from '../img/icons/moon.svg';
 import delIcon from '../img/icons/delete.svg';
 import editIcon from '../img/icons/edit.svg';
-import menuIcon from '../img/icons/menu.svg';
 import logo from '../img/icons/logo.svg';
+import menuIcon from '../img/icons/menu.svg';
+import menuIconLight from '../img/icons/menuLight.svg';
 
 // Init Image Creator Function
 function imgMaker(url, parentId) {
@@ -14,10 +15,10 @@ function imgMaker(url, parentId) {
 }
 
 // Invoke Function for each element and parent
-const iconUrls = [darkModeIcon, menuIcon, logo];
-const iconParents = ['toggle-dark-mode', 'sidebar-toggle-btn', 'navbar-logo'];
+const iconUrls = [darkModeIcon, logo];
+const iconParents = ['toggle-dark-mode', 'navbar-logo'];
 for (let i = 0; i < iconParents.length; i++) {
   imgMaker(iconUrls[i], iconParents[i]);
 }
 
-export { delIcon, editIcon };
+export { delIcon, editIcon, menuIconLight, menuIcon };

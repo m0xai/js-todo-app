@@ -1,9 +1,10 @@
 // Init ToDo Array
 import { toDoArray } from './db/db.js';
 import halfmoon from 'halfmoon';
-import darkModeIcon from './imgImporter.js';
+import { menuIconLight } from './imgImporter.js';
+import { menuIcon } from './imgImporter.js';
 
-const toDosWrapper = document.getElementById('todos-wrapper');
+const toDosWrapper = document.getElementById('todos-list-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
 const submitToDoButton = document.getElementById('submit-todo-button');
 
@@ -107,6 +108,44 @@ function setActiveLink(e) {
   });
 }
 
+// Print Hinweise on empty account
+function printOnEmpty(done) {
+  const itemsEl = document.getElementById('todos-wrapper');
+  if (done == 3) {
+    itemsEl.innerHTML = `<div id='todos-list-wrapper'>
+      <div id='emptyListWrapper'>
+        <h3>Sie haben keine Aufgabe hinzugefügt</h3>
+        <p>
+          Sie können mit "+ Neue Aufgabe" button sofort eine Aufgabe hier
+          eintragen
+        </p>
+        <ol>
+          <li>Sie können Ihre Aufgabe kurz bennen.</li>
+          <li>Jede Aufgabe kann Ihre persönliche Orner einordnen.</li>
+          <li>Mit der Farben können Sie sie auch kategorisieren.</li>
+          <li>Ihre Aufgaben können mit Notizen veranschaulicht werden.</li>
+          <li>Sie können ein Frist feststellen.</li>
+        </ol>
+      </div>
+    </div>`;
+  }
+}
+
+const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+if (halfmoon.getPreferredMode() == 'light-mode') {
+  const darkMenuIcon = document.createElement('img');
+  darkMenuIcon.src = menuIcon;
+  sidebarToggleBtn.appendChild(darkMenuIcon);
+  console.log('Light Mode is on');
+} else if (halfmoon.getPreferredMode() == 'dark-mode') {
+  const lightMenuIcon = document.createElement('img');
+  lightMenuIcon.src = menuIconLight;
+  sidebarToggleBtn.appendChild(lightMenuIcon);
+  console.log('Dark mode is on');
+} else if (halfmoon.getPreferredMode() == 'not-set') {
+  console.log('Dark mode is unset.');
+}
+
 export {
   inputItems,
   neueToDoButton,
@@ -118,4 +157,5 @@ export {
   submitToDoButton,
   setActiveLink,
   toastSuccessAlert,
+  printOnEmpty,
 };
