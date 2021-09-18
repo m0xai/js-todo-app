@@ -109,10 +109,10 @@ function setActiveLink(e) {
 }
 
 // Print Hinweise on empty account
-function printOnEmpty(total) {
-  const itemsEl = document.getElementById('todos-wrapper');
-  if (total == 3) {
-    itemsEl.innerHTML = `<div id='todos-list-wrapper'>
+function printOnEmpty(total, done) {
+  const itemsEl = document.getElementById('uncompleted-list-items');
+  if (total == 0) {
+    const emptyHTML = `<div id='todos-list-wrapper'>
       <div id='emptyListWrapper'>
         <h3>Sie haben keine Aufgabe hinzugefügt</h3>
         <p>
@@ -128,6 +128,7 @@ function printOnEmpty(total) {
         </ol>
       </div>
     </div>`;
+    itemsEl.innerHTML = emptyHTML;
   }
 }
 

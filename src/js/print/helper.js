@@ -1,34 +1,31 @@
-import { printOnEmpty, toDosWrapper } from '../mainHelpers.js';
+import { printOnEmpty } from '../mainHelpers.js';
 import { toDoArray } from '../db/db.js';
 import { formatDistanceToNow } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { delIcon } from '../imgImporter.js';
 import { editIcon } from '../imgImporter.js';
 
-function clearMainWrapper(toDos) {
-  return (toDosWrapper.innerHTML = `
-  <div id="uncompleted-wrapper">
-  </div>
-  <div id="completed-wrapper">
-    <div id="completed-title-wrapper" class="d-flex align-items-center"> 
-      <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Erledigte Aufgaben</h3>
-      <span class="badge badge-success ml-10">${
-        countToDos(toDos).erledigteToDos
-      }/${countToDos(toDos).totalToDos}</span>
-    </div>
-  </div>
-  `);
+const unCompletedList = () => document.getElementById('uncompleted-list-items');
+const completedList = () => document.getElementById('completed-list-items');
+
+function clearItemLists() {
+  unCompletedList().innerHTML = '';
+  completedList().innerHTML = '';
 }
 
-const unCompletedWrapper = () => document.getElementById('uncompleted-wrapper');
-const completedWrapper = () => document.getElementById('completed-wrapper');
+function printCountInBadge(toDos) {
+  const badge = document.getElementById('print-count-onBadge');
+  badge.innerText = `${countToDos(toDos).erledigteToDos}/${
+    countToDos(toDos).totalToDos
+  }`;
+}
 
 function seperateItemsForStatus(todo) {
   if (!todo.isCompleted) {
-    unCompletedWrapper().insertAdjacentHTML('afterbegin', printItems(todo));
+    unCompletedList().insertAdjacentHTML('afterbegin', printItems(todo));
   }
   if (todo.isCompleted) {
-    completedWrapper().insertAdjacentHTML('beforeend', printItems(todo));
+    completedList().insertAdjacentHTML('beforeend', printItems(todo));
   }
 }
 
@@ -115,7 +112,7 @@ function countTotalToDos() {
   let total = toDoArray.length;
   let done = toDoArray.filter((item) => item.isCompleted == true).length;
   updateNavStatus(done, total);
-  printOnEmpty(total);
+  printOnEmpty(total, done);
 }
 
 function updateNavStatus(done, total) {
@@ -125,9 +122,10 @@ function updateNavStatus(done, total) {
 
 export {
   countToDos,
-  clearMainWrapper,
   printItems,
+  printCountInBadge,
+  clearItemLists,
   seperateItemsForStatus,
-  completedWrapper,
-  unCompletedWrapper,
+  completedList,
+  unCompletedList,
 };

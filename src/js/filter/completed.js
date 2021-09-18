@@ -1,6 +1,6 @@
 import { setDB, toDoArray } from '../db/db.js';
 import { findToDoItem, thisToDoEl } from '../mainHelpers.js';
-import { completedWrapper, unCompletedWrapper } from '../print/helper.js';
+import { completedList, unCompletedList } from '../print/helper.js';
 //TODO: Frontend her seferinde bir tane itemin goruntusunu degistiriyor. bunun nedeni her defasidna listenin yenilenmesi ve sadece dokunulanin stil ozelliklerinin kalici olmasi. Print fonksiyonunun her tiklamda calismasi dogru ancak forEach.isCompleted fonksiyonu calistirilmali print.js de
 
 function setCheckButtons() {
@@ -29,12 +29,12 @@ function completedUpdateFront(todo) {
 }
 let changeItemPosition = (todo) => {
   const el = thisToDoEl(todo.id);
-  if (el.parentNode == unCompletedWrapper()) {
+  if (el.parentNode == unCompletedList()) {
     el.parentNode.removeChild(el);
-    completedWrapper().insertAdjacentElement('afterbegin', el);
+    completedList().insertAdjacentElement('afterbegin', el);
   } else {
     el.parentNode.removeChild(el);
-    unCompletedWrapper().insertAdjacentElement('afterbegin', el);
+    unCompletedList().insertAdjacentElement('afterbegin', el);
   }
 };
 
