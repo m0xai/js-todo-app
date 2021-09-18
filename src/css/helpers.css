@@ -54,12 +54,6 @@ button {
   animation: shine 1s infinite;
 }
 
-#down-arrow-icon {
-  font-size: 3rem;
-  margin-left: 10px;
-  margin-top: 13px;
-}
-
 @keyframes shine {
   to {
     background-position: 100% 0;

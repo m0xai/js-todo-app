@@ -46,7 +46,7 @@ button {
 }
 
 #navbar-user-name {
-  min-width: 180px;
+  min-width: 100px;
 }
 
 .skeleton:empty {
@@ -64,12 +64,6 @@ button {
   background-size: 50px 500px;
   background-position: 0 0;
   animation: shine 1s infinite;
-}
-
-#down-arrow-icon {
-  font-size: 3rem;
-  margin-left: 10px;
-  margin-top: 13px;
 }
 
 @keyframes shine {

@@ -1,8 +1,5 @@
 // Init ToDo Array
 import { toDoArray } from './db/db.js';
-import halfmoon from 'halfmoon';
-import { menuIconLight } from './imgImporter.js';
-import { menuIcon } from './imgImporter.js';
 
 const toDosWrapper = document.getElementById('todos-list-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
@@ -130,22 +127,6 @@ function printOnEmpty(total, done) {
     </div>`;
     itemsEl.innerHTML = emptyHTML;
   }
-}
-
-// Change icons on different light modes
-const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-if (halfmoon.getPreferredMode() == 'light-mode') {
-  const darkMenuIcon = document.createElement('img');
-  darkMenuIcon.src = menuIcon;
-  sidebarToggleBtn.appendChild(darkMenuIcon);
-  console.log('Light Mode is on');
-} else if (halfmoon.getPreferredMode() == 'dark-mode') {
-  const lightMenuIcon = document.createElement('img');
-  lightMenuIcon.src = menuIconLight;
-  sidebarToggleBtn.appendChild(lightMenuIcon);
-  console.log('Dark mode is on');
-} else if (halfmoon.getPreferredMode() == 'not-set') {
-  console.log('Dark mode is unset.');
 }
 
 export {
