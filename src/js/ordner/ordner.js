@@ -39,7 +39,9 @@ function printFront(ordners) {
   ordners.forEach((ordner) => {
     customOrdners.insertAdjacentHTML(
       'beforeend',
-      `<a href="#" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner d-flex">
+      `<a href="#" data-side-ordner-id="${
+        ordner.id
+      }" data-sidebar-ordner="${ordner.name.toLowerCase()}" class="sidebar-link sidebar-ordner d-flex">
     <img src="${folderIcon}" style="margin-right:10px" alt="Ordner Icon"> 
       ${ordner.name}</a>`
     );

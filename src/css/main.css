@@ -16,6 +16,10 @@
   }
 }
 
+a {
+  cursor: pointer;
+}
+
 .sidebar-farbe::before {
   display: inline-block;
   content: '';
@@ -68,4 +72,15 @@
 
 #completed-wrapper {
   margin-bottom: -20px;
+}
+
+#del-ordner-wrapper {
+  position: relative;
+  margin-top: 40px;
+}
+
+#del-ordner-wrapper a {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
 }

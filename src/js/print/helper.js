@@ -7,10 +7,12 @@ import { editIcon } from '../imgImporter.js';
 
 const unCompletedList = () => document.getElementById('uncompleted-list-items');
 const completedList = () => document.getElementById('completed-list-items');
+const delOrdnerWrapper = () => document.getElementById('del-ordner-wrapper');
 
 function clearItemLists() {
   unCompletedList().innerHTML = '';
   completedList().innerHTML = '';
+  delOrdnerWrapper().innerHTML = ''; // To prevent appending delete button on every Ordner click
 }
 
 function printCountInBadge(toDos) {
@@ -128,4 +130,5 @@ export {
   seperateItemsForStatus,
   completedList,
   unCompletedList,
+  delOrdnerWrapper,
 };
