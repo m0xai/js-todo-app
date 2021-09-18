@@ -109,9 +109,9 @@ function setActiveLink(e) {
 }
 
 // Print Hinweise on empty account
-function printOnEmpty(done) {
+function printOnEmpty(total) {
   const itemsEl = document.getElementById('todos-wrapper');
-  if (done == 3) {
+  if (total == 3) {
     itemsEl.innerHTML = `<div id='todos-list-wrapper'>
       <div id='emptyListWrapper'>
         <h3>Sie haben keine Aufgabe hinzugefügt</h3>
@@ -131,6 +131,7 @@ function printOnEmpty(done) {
   }
 }
 
+// Change icons on different light modes
 const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
 if (halfmoon.getPreferredMode() == 'light-mode') {
   const darkMenuIcon = document.createElement('img');

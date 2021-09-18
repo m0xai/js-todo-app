@@ -115,7 +115,7 @@ function countTotalToDos() {
   let total = toDoArray.length;
   let done = toDoArray.filter((item) => item.isCompleted == true).length;
   updateNavStatus(done, total);
-  printOnEmpty(done);
+  printOnEmpty(total);
 }
 
 function updateNavStatus(done, total) {
