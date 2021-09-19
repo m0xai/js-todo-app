@@ -13,7 +13,6 @@ module.exports = {
     app: './src/js/app.js',
     home: './src/js/home.js',
   },
-  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Dashboard | Zu Tun',
