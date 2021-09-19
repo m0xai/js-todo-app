@@ -23,7 +23,7 @@ body {
   font-size: 6rem;
   text-align: center;
   text-shadow: 0.05rem 0.05rem 0.1rem black;
-  margin: -10px !important;
+  margin: -5px !important;
 }
 
 .jumbo-title:last-child {
@@ -50,7 +50,7 @@ body {
   }
   .jumbo-title {
     font-size: 3rem;
-    margin: -5px !important;
+    margin: 0px !important;
   }
 
   #jumbo-subhead {
