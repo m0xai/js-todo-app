@@ -1,5 +1,5 @@
 import '../css/main.css';
-import lgJumboImageSrc from '../img/landscape-5426755_1280.jpg';
+import lgJumboImageSrc from '../img/home-mockup.png';
 
 import '../css/home.css';
 const hello = 'Hello World';
@@ -11,6 +11,7 @@ jumboImage.src = lgJumboImageSrc;
 jumboImage.alt = 'To Do App Screen Shot';
 jumboImage.loading = 'lazy';
 jumboImage.classList.add('img-fluid');
+jumboImage.setAttribute('id', 'home-jumbo-img');
 jumboImageWrapper.appendChild(jumboImage);
 
 const loslegenBtn = document.getElementById('loslegen-button');

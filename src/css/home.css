@@ -9,6 +9,11 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.content-wrapper:-webkit-scrollbar {
+  display: none;
 }
 
 #jumbo-section {
@@ -32,6 +37,10 @@ body {
 #loslegen-button {
   padding: 3rem 4rem;
   font-weight: bold;
+}
+
+#home-jumbo-img {
+  margin-bottom: 5rem;
 }
 
 /* For mobile visitors */
