@@ -72,6 +72,10 @@ button {
   }
 }
 
+#todo-endDatum-input {
+  margin-left: 20px;
+}
+
 @media (max-width: 768px) {
   .card-title {
     font-size: 16px;

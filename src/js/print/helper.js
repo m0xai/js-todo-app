@@ -1,7 +1,6 @@
 import { printOnEmpty } from '../mainHelpers.js';
 import { toDoArray } from '../db/db.js';
 import { formatDistanceToNow } from 'date-fns';
-import { de } from 'date-fns/locale';
 import { delIcon } from '../imgImporter.js';
 import { editIcon } from '../imgImporter.js';
 
@@ -70,11 +69,11 @@ function printItems(toDo) {
             <div class="dinge-fuss-links m-5">
               <span class="dinge-erstelltungs-datum text-muted font-size-12">${formatDistanceToNow(
                 new Date(toDo.id),
-                { locale: de, addSuffix: true }
+                { daddSuffix: true }
               )} erstellt.</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
-              <span class="badge badge-pill">/ ${toDo.ordner}</span>
+              <span class="badge badge-pill">${toDo.ordner}</span>
             </div>
             <div class="dinge-fuss-rechts m-5">
               <div class="ding-buttons">
