@@ -11,7 +11,7 @@
 
   <!-- Favicon and title -->
   <link rel="icon" href="path/to/fav.png">
-  <title>Starter template - Halfmoon</title>
+  <title>Dashboard | ZU-TUN</title>
 
 </head>
 
@@ -27,15 +27,15 @@
         <button class="close" data-dismiss="modal" type="button" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Möchten Sie es löschen?</h5>
+        <h5 class="modal-title">Do you really want to delete?</h5>
         <p>
-          Wenn Sie es einmal löschen, können Sie es nicht mehr zurückliegen.
+          If you delete this item, you can't replace it.
         </p>
         <div class="d-flex justify-content-end mt-20">
           <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-          <button class="btn mr-5" data-dismiss="modal" role="button">Abbrechnen</button>
+          <button class="btn mr-5" data-dismiss="modal" role="button">Cancel</button>
           <button class="btn btn-primary" id="confirm-button-fertig" data-dismiss="modal"
-            roll="button">Fertig</button>
+            roll="button">OK</button>
         </div>
       </div>
     </div>
@@ -48,17 +48,17 @@
         <button class="close" data-dismiss="modal" type="button" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Fügen Sie neuen Ornder hinzu</h5>
+        <h5 class="modal-title">Create new folder</h5>
         <div class="form-group">
-          <label for="form-add-ornder-name">Ornder Name</label>
+          <label for="form-add-ornder-name">Folder Name</label>
           <input type="text" class="form-control" name="ordner-name" id="form-add-ordner-name"
             placeholder="Geben Sie die Namen des Ordners">
         </div>
         <div class="d-flex justify-content-end mt-20">
           <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-          <button class="btn mr-5" data-dismiss="modal" type="button">Abbrechen</button>
+          <button class="btn mr-5" data-dismiss="modal" type="button">Cancel</button>
           <button id="add-ornder-form-senden-btn" class="btn btn-primary" data-dismiss="modal"
-            type="button">Fertig</button>
+            type="button">OK</button>
         </div>
       </div>
     </div>
@@ -71,61 +71,60 @@
         <a href="#" class="close" role="button" aria-label="Close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </a>
-        <h5 class="modal-title">Neue Aufgabe</h5>
+        <h5 class="modal-title">Add new Task</h5>
 
         <form class="w-400 mw-full">
           <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
           <!-- Input -->
           <div class="form-group">
-            <label for="todo-title-input" class="required">Aufgabe Titel</label>
+            <label for="todo-title-input" class="required">Task Title</label>
             <input type="text" class="form-control" id="todo-title-input"
-              placeholder="Beschriebe deine Aufgabe kurz" required="required">
+              placeholder="Describe this task with some words" required="required">
           </div>
 
           <!-- Waehle ein Ordner aus. -->
           <div class="form-group">
-            <label for="todo-ordner-input">Welche Orner sollte es angeheftet sein?</label>
+            <label for="todo-ordner-input">Choose a folder:</label>
             <select class="form-control" id="todo-ordner-input">
-              <option value="" disabled selected>Wähl ein Ordner</option>
+              <option value="" disabled selected>Select a folder</option>
             </select>
           </div>
 
           <!-- Multi-select -->
           <div class="form-group">
-            <label for="todo-tag-input">Wähle ein Tag aus</label>
+            <label for="todo-tag-input">Select a color tag</label>
             <select class=" form-control" id="todo-tag-input" multiple="multiple" size="5">
-              <option data-tag-color="keine" value="keine" selected>Keine</option>
-              <option data-tag-color="gruen" value="gruen">Grün</option>
-              <option data-tag-color="rot" value="rot">Rot</option>
-              <option data-tag-color="gelb" value="gelb">Gelb</option>
-              <option data-tag-color="blau" value="blau">Blau</option>
+              <option data-tag-color="keine" value="keine" selected>None</option>
+              <option data-tag-color="gruen" value="gruen">Green</option>
+              <option data-tag-color="rot" value="rot">Red</option>
+              <option data-tag-color="gelb" value="gelb">Yellow</option>
+              <option data-tag-color="blau" value="blau">Blue</option>
               <option data-tag-color="orange" value="orange">Orange</option>
-              <option data-tag-color="violett" value="violett">Violett</option>
-              <option data-tag-color="braun" value="braun">Braun</option>
-              <option data-tag-color="rosa" value="rosa">Rosa</option>
+              <option data-tag-color="violett" value="violett">Purple</option>
+              <option data-tag-color="braun" value="braun">Brown</option>
+              <option data-tag-color="rosa" value="rosa">Pink</option>
             </select>
           </div>
 
           <!-- Textarea -->
           <div class="form-group">
-            <label for="todo-notizen-input">Notizen</label>
+            <label for="todo-notizen-input">Notes</label>
             <textarea class="form-control" id="todo-notizen-input"
-              placeholder="Hier könnnen Sie weiter Informationen über Ihre Aufgabe aufschreiben."></textarea>
+              placeholder="Write your notes about this task to make it more understandable."></textarea>
           </div>
 
           <div class="custom-switch">
             <input type="checkbox" id="end-datum-switch">
-            <label for="end-datum-switch" id="end-datum-switch-label"
-              class="text-muted">Enddatum</label>
+            <label for="end-datum-switch" id="end-datum-switch-label" class="text-muted">Due</label>
           </div>
           <input type="date" id="todo-endDatum-input" name="todo-endDatum-input-name"
             max="2049-12-31" disabled>
         </form>
         <div class="text-right mt-20">
           <!-- text-right = text-align: right, mt-20 = margin-top: 2rem (20px) -->
-          <a href="#" class="btn mr-5" role="button" data-dismiss="modal">Abbrechen</a>
+          <a href="#" class="btn mr-5" role="button" data-dismiss="modal">Cancel</a>
           <a href="#" id="submit-todo-button" class="btn btn-primary" data-dismiss="modal"
-            type="button" role="button">Fertig</a>
+            type="button" role="button">OK</a>
         </div>
       </div>
     </div>
@@ -168,9 +167,9 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-link-dropdown-toggle">
             <a href="#" class="dropdown-item">
-              <span id="menubar-status-span" class="badge badge-success">0/0</span> erledigt
+              <span id="menubar-status-span" class="badge badge-success">0/0</span> completed
             </a>
-            <a id="navbar-user-abmelden" class="dropdown-item">Abmelden</a>
+            <a id="navbar-user-abmelden" class="dropdown-item">Logout</a>
           </div>
         </li>
       </ul>
@@ -181,38 +180,38 @@
     <div class="sidebar">
       <div class="sidebar-menu">
         <!-- Sidebar links and titles -->
-        <a href="#" id="sidebar-alle" class="sidebar-title active">Alle</a>
+        <a href="#" id="sidebar-alle" class="sidebar-title active">All</a>
         <div class="sidebar-divider mb-20"></div>
 
-        <h5 class="sidebar-title">Ordner</h5>
+        <h5 class="sidebar-title">Folders</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-link" onclick="halfmoon.toggleModal('modal-add-ordner')">+ Neuer
-          Ordner</a>
+        <a href="#" class="sidebar-link" onclick="halfmoon.toggleModal('modal-add-ordner')">+ Add
+          Folder</a>
         <div id="custom-ordners">
           <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="work">/ Work</a>
           <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="study">/ Study</a>
           <a href="#" class="sidebar-link sidebar-ordner" data-sidebar-ordner="study">/ Andere</a>
         </div>
         <br />
-        <h5 class="sidebar-title">Frist</h5>
+        <h5 class="sidebar-title">Due</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-link" data-sidebar-due="heute">Heute</a>
-        <a href="#" class="sidebar-link" data-sidebar-due="morgen">Morgen</a>
-        <a href="#" class="sidebar-link" data-sidebar-due="diese-woche">Diese Woche</a>
-        <a href="#" class="sidebar-link" data-sidebar-due="diesen-monat">Diesen Monat</a>
-        <a href="#" class="sidebar-link" data-sidebar-due="spaeter">Später</a>
+        <a href="#" class="sidebar-link" data-sidebar-due="heute">Today</a>
+        <a href="#" class="sidebar-link" data-sidebar-due="morgen">Tomorrow</a>
+        <a href="#" class="sidebar-link" data-sidebar-due="diese-woche">This Week</a>
+        <a href="#" class="sidebar-link" data-sidebar-due="diesen-monat">This Month</a>
+        <a href="#" class="sidebar-link" data-sidebar-due="spaeter">Later</a>
         <br />
         <h5 class="sidebar-title">Color Tags</h5>
         <div class="sidebar-divider"></div>
-        <a href="#" data-tag-color="gruen" class="sidebar-link sidebar-farbe">Grün</a>
-        <a href="#" data-tag-color="rot" class="sidebar-link sidebar-farbe">Rot</a>
-        <a href="#" data-tag-color="gelb" class="sidebar-link sidebar-farbe">Gelb</a>
-        <a href="#" data-tag-color="blau" class="sidebar-link sidebar-farbe">Blau</a>
+        <a href="#" data-tag-color="gruen" class="sidebar-link sidebar-farbe">Green</a>
+        <a href="#" data-tag-color="rot" class="sidebar-link sidebar-farbe">Red</a>
+        <a href="#" data-tag-color="gelb" class="sidebar-link sidebar-farbe">Yellow</a>
+        <a href="#" data-tag-color="blau" class="sidebar-link sidebar-farbe">Blue</a>
         <a href="#" data-tag-color="orange" class="sidebar-link sidebar-farbe">Orange</a>
-        <a href="#" data-tag-color="violett" class="sidebar-link sidebar-farbe">Violett</a>
-        <a href="#" data-tag-color="braun" class="sidebar-link sidebar-farbe">Braun</a>
-        <a href="#" data-tag-color="rosa" class="sidebar-link sidebar-farbe">Rosa</a>
-        <a href="#" class="sidebar-link sidebar-farbe">Keine</a>
+        <a href="#" data-tag-color="violett" class="sidebar-link sidebar-farbe">Purple</a>
+        <a href="#" data-tag-color="braun" class="sidebar-link sidebar-farbe">Brown</a>
+        <a href="#" data-tag-color="rosa" class="sidebar-link sidebar-farbe">Pink</a>
+        <a href="#" class="sidebar-link sidebar-farbe">None</a>
       </div>
     </div>
     <!-- Sidebar end -->
@@ -221,11 +220,11 @@
     <div class="content-wrapper">
       <div id="content-header" class="d-flex justify-content-between align-items-center">
         <div id="content-header-left">
-          <h2 class="content-title d-inline m-0">Alle</h2>
+          <h2 class="content-title d-inline m-0">All</h2>
         </div>
         <div id="content-header-right">
           <button class="btn btn-primary" id="neue-todo-button" onclick="halfmoon.toggleModal('modal-todo');
-">+ Neue Aufgabe</button>
+">+ New Task</button>
         </div>
       </div>
       <div class="sidebar-divider"></div>
@@ -406,7 +405,7 @@
           </div>
           <div id="completed-wrapper">
             <div id="completed-title-wrapper" class="d-flex align-items-center">
-              <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Erledigte Aufgaben
+              <h3 id="completed-title" class=" text-muted font-size-16 mt-20">Completed Tasks
               </h3>
               <span id="print-count-onBadge" class="badge badge-success ml-10"></span>
             </div>
@@ -422,7 +421,7 @@
     </div>
     <div class="text-right loesche-ordner-wrapper">
       <a href="#" class="text-danger font-size-14 text-right"
-        onclick="halfmoon.toggleModal('modal-confirm')">Lösche diesen Ordner</a>
+        onclick="halfmoon.toggleModal('modal-confirm')">Delete this folder</a>
     </div>
     <!-- End of main content -->
   </div>
