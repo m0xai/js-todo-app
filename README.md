@@ -12,7 +12,7 @@ Alle deine Aufgaben sind in einem Platz. Du kannst sie nach ihre Fristen sortier
 \
 &nbsp;
 
-## [Go To App 🔗](https://zu-tun.web.app)
+## [🔗 Website](https://zu-tun.web.app)
 
 \
 &nbsp;
@@ -20,8 +20,10 @@ Alle deine Aufgaben sind in einem Platz. Du kannst sie nach ihre Fristen sortier
 ## Features
 
 - Dark/Light mode
+- Bundled with **Webpack 5**
+- Build with Halfmoon CSS Framework
 - All to-dos stored at Google Firebase Hosting
-- One click login with Google
+- One click login with Google Accounts
 - 8 color to attach on to-dos items
 - Show to-dos to their due (Today, Morning, This Week, This Month or Later)
 - Create folder to organize items
