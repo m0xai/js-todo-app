@@ -69,8 +69,8 @@ function printItems(toDo) {
             <div class="dinge-fuss-links m-5">
               <span class="dinge-erstelltungs-datum text-muted font-size-12">${formatDistanceToNow(
                 new Date(toDo.id),
-                { daddSuffix: true }
-              )} erstellt.</span>
+                { addSuffix: true }
+              )} added.</span>
             </div>
             <div class="dinge-fuss-mitte m-5">
               <span class="badge badge-pill">${toDo.ordner}</span>
