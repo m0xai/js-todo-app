@@ -1,4 +1,8 @@
-import { thisToDoEl, thisToDoId } from '../mainHelpers.js';
+import {
+  thisToDoEl,
+  thisToDoId,
+  attachEventSidebarLinks,
+} from '../mainHelpers.js';
 import { setItemFarbe, toggleItemDetails } from '../add/helper.js';
 import { setEditButtons } from '../edit/helper.js';
 import { setCheckButtons, completedUpdateFront } from '../filter/completed.js';
@@ -30,6 +34,7 @@ function printToDos(toDos) {
   });
   deleteToDo();
   setEditButtons();
+  attachEventSidebarLinks();
 }
 
 export { printToDos };

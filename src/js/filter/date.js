@@ -1,5 +1,4 @@
 import { toDoArray } from '../db/db.js';
-import { changeContentTitle } from '../mainHelpers.js';
 import {
   isToday,
   isTomorrow,
@@ -65,6 +64,4 @@ function setDueButtons(e) {
   console.log('todosOfThisWeek: ', todosOfThisWeek);
   console.log('todosOfMonth: ', todosOfMonth);
   console.log('Später: ', todosOfSpaeter);
-
-  changeContentTitle(e.target.innerText);
 }

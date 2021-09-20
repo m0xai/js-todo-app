@@ -1,7 +1,6 @@
 import { toDoArray } from '../db/db.js';
 import { showRemoveOrdnerBtn } from '../ordner/helper.js';
 import { printToDos } from '../print/print.js';
-import { changeContentTitle } from '../mainHelpers.js';
 
 function addClickEventToOrdners() {
   const sidebarOrdners = document.querySelectorAll('.sidebar-ordner');
@@ -28,6 +27,5 @@ function filterNachOrdner(e) {
   console.log('Listing', sameOrdnerItems(), 'ordnered item');
   printToDos(sameOrdnerItems());
   showRemoveOrdnerBtn(ordnerId);
-  changeContentTitle(e.target.innerText);
 }
 export { filterNachOrdner, addClickEventToOrdners };

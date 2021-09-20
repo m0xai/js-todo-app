@@ -1,5 +1,4 @@
 import { toDoArray } from '../db/db.js';
-import { changeContentTitle } from '../mainHelpers.js';
 import { printToDos } from '../print/print.js';
 
 const sidebarColors = document.querySelectorAll('.sidebar-farbe');
@@ -16,6 +15,5 @@ function filterNachFarbe(e) {
   };
   console.log('Listing', sameColorItems(), 'colored item');
   printToDos(sameColorItems());
-  changeContentTitle(e.target.innerText);
 }
 export { filterNachFarbe };

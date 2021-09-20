@@ -93,7 +93,6 @@ function toastSuccessAlert(itemType, proccess) {
 
 function attachEventSidebarLinks() {
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
-  console.log('Sidebar Links: ', sidebarLinks);
   sidebarLinks.forEach((link) => link.addEventListener('click', setActiveLink));
   return sidebarLinks;
 }
@@ -147,5 +146,5 @@ export {
   setActiveLink,
   toastSuccessAlert,
   printOnEmpty,
-  changeContentTitle,
+  attachEventSidebarLinks,
 };
