@@ -25,6 +25,8 @@ function setDueButtons(e) {
     todosOfSpaeter,
   ] = [[], [], [], [], []];
 
+  let addOneMonth;
+
   toDoArray.forEach((todo) => {
     if (isToday(new Date(todo.endDatum))) {
       todosOfDay.push(todo);
@@ -38,12 +40,8 @@ function setDueButtons(e) {
     if (isThisMonth(new Date(todo.endDatum))) {
       todosOfMonth.push(todo);
     }
-    if (
-      isAfter(
-        new Date(todo.endDatum),
-        add(new Date(todo.endDatum), { months: 1 })
-      )
-    ) {
+    addOneMonth = add(new Date(), { months: 1 });
+    if (isAfter(new Date(todo.endDatum), addOneMonth)) {
       todosOfSpaeter.push(todo);
     }
   });

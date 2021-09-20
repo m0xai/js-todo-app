@@ -98,7 +98,6 @@ function attachEventSidebarLinks() {
 }
 
 function setActiveLink(e) {
-  console.log('Sidebar Links:', attachEventSidebarLinks());
   const links = attachEventSidebarLinks();
   links.forEach((link) => {
     if (link == e.target) {
