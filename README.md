@@ -39,17 +39,9 @@ Alle deine Aufgaben sind in einem Platz. Du kannst sie nach ihre Fristen sortier
 
 - Using Firebase Emulators.
 - Multiple pages with Webpack.
-- Loading skeleton until data fetching with CSS :empty pseudo element.
+- Loading skeleton while fetching data with CSS :empty pseudo element.
 - Using Array.find method to get item via data attributes.
 - How to change CSS pseudo elements with JS.
 - Attaching current item ID to submit button, in order to use it while setting new infos.
   \
   &nbsp;
-
-## TODO
-
-- Refactor delete todo functon.
-- add delete ordner funtion
-- Make time data work
-- Add sticky alerts
-- Add Numbers of erledigte aufgaben in menu dropdown.
