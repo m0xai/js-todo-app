@@ -1,4 +1,5 @@
 import { toDoArray } from '../db/db.js';
+import { changeContentTitle } from '../mainHelpers.js';
 import {
   isToday,
   isTomorrow,
@@ -64,19 +65,6 @@ function setDueButtons(e) {
   console.log('todosOfThisWeek: ', todosOfThisWeek);
   console.log('todosOfMonth: ', todosOfMonth);
   console.log('Später: ', todosOfSpaeter);
+
+  changeContentTitle(e.target.innerText);
 }
-// function checkButton(zeit) {
-//   switch (zeit) {
-//     case zeit == 'heute':
-//       console.log('Case: Heute');
-//       printToDos(todosOfDay);
-//     case zeit == 'morgen':
-//       printToDos(todosOfTomorrow);
-//     case zeit == 'diese-woche':
-//       printToDos(todosOfThisWeek);
-//     case zeit == 'diesen-monat':
-//       printToDos(todosOfMonth);
-//     case zeit == 'spaeter':
-//       printToDos(todosOfSpaeter);
-//   }
-// }

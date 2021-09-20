@@ -5,6 +5,11 @@ const toDosWrapper = document.getElementById('todos-list-wrapper');
 const neueToDoButton = document.getElementById('neue-todo-button');
 const submitToDoButton = document.getElementById('submit-todo-button');
 
+function changeContentTitle(title) {
+  const contentTitle = document.getElementById('content-title');
+  contentTitle.innerText = title;
+}
+
 // Get every input value from new ToDo Modal
 const inputItems = {
   title: () => document.getElementById('todo-title-input'),
@@ -88,17 +93,18 @@ function toastSuccessAlert(itemType, proccess) {
 
 function attachEventSidebarLinks() {
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
-  sidebarLinks().forEach((link) =>
-    link.addEventListener('click', setActiveLink)
-  );
-  return { sidebarLinks };
+  console.log('Sidebar Links: ', sidebarLinks);
+  sidebarLinks.forEach((link) => link.addEventListener('click', setActiveLink));
+  return sidebarLinks;
 }
 
 function setActiveLink(e) {
   console.log('Sidebar Links:', attachEventSidebarLinks());
-  attachEventSidebarLinks().forEach((link) => {
+  const links = attachEventSidebarLinks();
+  links.forEach((link) => {
     if (link == e.target) {
       e.target.classList.add('active');
+      changeContentTitle(e.target.innerText);
     } else {
       link.classList.remove('active');
     }
@@ -106,22 +112,22 @@ function setActiveLink(e) {
 }
 
 // Print Hinweise on empty account
-function printOnEmpty(total, done) {
+function printOnEmpty(total) {
   const itemsEl = document.getElementById('uncompleted-list-items');
   if (total == 0) {
     const emptyHTML = `<div id='todos-list-wrapper'>
       <div id='emptyListWrapper'>
-        <h3>Sie haben keine Aufgabe hinzugefügt</h3>
+        <h3>Here seems pretty empty...</h3>
         <p>
-          Sie können mit "+ Neue Aufgabe" button sofort eine Aufgabe hier
-          eintragen
+        Allthought you can add a new task, if you click on blue "Add New Task" button.
         </p>
         <ol>
-          <li>Sie können Ihre Aufgabe kurz bennen.</li>
-          <li>Jede Aufgabe kann Ihre persönliche Orner einordnen.</li>
-          <li>Mit der Farben können Sie sie auch kategorisieren.</li>
-          <li>Ihre Aufgaben können mit Notizen veranschaulicht werden.</li>
-          <li>Sie können ein Frist feststellen.</li>
+          <li>With some words you can describe your task</li>
+          <li>Every task can have a color, so they stay organized.</li>
+          <li>If the 8 colors not enugh for you, then create your own folder via "Add Folder" button on left sidebar. </li>
+          <li>If you have a comlex task, then don't forget to add notes on it.</li>
+          <li>Of course there is always deadlines. You can easily add them too.</li>
+          <li>May the energy be with you 🚀</li>
         </ol>
       </div>
     </div>`;
@@ -141,4 +147,5 @@ export {
   setActiveLink,
   toastSuccessAlert,
   printOnEmpty,
+  changeContentTitle,
 };
